@@ -1,0 +1,1864 @@
+{
+  "entities": [
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "glial cell types",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "D1D2 hybrid MSNs",
+      "label": "cell-type subtype (MSN subtype mentioned in the study)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "primate-expanded interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "multi-centimeter scale spatial taxonomy",
+      "label": "dataset/atlas (the primary multi-region spatial transcriptomic resource described)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "60 neuronal and glial cell types",
+      "label": "result (number of distinct cell types identified)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "Subcellular RNA localization",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "projection-inferred signatures",
+      "label": "inferred signature (projection-inferred molecular signatures)",
+      "context": "Highlights• Our multi-centimeter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia.• MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei.• D1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization• Subcellular RNA localization reports soma morphology and projection-inferred signatures."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "SUMMARYWe generated a multi-region, subcellular-resolution spatial transcriptomic atlas of the human basal ganglia by integrating MERFISH+ and Stereo-seq across four neurotypical donors."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "SUMMARYWe generated a multi-region, subcellular-resolution spatial transcriptomic atlas of the human basal ganglia by integrating MERFISH+ and Stereo-seq across four neurotypical donors."
+    },
+    {
+      "entity": "multi-region, subcellular-resolution spatial transcriptomic atlas",
+      "label": "dataset/atlas (the primary multi-region spatial transcriptomic resource described)",
+      "context": "SUMMARYWe generated a multi-region, subcellular-resolution spatial transcriptomic atlas of the human basal ganglia by integrating MERFISH+ and Stereo-seq across four neurotypical donors."
+    },
+    {
+      "entity": "subcellular-resolution",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "SUMMARYWe generated a multi-region, subcellular-resolution spatial transcriptomic atlas of the human basal ganglia by integrating MERFISH+ and Stereo-seq across four neurotypical donors."
+    },
+    {
+      "entity": "medium-spiny-neuron",
+      "label": "cell type (specific neuronal subtype)",
+      "context": "These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types.We show region-selective, molecular and spatial diversification of medium-spiny-neuron cell types and multiple non-neuronal populations with distinct molecular identities and spatial localizations."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types.We show region-selective, molecular and spatial diversification of medium-spiny-neuron cell types and multiple non-neuronal populations with distinct molecular identities and spatial localizations."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types.We show region-selective, molecular and spatial diversification of medium-spiny-neuron cell types and multiple non-neuronal populations with distinct molecular identities and spatial localizations."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types.We show region-selective, molecular and spatial diversification of medium-spiny-neuron cell types and multiple non-neuronal populations with distinct molecular identities and spatial localizations."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types.We show region-selective, molecular and spatial diversification of medium-spiny-neuron cell types and multiple non-neuronal populations with distinct molecular identities and spatial localizations."
+    },
+    {
+      "entity": "7 million cells",
+      "label": "dataset scale (number of cells profiled)",
+      "context": "These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types.We show region-selective, molecular and spatial diversification of medium-spiny-neuron cell types and multiple non-neuronal populations with distinct molecular identities and spatial localizations."
+    },
+    {
+      "entity": "Subcellular RNA localization",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "Subcellular RNA localization captures somatic size and projectioninferred signatures that reflect direct and indirect pathway topology."
+    },
+    {
+      "entity": "projectioninferred",
+      "label": "inferred signature (projection-inferred molecular signatures)",
+      "context": "Subcellular RNA localization captures somatic size and projectioninferred signatures that reflect direct and indirect pathway topology."
+    },
+    {
+      "entity": "direct and indirect pathway topology",
+      "label": "circuit topology (direct vs indirect pathway organization)",
+      "context": "Subcellular RNA localization captures somatic size and projectioninferred signatures that reflect direct and indirect pathway topology."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Cellular community analyses reveal the enrichment of sub-clusters of astrocytes and oligodendrocytes at striosome-matrix borders, while primate-expanded interneurons are confined to matrix territories."
+    },
+    {
+      "entity": "oligodendrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Cellular community analyses reveal the enrichment of sub-clusters of astrocytes and oligodendrocytes at striosome-matrix borders, while primate-expanded interneurons are confined to matrix territories."
+    },
+    {
+      "entity": "primate-expanded interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Cellular community analyses reveal the enrichment of sub-clusters of astrocytes and oligodendrocytes at striosome-matrix borders, while primate-expanded interneurons are confined to matrix territories."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Cellular community analyses reveal the enrichment of sub-clusters of astrocytes and oligodendrocytes at striosome-matrix borders, while primate-expanded interneurons are confined to matrix territories."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Cellular community analyses reveal the enrichment of sub-clusters of astrocytes and oligodendrocytes at striosome-matrix borders, while primate-expanded interneurons are confined to matrix territories."
+    },
+    {
+      "entity": "Cellular community analyses",
+      "label": "analysis method (cellular community analysis)",
+      "context": "Cellular community analyses reveal the enrichment of sub-clusters of astrocytes and oligodendrocytes at striosome-matrix borders, while primate-expanded interneurons are confined to matrix territories."
+    },
+    {
+      "entity": "striosome-matrix borders",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "Cellular community analyses reveal the enrichment of sub-clusters of astrocytes and oligodendrocytes at striosome-matrix borders, while primate-expanded interneurons are confined to matrix territories."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Cross-species mapping uncovers orthologous striosome-matrix organization and conserved dorsolateral-ventromedial gene expression gradients."
+    },
+    {
+      "entity": "Cross-species mapping",
+      "label": "comparative analysis (cross-species mapping)",
+      "context": "Cross-species mapping uncovers orthologous striosome-matrix organization and conserved dorsolateral-ventromedial gene expression gradients."
+    },
+    {
+      "entity": "dorsolateral-ventromedial gene expression gradients",
+      "label": "spatial gene expression gradient (dorsolateral-ventromedial)",
+      "context": "Cross-species mapping uncovers orthologous striosome-matrix organization and conserved dorsolateral-ventromedial gene expression gradients."
+    },
+    {
+      "entity": "striosome-matrix organization",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "Cross-species mapping uncovers orthologous striosome-matrix organization and conserved dorsolateral-ventromedial gene expression gradients."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This atlas provides a foundational molecular and spatial framework for studying human basal ganglia architecture, offering a multi-centimeter scale resource that links cell types, spatial architecture, and subcellular transcript topography across multiple nuclei."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "This atlas provides a foundational molecular and spatial framework for studying human basal ganglia architecture, offering a multi-centimeter scale resource that links cell types, spatial architecture, and subcellular transcript topography across multiple nuclei."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The human basal ganglia is a critical brain structure involved in motor control, learning and emotion."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "It is comprised of distinct anatomical nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1 ."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "It is comprised of distinct anatomical nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1 ."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "It is comprised of distinct anatomical nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1 ."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "It is comprised of distinct anatomical nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1 ."
+    },
+    {
+      "entity": "Basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Basal ganglia cell types and architecture are well characterized in rodents and non-human primates, but are much less understood in humans."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "The literature from both animal models and humans shows that GABAergic medium spiny neurons (MSNs) are the dominant neuronal cell type in the striatum (85-95%) [2][3][4][5] ; MSNs are divided into two major populations: D1-type MSNs, which express the dopamine receptor D1 (DRD1), tachykinin precursor 1 (TAC1), and dynorphin; and D2-type MSNs, which express the dopamine receptor D2 (DRD2), proenkephalin (PENK), and enkephalin 2,3,6 ."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The D1 and D2 populations are spatially organized into interdigitated striosome and matrix compartments that form the structural foundation of basal ganglia function 3,7,8 ."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The D1 and D2 populations are spatially organized into interdigitated striosome and matrix compartments that form the structural foundation of basal ganglia function 3,7,8 ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The D1 and D2 populations are spatially organized into interdigitated striosome and matrix compartments that form the structural foundation of basal ganglia function 3,7,8 ."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Further studies, including those using singlenucleus RNA-seq in animal and human brains have revealed additional D1/D2 neuronal diversity 9,10 , and identified multiple classes of interneurons, including cholinergic (choline acetyltransferase-positive; ChAT+), parvalbumin-positive (PV+), somatostatinpositive (SST+), and neuropeptide Y/tyrosine hydroxylase-positive (NPY+/TH+) subtypes [10][11][12][13][14] ."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The nucleus accumbens, located at the ventral extension of the striatum, contains both D1 and D2 MSNs and is further divided into core and shell subregions."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The globus pallidus consists of two principal divisions: the external segment (GPe) and the internal segment (GPi) 3,16 ."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Both regions are dominated by PV+ GABAergic projection neurons 17 ."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Within GPe, prototypic neurons express PV, LIM homeobox 6 (LHX6), and NK2 homeobox 1 (NKX2-1) 18,19 ; arkypallidal neurons express neuronal PAS domain protein 1 (NPAS1) and forkhead box protein P2 (FOXP2) 20,21 ."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "GPi contains PV+/LHX6+ projection neurons that form the principal output pathway of the basal ganglia 16,17 ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "GPi contains PV+/LHX6+ projection neurons that form the principal output pathway of the basal ganglia 16,17 ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "A comprehensive understanding of human basal ganglia organization requires integrating cell-type identity, molecular signatures, and spatial architecture within an intact anatomical framework."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Although previous studies have revealed the spatial organization of striosomes within the striatal matrix and transcriptional gradients across basal ganglia nuclei in model organisms such as mice and macaques 10,27 , a comprehensive molecular and cell-type-resolved spatial atlas of the adult human basal ganglia remains lacking."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Although previous studies have revealed the spatial organization of striosomes within the striatal matrix and transcriptional gradients across basal ganglia nuclei in model organisms such as mice and macaques 10,27 , a comprehensive molecular and cell-type-resolved spatial atlas of the adult human basal ganglia remains lacking."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This gap has persisted in part because of the large size and complex cytoarchitecture of human basal ganglia nuclei, as well as technical limitations in the spatial scale and resolution of existing mapping approaches."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Addressing this limitation is particularly critical given the central role of the basal ganglia in human movement disorders (including Parkinson's disease and Huntington's disease), neuropsychiatric conditions, and species-specific differences in basal ganglia cellular composition and structural organization that reflect the complexity of inputs and outputs for these structures in humans 7,28 ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Recent advances in large-scale spatially resolved transcriptomics have transformed our ability to characterize cellular heterogeneity and molecular architecture within intact neural tissue such as human basal ganglia."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Two particularly powerful approaches are Multiplexed Error-Robust Fluorescence In Situ Hybridization (MERFISH) 26,[29][30][31][32][33] and Spatio-Temporal Enhanced Resolution Omics-sequencing (Stereo-seq) [34][35][36][37][38] ."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "MERFISH enables highly multiplexed, single-molecule RNA imaging at subcellular resolution, allowing the precise mapping of hundreds to thousands of genes within individual cells while maintaining their spatial context 26,29,31 ."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "This extension achieves large-area spatial transcriptomics with subcellular precision for integrative molecular and structural analyses 44 ."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Stereo-seq employs DNA nanoball-patterned arrays to generate spatially barcoded cDNA libraries that capture transcriptomes from large tissue sections at high resolution 34,[36][37][38] ."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Stereo-seq has been successfully applied to generate whole-brain atlases in mice and to characterize cortical and subcortical organization in nonhuman primates [34][35][36][37][38] ."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "In this study, we harness complementary strengths of MERFISH+ and Stereo-seq to generate a multiscale spatial transcriptomic atlas of the human basal ganglia to capture spatial gene-expression patterns, specific cell types, and molecular architectures across multi-centimeter tissue sections from four neurotypical adult postmortem donors."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "In this study, we harness complementary strengths of MERFISH+ and Stereo-seq to generate a multiscale spatial transcriptomic atlas of the human basal ganglia to capture spatial gene-expression patterns, specific cell types, and molecular architectures across multi-centimeter tissue sections from four neurotypical adult postmortem donors."
+    },
+    {
+      "entity": "spatial transcriptomic atlas",
+      "label": "dataset/atlas (the primary multi-region spatial transcriptomic resource described)",
+      "context": "In this study, we harness complementary strengths of MERFISH+ and Stereo-seq to generate a multiscale spatial transcriptomic atlas of the human basal ganglia to capture spatial gene-expression patterns, specific cell types, and molecular architectures across multi-centimeter tissue sections from four neurotypical adult postmortem donors."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This atlas offers a novel view of human basal ganglia organization of cell types, cellular communities, and region-specific transcriptional gradients at subcellular precision that was previously uncharted."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "This atlas offers a novel view of human basal ganglia organization of cell types, cellular communities, and region-specific transcriptional gradients at subcellular precision that was previously uncharted."
+    },
+    {
+      "entity": "cellular communities",
+      "label": "analysis method (cellular community analysis)",
+      "context": "This atlas offers a novel view of human basal ganglia organization of cell types, cellular communities, and region-specific transcriptional gradients at subcellular precision that was previously uncharted."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We obtained four postmortem human brain fresh frozen slabs across anterior-toposterior segments of the basal ganglia encompassing the caudate nucleus, putamen, nucleus accumbens (NAc), globus pallidus, and internal capsule (Figure 1A)."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We obtained four postmortem human brain fresh frozen slabs across anterior-toposterior segments of the basal ganglia encompassing the caudate nucleus, putamen, nucleus accumbens (NAc), globus pallidus, and internal capsule (Figure 1A)."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We obtained four postmortem human brain fresh frozen slabs across anterior-toposterior segments of the basal ganglia encompassing the caudate nucleus, putamen, nucleus accumbens (NAc), globus pallidus, and internal capsule (Figure 1A)."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We obtained four postmortem human brain fresh frozen slabs across anterior-toposterior segments of the basal ganglia encompassing the caudate nucleus, putamen, nucleus accumbens (NAc), globus pallidus, and internal capsule (Figure 1A)."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We obtained four postmortem human brain fresh frozen slabs across anterior-toposterior segments of the basal ganglia encompassing the caudate nucleus, putamen, nucleus accumbens (NAc), globus pallidus, and internal capsule (Figure 1A)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "For spatial transcriptomic profiling, 10 µm-thick cryostat sections were processed for Stereo-seq with the coverage area size of up to 20 mm × 30 mm, while adjacent 16 µmthick sections were selected for MERFISH+ imaging with an area size of up to 43 mm × 30 mm (Figure 1A, Supplementary Movie 1, Table 1S & Figure 1S in Supplemental Information)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "A single 20mm x 30mm Stereo-seq chip captured ~0.9 million cells (with ~0.29 million cells selected for cell type classification), which were clustered into 10 different major cell types (Figure 1B)."
+    },
+    {
+      "entity": "9 million cells",
+      "label": "dataset scale (number of cells profiled)",
+      "context": "A single 20mm x 30mm Stereo-seq chip captured ~0.9 million cells (with ~0.29 million cells selected for cell type classification), which were clustered into 10 different major cell types (Figure 1B)."
+    },
+    {
+      "entity": "29 million cells",
+      "label": "dataset scale (number of cells profiled)",
+      "context": "A single 20mm x 30mm Stereo-seq chip captured ~0.9 million cells (with ~0.29 million cells selected for cell type classification), which were clustered into 10 different major cell types (Figure 1B)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Across four Stereo-seq assays, we obtained genome-wide transcriptomic coverage of ~70,000 genes across ~3.2 million cells."
+    },
+    {
+      "entity": "2 million cells",
+      "label": "dataset scale (number of cells profiled)",
+      "context": "Across four Stereo-seq assays, we obtained genome-wide transcriptomic coverage of ~70,000 genes across ~3.2 million cells."
+    },
+    {
+      "entity": "9 million cells",
+      "label": "dataset scale (number of cells profiled)",
+      "context": "Four MERFISH+ experiments captured ~3.9 million cells at single-molecule resolution over multi-centimeter-scale tissue areas."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Although Stereo-seq detects fewer transcripts per cell due to its sequencing-based capture efficiency, the expression levels of the 673 MERFISH+ target genes show strong cross-platform correlation between the two modalities (Pearson correlation coefficient of 0.71), demonstrating the quantitative agreement of spatial gene-expression measurements across methodological approaches (Figure S1B) with high reproducibility across and between experiments (Figure S1C-D)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Although Stereo-seq provides transcriptome-wide coverage, its spatial signal localization is inherently more diffuse (Figure 1D-G) than MERFISH+ that delineates sharp cellular boundaries based on transcript density (Figures 1H-K; Supplementary Movie 1)."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "Given these respective advantages and limitations, we used MERFISH+ to focus on fine-scale cell definition and subcellular localization, and Stereoseq for exploring large scale gene expression patterns across centimeter scale tissue."
+    },
+    {
+      "entity": "Basal Ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These cell types show expression of expected corresponding marker genes (Figure S2) and demonstrate strong correspondence with single-nucleus RNA sequencing (snRNA-seq) datasets from the Allen Institute Mammalian Basal Ganglia Consensus Cell Type Atlas (Allen Institute; RRID:SCR_024672) 45 (Figure 2B), validating our cell type classification."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Among these are eight neuronal classes that include caudal and lateral ganglionic eminence (CGE/LGE)-derived GABAergic neurons, which are dominated by medium spiny neurons (MSNs) (Figure S3A)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We further examined MSNs -the predominant neuronal population of the striatum that are essential for modulating movement control in the basal ganglia circuit 3 ."
+    },
+    {
+      "entity": "Striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "MSNs segregate into two canonical classes -D1 and D2 MSNs -further subdivided into six major dopaminergic MSN subtypes: STRd D1 Striosome, STRd D1 Matrix, STRv D1, STRd D2 Striosome, STRd D2 Matrix and STRv D2 (dorsal striatum, STRd; ventral striatum, STRv) (Figure 2D-E, Figure S3B)."
+    },
+    {
+      "entity": "Matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "MSNs segregate into two canonical classes -D1 and D2 MSNs -further subdivided into six major dopaminergic MSN subtypes: STRd D1 Striosome, STRd D1 Matrix, STRv D1, STRd D2 Striosome, STRd D2 Matrix and STRv D2 (dorsal striatum, STRd; ventral striatum, STRv) (Figure 2D-E, Figure S3B)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These subtypes display distinct dorsalventral and striosome-matrix distribution patterns across basal ganglia compartments along the anterior-posterior axis (Figure 2D, Figure S3B)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These subtypes display distinct dorsalventral and striosome-matrix distribution patterns across basal ganglia compartments along the anterior-posterior axis (Figure 2D, Figure S3B)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "These subtypes display distinct dorsalventral and striosome-matrix distribution patterns across basal ganglia compartments along the anterior-posterior axis (Figure 2D, Figure S3B)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Specifically, D1 and D2 striosomal MSNs are enriched within striosome compartments, whereas D1 and D2 matrix MSNs predominate in the surrounding matrix (Figure 2E)."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Specifically, D1 and D2 striosomal MSNs are enriched within striosome compartments, whereas D1 and D2 matrix MSNs predominate in the surrounding matrix (Figure 2E)."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "D1 and D2 MSNs together represent ~83 % of all striatal neurons."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Beyond these canonical MSN populations, our analyses uncover spatial distributions of several novel and rare MSN cell types described across species including mouse and non-human primate that are \"mixed-identity\" neurons that co-express D1-and D2associated gene modules -these neurons are not regionally restricted cell types to discrete striatal or pallidal territories [46][47][48] ."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The D1-D2 hybrid (STR D1D2 Hybrid), striosome-matrix hybrid (STRd D2 Hybrid), and D1 NUDAP (Neurochemically Unique Domains in the Accumbens and Putamen) (STRv D1 NUDAP) MSNs are primarily localized within the putamen, caudate nucleus, and nucleus accumbens (Figure 2G), but are largely absent from the globus pallidus and internal capsule."
+    },
+    {
+      "entity": "Putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The D1-D2 hybrid (STR D1D2 Hybrid), striosome-matrix hybrid (STRd D2 Hybrid), and D1 NUDAP (Neurochemically Unique Domains in the Accumbens and Putamen) (STRv D1 NUDAP) MSNs are primarily localized within the putamen, caudate nucleus, and nucleus accumbens (Figure 2G), but are largely absent from the globus pallidus and internal capsule."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The D1-D2 hybrid (STR D1D2 Hybrid), striosome-matrix hybrid (STRd D2 Hybrid), and D1 NUDAP (Neurochemically Unique Domains in the Accumbens and Putamen) (STRv D1 NUDAP) MSNs are primarily localized within the putamen, caudate nucleus, and nucleus accumbens (Figure 2G), but are largely absent from the globus pallidus and internal capsule."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The D1-D2 hybrid (STR D1D2 Hybrid), striosome-matrix hybrid (STRd D2 Hybrid), and D1 NUDAP (Neurochemically Unique Domains in the Accumbens and Putamen) (STRv D1 NUDAP) MSNs are primarily localized within the putamen, caudate nucleus, and nucleus accumbens (Figure 2G), but are largely absent from the globus pallidus and internal capsule."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The D1-D2 hybrid (STR D1D2 Hybrid), striosome-matrix hybrid (STRd D2 Hybrid), and D1 NUDAP (Neurochemically Unique Domains in the Accumbens and Putamen) (STRv D1 NUDAP) MSNs are primarily localized within the putamen, caudate nucleus, and nucleus accumbens (Figure 2G), but are largely absent from the globus pallidus and internal capsule."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "The D1-D2 hybrid (STR D1D2 Hybrid), striosome-matrix hybrid (STRd D2 Hybrid), and D1 NUDAP (Neurochemically Unique Domains in the Accumbens and Putamen) (STRv D1 NUDAP) MSNs are primarily localized within the putamen, caudate nucleus, and nucleus accumbens (Figure 2G), but are largely absent from the globus pallidus and internal capsule."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "The mixed state of these cell populations is corroborated by colocalization within individual neurons of multiple transcripts of DRD1, DRD2, and prodynorphin (PDYN), a canonical striosomal MSN marker (Figure 2H)."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We next examined neuronal subtypes within the globus pallidus."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "As indicated by their nomenclature, GPi Shell and GPi Core neurons are localized to peripheral and central GP regions, respectively (Figure 2J)."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "In contrast, GPe SOX6-CTXND1 and CN LHX6-GBX1 neurons are concentrated within the GPe and show only sparse distributions in other basal ganglia nuclei (Figure 2K)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "In contrast, GPe SOX6-CTXND1 and CN LHX6-GBX1 neurons are concentrated within the GPe and show only sparse distributions in other basal ganglia nuclei (Figure 2K)."
+    },
+    {
+      "entity": "oligodendrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "This group includes five transcriptionally distinct subtypes: committed oligodendrocyte progenitors (COP), oligodendrocyte progenitor cells (OPC), Oligo PLEKHG1, immune-associated oligodendrocytes (ImOligo), and Oligo OPALIN (Figure 3A-right)."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We found that Oligo OPALIN cells are enriched along striatopallidal fiber tracts (arrows, Figure 3B-right), whereas Oligo PLEKHG1 cells are preferentially localized to the internal capsule white matter and globus pallidus, but are sparse in the putamen and caudate nucleus -this pattern is consistent across different sections (Figure S6A)."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We found that Oligo OPALIN cells are enriched along striatopallidal fiber tracts (arrows, Figure 3B-right), whereas Oligo PLEKHG1 cells are preferentially localized to the internal capsule white matter and globus pallidus, but are sparse in the putamen and caudate nucleus -this pattern is consistent across different sections (Figure S6A)."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We found that Oligo OPALIN cells are enriched along striatopallidal fiber tracts (arrows, Figure 3B-right), whereas Oligo PLEKHG1 cells are preferentially localized to the internal capsule white matter and globus pallidus, but are sparse in the putamen and caudate nucleus -this pattern is consistent across different sections (Figure S6A)."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "We found that astrocytes also exhibit pronounced regional heterogeneity."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Except for the ventricle-associated astrocytes (Ventricle_Astro, captured in section AP19), the relative abundances of astrocyte subtypes are generally consistent across anterior and posterior basal ganglia regions (Figure 3F)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Except for the ventricle-associated astrocytes (Ventricle_Astro, captured in section AP19), the relative abundances of astrocyte subtypes are generally consistent across anterior and posterior basal ganglia regions (Figure 3F)."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Spatial mapping reveal distinct topographic specializations (Figure 3G and Figure S6B-C): WM_Astro cells, characterized by high AQP1 expression, are localized primarily to white matter tracts and the peripheral globus pallidus (Figure 3H); STR_Astro-2 cells, defined by ADGRV1, are enriched in striatum (Figure 3I), and GP-TH_Astro cells, expressing SLC6A11, are selectively concentrated in the globus pallidus (Figure 3J)."
+    },
+    {
+      "entity": "2 cells",
+      "label": "dataset scale (number of cells profiled)",
+      "context": "Spatial mapping reveal distinct topographic specializations (Figure 3G and Figure S6B-C): WM_Astro cells, characterized by high AQP1 expression, are localized primarily to white matter tracts and the peripheral globus pallidus (Figure 3H); STR_Astro-2 cells, defined by ADGRV1, are enriched in striatum (Figure 3I), and GP-TH_Astro cells, expressing SLC6A11, are selectively concentrated in the globus pallidus (Figure 3J)."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "For instance, SLC6A11 (also known as GAT-3) is a GABA transporter that is important for GABA uptake and metabolism in astrocytes 49,50 , consistent with the high abundance of GABAergic neurons in the globus pallidus."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "For instance, SLC6A11 (also known as GAT-3) is a GABA transporter that is important for GABA uptake and metabolism in astrocytes 49,50 , consistent with the high abundance of GABAergic neurons in the globus pallidus."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "For instance, SLC6A11 (also known as GAT-3) is a GABA transporter that is important for GABA uptake and metabolism in astrocytes 49,50 , consistent with the high abundance of GABAergic neurons in the globus pallidus."
+    },
+    {
+      "entity": "glial",
+      "label": "cell type (neuronal or glial population)",
+      "context": "These findings underscore the molecular, cellular, and spatial heterogeneity of glial and neuronal populations that define the complex architecture of the human basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These findings underscore the molecular, cellular, and spatial heterogeneity of glial and neuronal populations that define the complex architecture of the human basal ganglia."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "The high spatial precision of MERFISH+ enables the localization of individual RNA molecules at subcellular resolution (Figure 1J-K; Supplementary Movie 1)."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "While nuclear and somatic transcripts are used to define cell identity, we developed additional analysis to capture somatic morphology of single neurons."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We also used the RNA distributions in putative cellular processes to reveal information about projection topology in human basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This analysis reveals substantial heterogeneity in neuronal soma volumes across basal ganglia regions (Figure 4A-B)."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Cholinergic interneurons and globus pallidus neurons including GPi Core, GPi Shell, CN LHX6-GBX1, and GPe MEIS2-SOX6 populations, exhibit the largest median soma volumes (up to ~9,400 µm³), whereas LAMP5+ interneurons and MSNs display markedly smaller volumes (~1,800 µm³ and ~2,500 µm³, respectively) (Figure 4B)."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Cholinergic interneurons and globus pallidus neurons including GPi Core, GPi Shell, CN LHX6-GBX1, and GPe MEIS2-SOX6 populations, exhibit the largest median soma volumes (up to ~9,400 µm³), whereas LAMP5+ interneurons and MSNs display markedly smaller volumes (~1,800 µm³ and ~2,500 µm³, respectively) (Figure 4B)."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Cholinergic interneurons and globus pallidus neurons including GPi Core, GPi Shell, CN LHX6-GBX1, and GPe MEIS2-SOX6 populations, exhibit the largest median soma volumes (up to ~9,400 µm³), whereas LAMP5+ interneurons and MSNs display markedly smaller volumes (~1,800 µm³ and ~2,500 µm³, respectively) (Figure 4B)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This is consistent with histological studies in mouse and human basal ganglia [51][52][53] ."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Although MSN subtypes are more consistent in soma volumes, other neuronal classes exhibit more subtype-dependent variability; for example, SST-CHODL interneurons have among the largest median volumes (~6,200 µm³), while SST-ADARB2 interneurons are significantly smaller (~2,300 µm³) (p-value = 6.9 x 10 -15 , Wilcoxon rank-sum test)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These quantitative reconstructions highlight the pronounced morphological diversity among neuronal subtypes in the human basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Focusing on MSNs, in the mouse and monkey basal ganglia circuitry, D1 matrix MSNs project directly to the GPi and substantia nigra pars reticulata, whereas D2 matrix MSNs form the indirect pathway via the GPe 3,54 ."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Focusing on MSNs, in the mouse and monkey basal ganglia circuitry, D1 matrix MSNs project directly to the GPi and substantia nigra pars reticulata, whereas D2 matrix MSNs form the indirect pathway via the GPe 3,54 ."
+    },
+    {
+      "entity": "indirect pathway",
+      "label": "circuit topology (direct vs indirect pathway organization)",
+      "context": "Focusing on MSNs, in the mouse and monkey basal ganglia circuitry, D1 matrix MSNs project directly to the GPi and substantia nigra pars reticulata, whereas D2 matrix MSNs form the indirect pathway via the GPe 3,54 ."
+    },
+    {
+      "entity": "Basal Ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Their expression is also higher in the nuclei as confirmed using the snRNA-seq data from the Allen Institute Basal Ganglia Consensus Cell Type Atlas (Figure 4G, I)."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "This might reflect that specific semaphorin gene family members mediate long range connections in neurons such as MSNs targeting specific segments of the globus pallidus 55,57 ."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This might reflect that specific semaphorin gene family members mediate long range connections in neurons such as MSNs targeting specific segments of the globus pallidus 55,57 ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Together, these findings demonstrate that MERFISH+ not only resolves molecular and spatial identities of cells but also captures morphological and projection-inferred features encoded in the subcellular transcriptome and provides an unprecedented window into the structural and functional organization of human basal ganglia circuits."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "Together, these findings demonstrate that MERFISH+ not only resolves molecular and spatial identities of cells but also captures morphological and projection-inferred features encoded in the subcellular transcriptome and provides an unprecedented window into the structural and functional organization of human basal ganglia circuits."
+    },
+    {
+      "entity": "projection-inferred",
+      "label": "inferred signature (projection-inferred molecular signatures)",
+      "context": "Together, these findings demonstrate that MERFISH+ not only resolves molecular and spatial identities of cells but also captures morphological and projection-inferred features encoded in the subcellular transcriptome and provides an unprecedented window into the structural and functional organization of human basal ganglia circuits."
+    },
+    {
+      "entity": "cellular community analysis",
+      "label": "analysis method (cellular community analysis)",
+      "context": "To resolve mesoscale organization beyond individual cell types, we performed cellular community analysis 14,58 , which groups cells based on the composition of their spatial neighborhoods."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "For example, GPe SOX8-CTXND1 and GPe MEIS2-SOX6 neurons are enriched in the external globus pallidus (GPe), whereas GPi Core and GPi Shell neurons are confined to the GPi."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "For example, GPe SOX8-CTXND1 and GPe MEIS2-SOX6 neurons are enriched in the external globus pallidus (GPe), whereas GPi Core and GPi Shell neurons are confined to the GPi."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Similarly, STRv D1 and STRv D2 MSNs are enriched in the nucleus accumbens shell and core, while STRd D1 and STRd D2 MSNs populate the striatum (caudate nucleus and putamen) (Figure 5C)."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Similarly, STRv D1 and STRv D2 MSNs are enriched in the nucleus accumbens shell and core, while STRd D1 and STRd D2 MSNs populate the striatum (caudate nucleus and putamen) (Figure 5C)."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Similarly, STRv D1 and STRv D2 MSNs are enriched in the nucleus accumbens shell and core, while STRd D1 and STRd D2 MSNs populate the striatum (caudate nucleus and putamen) (Figure 5C)."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "For instance, STR fast-spiking PTHLH-PVALB GABAergic interneurons are preferentially enriched in the caudate nucleus (Figure 5D, in agreement with previous snRNA-seq analysis 11 ."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "For instance, STR fast-spiking PTHLH-PVALB GABAergic interneurons are preferentially enriched in the caudate nucleus (Figure 5D, in agreement with previous snRNA-seq analysis 11 ."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "STRd ChAT+ GABAergic interneurons are more abundant in the putamen (Figure 5E)."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "STRd ChAT+ GABAergic interneurons are more abundant in the putamen (Figure 5E)."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "In contrast, FM GATA3-TCF7L2 neurons, a transcriptionally distinct population with unclear lineage affiliation are enriched in the GPi nucleus of the basal ganglia; ; this represents a previously unknown neuronal subtype within this region (Figure 5F)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "In contrast, FM GATA3-TCF7L2 neurons, a transcriptionally distinct population with unclear lineage affiliation are enriched in the GPi nucleus of the basal ganglia; ; this represents a previously unknown neuronal subtype within this region (Figure 5F)."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Quantitative analysis of MSN subtype proportions across striatal subregions reveals that the caudate nucleus and putamen share comparable D1/D2 ratios (Figure 5C)."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Quantitative analysis of MSN subtype proportions across striatal subregions reveals that the caudate nucleus and putamen share comparable D1/D2 ratios (Figure 5C)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This differential organization is corroborated by the expression of established molecular markers: TH associated with striosome compartments 3 , is enriched in the NAc shell, whereas KIRREL3, a matrixassociated marker 60 , is predominantly expressed in the NAc core (Figure 5I)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These findings demonstrate that cellular community analysis reconstructs macroscopic anatomical boundaries and allows for the identification of cell types located within or absent from the anatomical regions comprising the human basal ganglia circuits."
+    },
+    {
+      "entity": "cellular community analysis",
+      "label": "analysis method (cellular community analysis)",
+      "context": "These findings demonstrate that cellular community analysis reconstructs macroscopic anatomical boundaries and allows for the identification of cell types located within or absent from the anatomical regions comprising the human basal ganglia circuits."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Beyond its mesoscale structures, the striatum exhibits micro-domain architecture composed of striosome and matrix compartments 61 ."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Beyond its mesoscale structures, the striatum exhibits micro-domain architecture composed of striosome and matrix compartments 61 ."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To delineate these domains, we further applied cellular community analysis restricted to MSN subtype composition-the principal determinant of striosome-matrix identity (Figure 6A-B)."
+    },
+    {
+      "entity": "cellular community analysis",
+      "label": "analysis method (cellular community analysis)",
+      "context": "To delineate these domains, we further applied cellular community analysis restricted to MSN subtype composition-the principal determinant of striosome-matrix identity (Figure 6A-B)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "To delineate these domains, we further applied cellular community analysis restricted to MSN subtype composition-the principal determinant of striosome-matrix identity (Figure 6A-B)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Beyond canonical D1/D2 MSN distributions, we identify additional cell types exhibiting previously uncharacterized striosome-matrix enrichments."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "Beyond canonical D1/D2 MSN distributions, we identify additional cell types exhibiting previously uncharacterized striosome-matrix enrichments."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Notably, STR TAC3-PLPP4 interneurons are exclusively localized to the matrix compartment (Figure 6C, 6D top)."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Notably, STR TAC3-PLPP4 interneurons are exclusively localized to the matrix compartment (Figure 6C, 6D top)."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "These interneurons are primate-specific 62,63 and likely represent the orthologous lineage of rare Tac2+/TH+ interneurons that is described in rodents 17,64 ."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "In our human dataset, STR TAC3-PLPP4 neurons are among the most abundant population of striatal interneurons (Figure 6E)."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "In our human dataset, STR TAC3-PLPP4 neurons are among the most abundant population of striatal interneurons (Figure 6E)."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "This expansion is consistent with the trend of expansion for this cell type seen in prior primate and human studies, whereas their putative mouse homologs represent only ~6% of interneurons [62][63][64] ."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "This marked expansion of TAC3-PLPP4 interneurons in primates suggests an evolutionary adaptation that supports the integration of the greater density of prefrontal and associative cortical inputs, potentially enabling enhanced sensorimotor and cognitive control 11,65 ."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Conversely, VIP+ and LAMP5+ interneurons display moderate enrichment within striosomal territories (Figure 6C, 6D bottom), although these populations are not exclusive to that compartment."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To further explore the organization of cell types across the matrix-striosome boundary, we quantified the distance of each cell to the nearest striosome boundary and analyzed cell-type-specific density profiles as a function of proximity (Figure 6F)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To further explore the organization of cell types across the matrix-striosome boundary, we quantified the distance of each cell to the nearest striosome boundary and analyzed cell-type-specific density profiles as a function of proximity (Figure 6F)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This analysis reveals astrocyte and Oligo OPALIN oligodendrocyte enrichment near striosome borders that form boundary-aligned microdomains (Figure 6G, 6H bottom)."
+    },
+    {
+      "entity": "glial",
+      "label": "cell type (neuronal or glial population)",
+      "context": "The Oligo OPALIN subtype, previously identified along striatopallidal fiber tracts (Figure 3), appears to delineate the perimeters of striosomal territories and highlights glial contributions to compartmental architecture."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To assess whether gene expression varies systematically with spatial proximity to striosomes, we examined transcript gradients along the striosome-to-matrix axis."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To assess whether gene expression varies systematically with spatial proximity to striosomes, we examined transcript gradients along the striosome-to-matrix axis."
+    },
+    {
+      "entity": "cross-species",
+      "label": "comparative analysis (cross-species mapping)",
+      "context": "We next investigated cross-species conservation of this organization using the Allen Institute's whole-mouse-brain MERFISH dataset 10 ."
+    },
+    {
+      "entity": "Striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Mouse supertypes 0268 STR D1 GABA_4 and 0267 STR D1 GABA_3 correspond to human STRd D1 Striosome and STRd D1 Matrix MSNs, respectively (Figure S8C-D)."
+    },
+    {
+      "entity": "Matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Mouse supertypes 0268 STR D1 GABA_4 and 0267 STR D1 GABA_3 correspond to human STRd D1 Striosome and STRd D1 Matrix MSNs, respectively (Figure S8C-D)."
+    },
+    {
+      "entity": "Striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Similarly, finer subclustering of the mouse 0277 STR D2 Gaba_4 supertype, designated as A* and B*, map to human STRd D2 Striosome MSN and STRd D2 Matrix MSN, respectively (Figure S8E-F)."
+    },
+    {
+      "entity": "Matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Similarly, finer subclustering of the mouse 0277 STR D2 Gaba_4 supertype, designated as A* and B*, map to human STRd D2 Striosome MSN and STRd D2 Matrix MSN, respectively (Figure S8E-F)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Using these orthologous MSN pairs, we delineated striosome-matrix boundaries in the mouse striatum and performed analogous proximity analyses in which we computed the distance of cells from border of nearest striosome (Figure 6I) and quantified the distribution of cells as a function of distance."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Using these orthologous MSN pairs, we delineated striosome-matrix boundaries in the mouse striatum and performed analogous proximity analyses in which we computed the distance of cells from border of nearest striosome (Figure 6I) and quantified the distribution of cells as a function of distance."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "Using these orthologous MSN pairs, we delineated striosome-matrix boundaries in the mouse striatum and performed analogous proximity analyses in which we computed the distance of cells from border of nearest striosome (Figure 6I) and quantified the distribution of cells as a function of distance."
+    },
+    {
+      "entity": "glial",
+      "label": "cell type (neuronal or glial population)",
+      "context": "The results are highly concordant across species: specific glial populations, Astro-TE NN_3 astrocytes and MOL NN_4 oligodendrocytes, are enriched at striosome borders in mice (Figure 6J-K)."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "The results are highly concordant across species: specific glial populations, Astro-TE NN_3 astrocytes and MOL NN_4 oligodendrocytes, are enriched at striosome borders in mice (Figure 6J-K)."
+    },
+    {
+      "entity": "oligodendrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "The results are highly concordant across species: specific glial populations, Astro-TE NN_3 astrocytes and MOL NN_4 oligodendrocytes, are enriched at striosome borders in mice (Figure 6J-K)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The results are highly concordant across species: specific glial populations, Astro-TE NN_3 astrocytes and MOL NN_4 oligodendrocytes, are enriched at striosome borders in mice (Figure 6J-K)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These findings demonstrate conserved organizational principles and orthologous cellular microenvironments within striosome-matrix systems of the human and murine basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These findings demonstrate conserved organizational principles and orthologous cellular microenvironments within striosome-matrix systems of the human and murine basal ganglia."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "These findings demonstrate conserved organizational principles and orthologous cellular microenvironments within striosome-matrix systems of the human and murine basal ganglia."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "The identification of matrix-confined TAC3-PLPP4 interneurons and boundary-enriched glial subtypes further reveals an evolutionarily elaborated compartmental architecture in the human striatum that integrates neuronal and nonneuronal components across spatial scales."
+    },
+    {
+      "entity": "glial",
+      "label": "cell type (neuronal or glial population)",
+      "context": "The identification of matrix-confined TAC3-PLPP4 interneurons and boundary-enriched glial subtypes further reveals an evolutionarily elaborated compartmental architecture in the human striatum that integrates neuronal and nonneuronal components across spatial scales."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The identification of matrix-confined TAC3-PLPP4 interneurons and boundary-enriched glial subtypes further reveals an evolutionarily elaborated compartmental architecture in the human striatum that integrates neuronal and nonneuronal components across spatial scales."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "To directly examine these patterns, we applied unsupervised clustering to spatially weighted whole-transcriptome profiles derived from Stereo-seq data, independent of prior cell-type annotation (see Methods)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This spatial analysis recapitulates the mesoscale modules identified by MERFISH+ cellular community analysis and aligns closely with established anatomical territories of the human basal ganglia (Figure 7A, Figure S9A)."
+    },
+    {
+      "entity": "cellular community analysis",
+      "label": "analysis method (cellular community analysis)",
+      "context": "This spatial analysis recapitulates the mesoscale modules identified by MERFISH+ cellular community analysis and aligns closely with established anatomical territories of the human basal ganglia (Figure 7A, Figure S9A)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Each spatial module is characterized by distinct sets of regionally enriched genes (Figure 7B-C, Figure S9B), indicating the molecular specialization among the subregions of the basal ganglia."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "For example, the putamen exhibits strong enrichment of ZNF385B (a zinc-finger transcription factor) and ROBO2 (an axonal guidance molecule), whereas the caudate nucleus shows elevated expression of TAC1(a neuropeptide precursor) and EGR1(an immediate early transcription factor)."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "For example, the putamen exhibits strong enrichment of ZNF385B (a zinc-finger transcription factor) and ROBO2 (an axonal guidance molecule), whereas the caudate nucleus shows elevated expression of TAC1(a neuropeptide precursor) and EGR1(an immediate early transcription factor)."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The nucleus accumbens shell is marked by vesicle associated molecules SCG2 and CALY, while the NAc core is enriched for stress-response genes HSPA6 and DNAJB1 (Figure 7C)."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Pathways such as synaptic signaling and regulation of cell communication are mainly associated with putamen and NAc shell, while processes such as regulation of secretion by cell and regulation of response to stress prominently involve the caudate with some contribution from the NAc shell and NAc core respectively."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Pathways such as synaptic signaling and regulation of cell communication are mainly associated with putamen and NAc shell, while processes such as regulation of secretion by cell and regulation of response to stress prominently involve the caudate with some contribution from the NAc shell and NAc core respectively."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Some GO terms are uniformly distributed among multiple regions; regulation of transport involves the caudate, NAc-shell, and white matter, and negative regulation of cellular process is linked to the caudate, NAc core and NAc shell (Figure 7D)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "In our Stereo-seq data, the genes displaying regional specificity constitute only ~5%; majority of the remaining genes are expressed throughout the striatum."
+    },
+    {
+      "entity": "gene expression gradients",
+      "label": "spatial gene expression gradient (dorsolateral-ventromedial)",
+      "context": "This led us to ask whether gene expression gradients in the human striatum are similar to those known in mice and non-human primates 4,5,66 ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This underscores evolutionarily conserved transcriptional patterning that likely supports shared basal ganglia circuit architecture and function."
+    },
+    {
+      "entity": "Basal Ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To identify cellular contributors to these spatial gradients, we mapped gradientassociated genes onto cell types defined in the Allen Institute Basal Ganglia Consensus Cell Type Atlas."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Most gradient-associated transcripts are enriched in lateral ganglionic eminence (CN/LGE)-derived GABAergic neurons, the principal MSN population."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "In contrast, in mouse we do not observe this; LGE neurons dominate in both directions (Figure S9E)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "These analyses demonstrate that Stereo-seq captures transcriptome-wide spatial gradients that mirror functional and anatomical axes of the basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These analyses demonstrate that Stereo-seq captures transcriptome-wide spatial gradients that mirror functional and anatomical axes of the basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Our cellular community analysis based on the proximity of the 60 identified cell types reveals 14 spatial modules in the human basal ganglia sections, providing an unbiased, refined anatomical delineation of the imaged regions that aligns closely with the Allen Human Brain Atlas parcellation 59 ."
+    },
+    {
+      "entity": "cellular community analysis",
+      "label": "analysis method (cellular community analysis)",
+      "context": "Our cellular community analysis based on the proximity of the 60 identified cell types reveals 14 spatial modules in the human basal ganglia sections, providing an unbiased, refined anatomical delineation of the imaged regions that aligns closely with the Allen Human Brain Atlas parcellation 59 ."
+    },
+    {
+      "entity": "Basal Ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The differential enrichment of cell-types across spatial modules recapitulates expected spatial segregations based on the Mammalian Basal Ganglia Consensus Cell Type Atlas reference (Allen Institute; RRID:SCR_024672)"
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "in NAc; STRd D1/D2 in the caudate/putamen) including regional interneuron biases: STR FS PTHLH-PVALB enriched in the caudate, ChAT+ enriched in the putamen, and FM GATA3-TCF7L2 concentrated in GPi."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "in NAc; STRd D1/D2 in the caudate/putamen) including regional interneuron biases: STR FS PTHLH-PVALB enriched in the caudate, ChAT+ enriched in the putamen, and FM GATA3-TCF7L2 concentrated in GPi."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Within NAc, we uncover that both D1-and D2-striosomal MSNs populate NAc shell but are largely absent in core, consistent with TH (striosome) and KIRREL3 (matrix) compartment markers."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Within NAc, we uncover that both D1-and D2-striosomal MSNs populate NAc shell but are largely absent in core, consistent with TH (striosome) and KIRREL3 (matrix) compartment markers."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The matrix and striosome spatial modules derived from MSN subtype composition reveals fine-scale spatial organization biases."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The matrix and striosome spatial modules derived from MSN subtype composition reveals fine-scale spatial organization biases."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Specifically, TAC3-PLPP4 interneurons, which are expanded in primates 64 , are matrix-restricted, whereas VIP+ and LAMP5+ interneurons are striosome-enriched but not exclusive."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Specifically, TAC3-PLPP4 interneurons, which are expanded in primates 64 , are matrix-restricted, whereas VIP+ and LAMP5+ interneurons are striosome-enriched but not exclusive."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Specifically, TAC3-PLPP4 interneurons, which are expanded in primates 64 , are matrix-restricted, whereas VIP+ and LAMP5+ interneurons are striosome-enriched but not exclusive."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Across the striosome boundaries, we find enrichment of specific subpopulations of astrocytes and oligodendrocytes which delineates boundary-aligned glial microdomains."
+    },
+    {
+      "entity": "oligodendrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Across the striosome boundaries, we find enrichment of specific subpopulations of astrocytes and oligodendrocytes which delineates boundary-aligned glial microdomains."
+    },
+    {
+      "entity": "glial",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Across the striosome boundaries, we find enrichment of specific subpopulations of astrocytes and oligodendrocytes which delineates boundary-aligned glial microdomains."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Across the striosome boundaries, we find enrichment of specific subpopulations of astrocytes and oligodendrocytes which delineates boundary-aligned glial microdomains."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Cross-species comparison with the MERFISH-derived mouse cell type atlas 10,14 identifies orthologous MSN counterparts (e.g., mouse 0268 D1 and 0267 D1 supertypes corresponding to human STRd D1 striosome and matrix respectively) and confirms border-enriched astrocyte (Astro-TE NN_3) and oligodendrocyte (MOL NN_4) supertypes in mouse."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Cross-species comparison with the MERFISH-derived mouse cell type atlas 10,14 identifies orthologous MSN counterparts (e.g., mouse 0268 D1 and 0267 D1 supertypes corresponding to human STRd D1 striosome and matrix respectively) and confirms border-enriched astrocyte (Astro-TE NN_3) and oligodendrocyte (MOL NN_4) supertypes in mouse."
+    },
+    {
+      "entity": "Cross-species",
+      "label": "comparative analysis (cross-species mapping)",
+      "context": "Cross-species comparison with the MERFISH-derived mouse cell type atlas 10,14 identifies orthologous MSN counterparts (e.g., mouse 0268 D1 and 0267 D1 supertypes corresponding to human STRd D1 striosome and matrix respectively) and confirms border-enriched astrocyte (Astro-TE NN_3) and oligodendrocyte (MOL NN_4) supertypes in mouse."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These data argue for conserved compartment organization principles and orthologous boundary microenvironments between human and rodent striata, while also highlighting primate and human specializations (e.g., matrix-restricted TAC3-PLPP4) 67,68 ."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "MERFISH+ subcellular transcript localizations enable characterization of cell morphology and projection-inferred connectivity."
+    },
+    {
+      "entity": "projection-inferred",
+      "label": "inferred signature (projection-inferred molecular signatures)",
+      "context": "MERFISH+ subcellular transcript localizations enable characterization of cell morphology and projection-inferred connectivity."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "We find that cholinergic interneurons and pallidal neuron subtypes (e.g., GPi Core/Shell; GPe NDB-SI-LHX6/8-GBX1; GPe MEIS2-SOX6) exhibit the largest soma volumes, whereas LAMP5+ interneurons and MSNs are among the smallest."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "These findings are supported by previous histological observations in basal ganglia [51][52][53] ."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "While the nine MSN subtypes show largely similar volumes, SST+ interneuron subclasses diverge markedly; for example, SST-CHODL versus SST-ADARB2 interneurons show substantial differences."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "Thus, subcellular transcript \"geography\" provides a quantitative readout of both cell size/shape and projection-inferred circuitry in human brain tissue."
+    },
+    {
+      "entity": "projection-inferred",
+      "label": "inferred signature (projection-inferred molecular signatures)",
+      "context": "Thus, subcellular transcript \"geography\" provides a quantitative readout of both cell size/shape and projection-inferred circuitry in human brain tissue."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Unsupervised clustering of the whole-transcriptome spatial distribution (based on Stereo-seq) recapitulates MERFISH+ cell-type community modules and classical anatomy and provides novel gene enrichment within each anatomical subregions."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Most of the genes exhibiting the gradient are expressed in CN LGE GABA neurons, with a dorsal contribution from OPC-Oligo lineages, consistent with differential myelination in the dorsal fiber bundles 73,74 ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Functionally, the underlying cell types, cellular communities, subcellular transcript geography, and conserved spatial gradients suggest an intricate multi-layered organizational architecture for neurotypical human basal ganglia 75,76 ."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "Functionally, the underlying cell types, cellular communities, subcellular transcript geography, and conserved spatial gradients suggest an intricate multi-layered organizational architecture for neurotypical human basal ganglia 75,76 ."
+    },
+    {
+      "entity": "cellular communities",
+      "label": "analysis method (cellular community analysis)",
+      "context": "Functionally, the underlying cell types, cellular communities, subcellular transcript geography, and conserved spatial gradients suggest an intricate multi-layered organizational architecture for neurotypical human basal ganglia 75,76 ."
+    },
+    {
+      "entity": "subcellular RNA localization",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "The finding that subcellular RNA localization captures projection-inferred signatures suggests a promising avenue for inferring human circuit topology directly from spatial transcriptomic data -an approach that circumvents the limitations of traditional neural tracing in human tissue."
+    },
+    {
+      "entity": "projection-inferred signatures",
+      "label": "inferred signature (projection-inferred molecular signatures)",
+      "context": "The finding that subcellular RNA localization captures projection-inferred signatures suggests a promising avenue for inferring human circuit topology directly from spatial transcriptomic data -an approach that circumvents the limitations of traditional neural tracing in human tissue."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "In addition, astrocyte and oligodendrocyte niches aligned with striosome boundaries point to specialized metabolic and myelination interfaces at these compartmental perimeters."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Finally, the primate-expanded, matrix-restricted TAC3-PLPP4 interneurons may reflect evolutionary adaptations to the enlarged prefrontal cortex, potentially supporting the increased computational demands of human-specific action selection, valuation, and cognitive flexibility 11 ."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Finally, the primate-expanded, matrix-restricted TAC3-PLPP4 interneurons may reflect evolutionary adaptations to the enlarged prefrontal cortex, potentially supporting the increased computational demands of human-specific action selection, valuation, and cognitive flexibility 11 ."
+    },
+    {
+      "entity": "glial",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Clinically, our dataset highlights specific neuronal and glial subtypes including GPi core versus shell populations and boundary-enriched glial communities, as potential substrates of selective vulnerability in movement and neuropsychiatric disorders."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Establishing the neurotypical abundance and spatial distribution of D1, D2, and D1/D2 hybrid MSN subtypes in the caudate, putamen, and nucleus accumbens provides a crucial baseline for detecting disease-associated shifts in cell number, composition, and transcriptional state."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Establishing the neurotypical abundance and spatial distribution of D1, D2, and D1/D2 hybrid MSN subtypes in the caudate, putamen, and nucleus accumbens provides a crucial baseline for detecting disease-associated shifts in cell number, composition, and transcriptional state."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Establishing the neurotypical abundance and spatial distribution of D1, D2, and D1/D2 hybrid MSN subtypes in the caudate, putamen, and nucleus accumbens provides a crucial baseline for detecting disease-associated shifts in cell number, composition, and transcriptional state."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Such comparisons will be particularly valuable for elucidating celltype-selective vulnerability in basal ganglia disorders, including Huntington's disease and Parkinson's disease 77,78 ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "In summary, by coupling genome-wide spatial profiling with subcellular transcript localization and community-level modeling, we deliver a multiscale, molecular atlas of human basal ganglia organization from single transcripts to cellular communities and anatomical modules that shows features unique to humans and those that are conserved across species."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "In summary, by coupling genome-wide spatial profiling with subcellular transcript localization and community-level modeling, we deliver a multiscale, molecular atlas of human basal ganglia organization from single transcripts to cellular communities and anatomical modules that shows features unique to humans and those that are conserved across species."
+    },
+    {
+      "entity": "cellular communities",
+      "label": "analysis method (cellular community analysis)",
+      "context": "In summary, by coupling genome-wide spatial profiling with subcellular transcript localization and community-level modeling, we deliver a multiscale, molecular atlas of human basal ganglia organization from single transcripts to cellular communities and anatomical modules that shows features unique to humans and those that are conserved across species."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This atlas establishes a foundational framework for studying human basal ganglia architecture and its disruption in neuropsychiatric and neurodegenerative disorders, enabling cross-species and disease-state comparisons at single-cell and community scales."
+    },
+    {
+      "entity": "cross-species",
+      "label": "comparative analysis (cross-species mapping)",
+      "context": "This atlas establishes a foundational framework for studying human basal ganglia architecture and its disruption in neuropsychiatric and neurodegenerative disorders, enabling cross-species and disease-state comparisons at single-cell and community scales."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The myeloarchitecture of impulsivity: premature responding in youth is associated with decreased myelination of ventral putamen."
+    },
+    {
+      "entity": "Basal Ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Local Cues Establish and Maintain Region-Specific Phenotypes of Basal Ganglia Microglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Emergence of context-dependent variability across a basal ganglia network."
+    },
+    {
+      "entity": "Basal Ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Phosphodiesterase 10A Inhibition Improves Cortico-Basal Ganglia Function in Huntington's Disease Models."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "of the human basal ganglia with Stereo-seq and MERFISH+ (A) Overview of study design, donor and sample quality and metadata, tissue sampling strategy, and adjacent-section workflows."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "of the human basal ganglia with Stereo-seq and MERFISH+ (A) Overview of study design, donor and sample quality and metadata, tissue sampling strategy, and adjacent-section workflows."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "(B) Stereo-seq dataset from an anterior basal ganglia section (donor case ID 2724): left, spatial map with cell-type assignments; right, UMAP embedding resolving 10 major cell classes from the same section."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(B) Stereo-seq dataset from an anterior basal ganglia section (donor case ID 2724): left, spatial map with cell-type assignments; right, UMAP embedding resolving 10 major cell classes from the same section."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Left, spatial map with cell-type assignments; right, UMAP embedding resolving 10 major cell classes corresponding to Stereo-seq in (B)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "(D-G, progressively greater magnification) Multi-scale Stereo-seq enlarged views of the boxed region in (B), illustrating the resolution span from centimeter-scale tissue anatomy to micron-scale detection of individual transcripts, with corresponding cell-type labels (D, E), cell-contour segmentation (F), and single-cell detail (G)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Scale bars as indicated basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(A) UMAP embedding of MERFISH+ single cell data with 60 transcriptionally defined basal ganglia (A) Fractional composition of major non-neuronal classes (left) and OPC/oligodendrocyte (Oligo) subtypes (right) for all combined sections and across the anterior-posterior axis (AP 18a, 19a, 26a, 34a)."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Zoomed-in views of the boxed regions: (1) internal capsule, (2) putamen with striatopallidal fiber bundles (arrows), and (3) GPe."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "(D) UMAP of six subtypes of astrocytes defined based on the MERFISH+ astrocytic genes measured, with expression maps for representative differentially expressed astrocytic genes."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "(G-J) Spatial distributions of the six astrocyte subtypes in anterior (AP 18a) and posterior (AP 34a) sections (G), including (H) white-matter-enriched astrocytes (WM_Astro) localized to the internal capsule with high AQP1 expression Color keys are consistent across panels (G-J)."
+    },
+    {
+      "entity": "subcellular",
+      "label": "molecular observation (subcellular transcript localization)",
+      "context": "(A) Images of MERFISH+ transcripts pseudo-colored to indicate subcellular localization: nuclear (white), cytoplasmic (yellow), and putative cellular processes (red) across nine selected cell types."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(B) Estimated soma means and ranges of volumes (µm³) inferred from transcript-density segmentation across neuronal cell types in the human basal ganglia, including those shown in (A)."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(C) Plot of differential gene expression between D1 and D2 matrix MSNs measured by MERFISH+."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom) gene expression with the expression in putative cellular processes across the entire posterior section (AP34a)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(F) Gene expression map of SEMA3E transcripts modules of the human basal ganglia (A) Spatial map of major cell types of the posterior section (as shown in Figure 2D) and inferred cellular community modules derived from the local neighborhood composition analysis, accompanied by a UMAP embedding of community-level clustering across major cell classes."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "(D) Spatial distribution of fast-spiking interneurons (STR FS PTHLH-PVALB) across A-P levels, highlighting preferential enrichment in caudate."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(D) Spatial distribution of fast-spiking interneurons (STR FS PTHLH-PVALB) across A-P levels, highlighting preferential enrichment in caudate."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Right: odds-ratio plot quantifying caudate > putamen representation (* p = 0.021; Wilcoxon rank-sum)."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Right: odds-ratio plot quantifying caudate > putamen representation (* p = 0.021; Wilcoxon rank-sum)."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "(E) Spatial distribution of cholinergic interneurons (STRd ChAT+) across the A-P axis, showing relative enrichment in putamen compared to caudate."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(E) Spatial distribution of cholinergic interneurons (STRd ChAT+) across the A-P axis, showing relative enrichment in putamen compared to caudate."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(E) Spatial distribution of cholinergic interneurons (STRd ChAT+) across the A-P axis, showing relative enrichment in putamen compared to caudate."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Right: odds-ratio plot quantifying putamen > caudate representation (* p = 0.021; Wilcoxon rank-sum)."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Right: odds-ratio plot quantifying putamen > caudate representation (* p = 0.021; Wilcoxon rank-sum)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(F) organization, gene-expression spatial gradients, and cross-species correspondence in the human basal ganglia."
+    },
+    {
+      "entity": "cross-species",
+      "label": "comparative analysis (cross-species mapping)",
+      "context": "(F) organization, gene-expression spatial gradients, and cross-species correspondence in the human basal ganglia."
+    },
+    {
+      "entity": "cellular community analysis",
+      "label": "analysis method (cellular community analysis)",
+      "context": "(A) UMAP computed based on cellular community analysis restricted to MSN cell types."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Leiden clustering defines the matrix (purple) and striosome (blue) (left)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Leiden clustering defines the matrix (purple) and striosome (blue) (left)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(B) Spatial maps of striosome and matrix compartments (defined in A) across anterior-posterior (A-P) sections (AP 18a, 19a, 26a, 34a)."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(B) Spatial maps of striosome and matrix compartments (defined in A) across anterior-posterior (A-P) sections (AP 18a, 19a, 26a, 34a)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(C) Cell-type enrichment (odds ratios) for striosome versus matrix compartments."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(C) Cell-type enrichment (odds ratios) for striosome versus matrix compartments."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "For purpose of visualization, odds ratio values associated with the striosome are multiplied by -1."
+    },
+    {
+      "entity": "interneurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "(D) Spatial distributions of interneuron subtypes showing compartmental biases: STR TAC3 GABAergic interneurons enriched in matrix and VIP+ GABAergic interneurons enriched the 60 transcriptomics cell types identified by MERFISH+."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(D) Spatial distributions of interneuron subtypes showing compartmental biases: STR TAC3 GABAergic interneurons enriched in matrix and VIP+ GABAergic interneurons enriched the 60 transcriptomics cell types identified by MERFISH+."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "pallidus-associated neuronal subtypes across anterior-posterior coronal sections of the human basal ganglia."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(A) Relative proportions of all neuronal cell types including non-MSN and globus pallidus (GP) neuron subtypes-as well as CGEand MGE-derived GABAergic neuron subclasses, in both combined and individual MERFISH+ assays, showing all sections versus AP-specific proportions."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "(B) Spatial distributions of D1+ and D2+ medium spiny neurons (MSNs) across anterior-posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(B) Spatial distributions of D1+ and D2+ medium spiny neurons (MSNs) across anterior-posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(C) Spatial distributions of diverse non-MSN basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(A) Spatial distributions of two oligodendrocyte subtypes (Oligo OPALIN and Oligo PLEKHG1) in anterior and posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "striosome-matrix boundaries."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "striosome-matrix boundaries."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(A) Heatmap of astrocytic gene expression as a function of distance from the striosome-matrix border."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "(A) Heatmap of astrocytic gene expression as a function of distance from the striosome-matrix border."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Distance is measured relative to the border (center), where 0 represents the striosome-matrix border, and spans -500 µm into matrix regions (negative values) and +500 µm into striosome interiors (positive values)."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Distance is measured relative to the border (center), where 0 represents the striosome-matrix border, and spans -500 µm into matrix regions (negative values) and +500 µm into striosome interiors (positive values)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Distance is measured relative to the border (center), where 0 represents the striosome-matrix border, and spans -500 µm into matrix regions (negative values) and +500 µm into striosome interiors (positive values)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "Distance is measured relative to the border (center), where 0 represents the striosome-matrix border, and spans -500 µm into matrix regions (negative values) and +500 µm into striosome interiors (positive values)."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "(B) UMAP embedding computed from clustering of astrocytes located within ±500 µm from the striosome-matrix border based on genes shown in (A) in the posterior sample AP26a (left) and the spatial map showing the distribution of the subclusters relative to striosome boundaries (middle)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(B) UMAP embedding computed from clustering of astrocytes located within ±500 µm from the striosome-matrix border based on genes shown in (A) in the posterior sample AP26a (left) and the spatial map showing the distribution of the subclusters relative to striosome boundaries (middle)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(B) UMAP embedding computed from clustering of astrocytes located within ±500 µm from the striosome-matrix border based on genes shown in (A) in the posterior sample AP26a (left) and the spatial map showing the distribution of the subclusters relative to striosome boundaries (middle)."
+    },
+    {
+      "entity": "striosome-matrix",
+      "label": "anatomical compartmentalization (striosome vs matrix organization)",
+      "context": "(B) UMAP embedding computed from clustering of astrocytes located within ±500 µm from the striosome-matrix border based on genes shown in (A) in the posterior sample AP26a (left) and the spatial map showing the distribution of the subclusters relative to striosome boundaries (middle)."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(C) Same analysis as in (B), shown for posterior section AP34a: UMAP embedding (left), spatial distribution along striosome boundaries (middle), and zoom-in of the boxed region (right)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "(D) Density distribution of astrocyte subclusters as a function TABLE 1226 REAGENT or RESOURCE SOURCE IDENTIFIER Biological samples Healthy adult basal ganglia brain tissue University of California Irvine BICAN Brain Bank Case#UCI-2724 Case#UCI-3924 Case#UCI-1311 Case#UCI-5129 Chemicals, peptides, and recombinant proteins Isopentane Sigma-Aldrich Cat#M33631-4L Methanol Sigma-Aldrich Cat#1060071000 Ethanol (100%) Decon Labs Cat# V1016 Formamide Ambion (Thermo Fisher Scientific) Cat# AM9342 TE Buffer, pH 8.0 Thermo Fisher Scientific Cat# T11493 20X SSC Thermo Fisher Scientific Cat# J60839.K3 Triton X-100 Sigma-Aldrich Cat# 92046-34-9 Trolox Sigma-Aldrich Cat# 238813 Poly-D-lysine Sigma-Aldrich Cat# A-003-M Gel Slick Lonza Cat# 50640 PFA (4%) Thermo Fisher Scientific Cat# 28906 DAPI Thermo Fisher Scientific Cat# D1306 10% SDS Corning Cat# 46-040-Cl TEMED Sigma-Aldrich Cat# T7024 Catalase Sigma-Aldrich Cat# C30-500MG Glucose Oxidase Sigma-Aldrich Cat# G2133-250KU Zymo-Spin™ IC RNA Columns Zymo Research Cat# R1013 Zymo-Spin IIICG Columns Zymo Research Cat# C1006-250-G Zymo-Dna Clean and Conc-25 Zymo Research Cat# D4006 Zymo-Oligo Clean & Concentrator™ Zymo Research Cat# D4061 Maxima H Minus Reverse Transcriptase Thermo Fisher Scientific Cat# EP0753 Phusion High-Fidelity DNA Polymerase New England Biolabs Cat# M0536L HiScribe T7 Quick High Yield RNA Synthesis Kit New England Biolabs Cat# E2050 RNase Inhibitor New England Biolabs Cat# M0314L dNTP Mix (10 mM) Thermo Fisher Scientific Cat# R0192 Dextran Sulfate (20% w/v) Millipore Cat# S4030 Acrylamide: Bis-Acrylamide 19:1 (40% Solution/Electrophoresis) Thermo Fisher Scientific Cat#J60868.AP Ammonium persulfate Sigma-Aldrich Cat#215589-100G Agilent Technologies D1000 Reagents Agilent Cat# D1000 Stereo-seq Permeabilization Set for Chip-on-a-slide V1.1 Complete Genomics Cat#211SP11118-CG Stereo-seq Transcriptomics Set (2cm*3cm) V1.2 STOmics/Complete Genomics Cat#111ST13231-CG Stereo-seq 16 Barcoded Library Preparation Kit V1.0 Complete Genomics Cat#111KL160 PE100 flow cells reagent Complete Genomics Cat#100008555 Qubit dsDNA HS Assay Kit Invitrogen Cat#Q32854 Qubit™ ssDNA Assay Kit Invitrogen Cat#Q10212 D5000 ScreenTape Assay Kit Agilent Cat#5067-5588 Oligonucleotides Encoding probes targeting 673 genes Twist Bioscience This paper; Table S1 Readout probes Integrated DNA Technologies (IDT) This paper; Supplemental Data Primers for MERFISH encoding probe synthesis Integrated DNA Technologies (IDT) This paper; Supplemental Data RT primer for cDNA synthesis in RT&TAMP Integrated DNA Technologies (IDT) This paper; Supplemental Data Software & Instrument Storm-control Harvard University Zhuang Lab (https://github.com/ZhuangLa b/storm-control) RRID: SCR_027698"
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "(D) Density distribution of astrocyte subclusters as a function TABLE 1226 REAGENT or RESOURCE SOURCE IDENTIFIER Biological samples Healthy adult basal ganglia brain tissue University of California Irvine BICAN Brain Bank Case#UCI-2724 Case#UCI-3924 Case#UCI-1311 Case#UCI-5129 Chemicals, peptides, and recombinant proteins Isopentane Sigma-Aldrich Cat#M33631-4L Methanol Sigma-Aldrich Cat#1060071000 Ethanol (100%) Decon Labs Cat# V1016 Formamide Ambion (Thermo Fisher Scientific) Cat# AM9342 TE Buffer, pH 8.0 Thermo Fisher Scientific Cat# T11493 20X SSC Thermo Fisher Scientific Cat# J60839.K3 Triton X-100 Sigma-Aldrich Cat# 92046-34-9 Trolox Sigma-Aldrich Cat# 238813 Poly-D-lysine Sigma-Aldrich Cat# A-003-M Gel Slick Lonza Cat# 50640 PFA (4%) Thermo Fisher Scientific Cat# 28906 DAPI Thermo Fisher Scientific Cat# D1306 10% SDS Corning Cat# 46-040-Cl TEMED Sigma-Aldrich Cat# T7024 Catalase Sigma-Aldrich Cat# C30-500MG Glucose Oxidase Sigma-Aldrich Cat# G2133-250KU Zymo-Spin™ IC RNA Columns Zymo Research Cat# R1013 Zymo-Spin IIICG Columns Zymo Research Cat# C1006-250-G Zymo-Dna Clean and Conc-25 Zymo Research Cat# D4006 Zymo-Oligo Clean & Concentrator™ Zymo Research Cat# D4061 Maxima H Minus Reverse Transcriptase Thermo Fisher Scientific Cat# EP0753 Phusion High-Fidelity DNA Polymerase New England Biolabs Cat# M0536L HiScribe T7 Quick High Yield RNA Synthesis Kit New England Biolabs Cat# E2050 RNase Inhibitor New England Biolabs Cat# M0314L dNTP Mix (10 mM) Thermo Fisher Scientific Cat# R0192 Dextran Sulfate (20% w/v) Millipore Cat# S4030 Acrylamide: Bis-Acrylamide 19:1 (40% Solution/Electrophoresis) Thermo Fisher Scientific Cat#J60868.AP Ammonium persulfate Sigma-Aldrich Cat#215589-100G Agilent Technologies D1000 Reagents Agilent Cat# D1000 Stereo-seq Permeabilization Set for Chip-on-a-slide V1.1 Complete Genomics Cat#211SP11118-CG Stereo-seq Transcriptomics Set (2cm*3cm) V1.2 STOmics/Complete Genomics Cat#111ST13231-CG Stereo-seq 16 Barcoded Library Preparation Kit V1.0 Complete Genomics Cat#111KL160 PE100 flow cells reagent Complete Genomics Cat#100008555 Qubit dsDNA HS Assay Kit Invitrogen Cat#Q32854 Qubit™ ssDNA Assay Kit Invitrogen Cat#Q10212 D5000 ScreenTape Assay Kit Agilent Cat#5067-5588 Oligonucleotides Encoding probes targeting 673 genes Twist Bioscience This paper; Table S1 Readout probes Integrated DNA Technologies (IDT) This paper; Supplemental Data Primers for MERFISH encoding probe synthesis Integrated DNA Technologies (IDT) This paper; Supplemental Data RT primer for cDNA synthesis in RT&TAMP Integrated DNA Technologies (IDT) This paper; Supplemental Data Software & Instrument Storm-control Harvard University Zhuang Lab (https://github.com/ZhuangLa b/storm-control) RRID: SCR_027698"
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To facilitate multimodal investigation of the same donor sample, each pre-dissected postmortem human coronal brain slab, which is 5-10 mm thick and containing the basal ganglia, was used in this study."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To prepare adjacent brain sections for experiments, a tissue block measuring up to 4 cm × 5 cm and encompassing basal ganglia components was further dissected out of each coronal brain slab, quickly embedded in OCT embedding medium, and frozen in dry ice prechilled isopentane (SigmaAldrich, M33631)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Cryosections of 10 µm and 16 µm thickness were then obtained using a Leica CM1850 cryostat at -18 to -20 °C and mounted onto Stereo-seq chips and specially coated 50 mm × 64 mm rectangular glass slides for MERFISH+, respectively."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "To fit the 2 cm × 3 cm Stereo-seq chips (STOmics/Complete Genomics, 111ST13231-CG), each large brain section was trimmed and/or subdivided within the cryostat to approximately 18 mm × 28 mm dimensions (Figure 1)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "For Stereo-seq, tissue fixation and spatial transcriptomics procedures were conducted in accordance with the manufacturer's protocol and established methods."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "Briefly, tissue sections mounted on Stereo-seq chips were dried at 37°C (5 min), then fixed in precooled methanol (SigmaAldrich, 1060071000) for 30 mins at -20 °C."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "spatial transcriptomics platform (experimental method used in this study)",
+      "context": "RNA captured on Stereo-seq chips from permeabilized tissue was reverse transcribed at 42°C."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Gene selection: First, we compiled 992 candidate genes that comprised 150 canonical cell type marker genes, 20 control genes (housekeeping genes) and 822 genes that were differentially expressed between Group level cell types in the reference Human basal ganglia snRNA-seq dataset from the Allen Brain Institute (RRID:SCR_006491) ."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Human postmortem basal ganglia samples in OCT block were sectioned (16 µm thick) using cryostat (Leica CM1850) at -20°C and mounted onto PDL-coated pre-silanized coverslips as aforedescribed."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Finally, we generated a cell-by-gene count matrix by aggregating the transcript count of each gene in every cell."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We preprocessed the cell by gene count matrix as follows."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The count matrix was then normalized by volume of cells, in order to account for the effect of cell size variation on the expression level of genes."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The matrix was again normalized by the total count of transcripts in the cells in order to reduce noise arising from the difference in the relative expression of genes between cells."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "First, the graph representation of the count matrix was generated using the neighbors module, scanpy.pp.neighbors(use_rep = 'X', n_neighbors = 15)."
+    },
+    {
+      "entity": "Cross-species",
+      "label": "comparative analysis (cross-species mapping)",
+      "context": "The annotation of cell types was done by mapping the data to the Cross-species Basal ganglion cell type taxonomy from the Allen institute through cell_type_mapper (the python backend for MapMyCells, RRID:SCR_024672) using two precomputed supporting files shared through the BICAN consortium: query_markers (a lookup table of marker genes for the taxonomy) and precomputed_stats (HDF5 file that defines the taxonomy)."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "We performed the subclustering analysis for astrocytes using only astrocytic genes in order to avoid artifacts from cross-talk or contamination from other cell types."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To identify the genes, we applied the Wilcoxon rank sum method on the pre-processed count matrix as implemented in the rank_genes_groups function from the Scanpy package 80 ."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "cell type (neuronal or glial population)",
+      "context": "Next, we reduced the data to cells that were labeled as astrocytes at the Subclass level and to genes that were differentially expressed in them."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Next, we did Principal Component Analysis (PCA) and harmony integration on the normalized count matrix using the functions sc.pl.pca and sc.external.pp.harmony_intergrate from Scanpy respectively."
+    },
+    {
+      "entity": "neurons",
+      "label": "cell type (neuronal or glial population)",
+      "context": "We performed spatial module analysis with two different approaches, ( 1 however, the internal globus pallidus module partially overlapped with adjacent white matter tracts; its boundary was refined using the spatial location of GPi Shell neurons, which delineated the GPi border with high precision."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We performed spatial module analysis with two different approaches, ( 1 however, the internal globus pallidus module partially overlapped with adjacent white matter tracts; its boundary was refined using the spatial location of GPi Shell neurons, which delineated the GPi border with high precision."
+    },
+    {
+      "entity": "striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To identify spatial modules corresponding to the striosome and matrix compartment, we followed similar but slightly different procedure to that used in global spatial modules analysis."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To identify spatial modules corresponding to the striosome and matrix compartment, we followed similar but slightly different procedure to that used in global spatial modules analysis."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The main differences were that we only used MSN cell types when building the cell type composition matrix and we only included the cells in the striatum for the analysis as the Striosome and Matrix compartments exist only in this part of the Basal ganglia."
+    },
+    {
+      "entity": "Striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The main differences were that we only used MSN cell types when building the cell type composition matrix and we only included the cells in the striatum for the analysis as the Striosome and Matrix compartments exist only in this part of the Basal ganglia."
+    },
+    {
+      "entity": "Basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The main differences were that we only used MSN cell types when building the cell type composition matrix and we only included the cells in the striatum for the analysis as the Striosome and Matrix compartments exist only in this part of the Basal ganglia."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Next, as explained in 14 , we defined the composition matrix as distance weighted frequency count of neighboring MSN subtypes."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "This matrix was then L2 normalized and clustered using the Leiden algorithm from the Scanpy package."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "The resulting values were then multiplied with the gene expression matrix to get spatially weighted average gene expression for each cell."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We first computed the confusion matrix between spatial modules and cell types at the group level using the pivot_table function from the pandas package."
+    },
+    {
+      "entity": "Matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We quantified the enrichment of cell types within the Matrix and Striosome compartments using the Cochran-Mantel-Haenszel statistics 83 ."
+    },
+    {
+      "entity": "Striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We quantified the enrichment of cell types within the Matrix and Striosome compartments using the Cochran-Mantel-Haenszel statistics 83 ."
+    },
+    {
+      "entity": "100 cells",
+      "label": "dataset scale (number of cells profiled)",
+      "context": "For each cell type, we first selected 100 cells whose differential gene expression correlated most with the average (pseudobulk) differential gene expression of the cell type."
+    },
+    {
+      "entity": "Basal ganglia",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "To identify the mouse homologues of the cell types detected in our human Basal ganglia MERFISH dataset, we used the imputed whole mouse brain MERFISH spatial transcriptomic dataset from an earlier publication 10 ."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "We selected the sections of C57BL6J-638850.39 -50, which show the caudoputamen and globus pallidus regions."
+    },
+    {
+      "entity": "matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes."
+    },
+    {
+      "entity": "Matrix",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Through this approach, we identified the mouse homologs of the human D1 Matrix and Striosome MSNs."
+    },
+    {
+      "entity": "Striosome",
+      "label": "anatomical region (basal ganglia nucleus or compartment)",
+      "context": "Through this approach, we identified the mouse homologs of the human D1 Matrix and Striosome MSNs."
+    },
+    {
+      "entity": "caudate",
+      "label": "anatomical region (brain nucleus mentioned in the spatial sampling)",
+      "context": "spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types."
+    },
+    {
+      "entity": "putamen",
+      "label": "anatomical region (brain nucleus mentioned in the spatial sampling)",
+      "context": "spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "anatomical region (brain nucleus mentioned in the spatial sampling)",
+      "context": "spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "anatomical region (brain nucleus mentioned in the spatial sampling)",
+      "context": "spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types."
+    },
+    {
+      "entity": "resolving 60 transcriptionally distinct cell types",
+      "label": "anatomical region (brain nucleus mentioned in the spatial sampling)",
+      "context": "spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types."
+    },
+    {
+      "entity": "Multiscale Spatial Transcriptomic Atlas of Human Basal Ganglia Cell-Type and Cellular Community Organization",
+      "label": "document title",
+      "context": "Multiscale Spatial Transcriptomic Atlas of Human Basal Ganglia Cell-Type and Cellular Community Organization"
+    }
+  ]
+}
