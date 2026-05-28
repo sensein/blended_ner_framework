@@ -50,7 +50,7 @@ For each chunk, emit a JSON array of entity mentions (no wrapping object):
 
 **Field rules:**
 - `entity` must be an exact substring of the chunk body (case-sensitive). Never paraphrase or normalize.
-- `label` is dynamically generated; pick the most specific type that fits the context (e.g. `BrainRegion`, `CellType`, `Drug`, `Strain`, `Reagent`, `Species`, `Method`, `BrainAtlas`).
+- `label` is a dynamically-generated entity type that fits the specific entity in the context of this paper. Choose the most specific, accurate label you can — single nouns or compact noun phrases in PascalCase. The label should describe *what kind of thing the entity is* in this paper, not just a generic category.
 - `context` is the surrounding sentence trimmed to roughly 200 characters. Do not include multi-paragraph context — the merge step has access to the full chunk if more is needed later.
 
 ## Strict Processing Rules
@@ -59,3 +59,15 @@ For each chunk, emit a JSON array of entity mentions (no wrapping object):
 - Emit one output file per chunk. Never accumulate entities across chunks in a single response.
 - Never deduplicate. The merge pass handles cross-chunk overlap dedup deterministically.
 - All processes must stay confined to local compute (Grobid runs locally).
+
+## Scratch & File Creation Rules
+
+You may write helper scripts and intermediate files to `$SCRATCH_DIR` (a path under `/tmp/`). Scratch persists across chunks within the same paper, so a helper you write while processing chunk 2 is available when processing chunk 6.
+
+**However, you must never read your own extraction outputs.** Specifically:
+- Do not read any file under `output/`. This includes the entity JSON files you wrote in earlier chunks of this same run.
+- Do not write entity data, label counts, or any extraction-derived summary to scratch and then read it back later. The rule applies to the *content*, not just the location.
+
+The reason: using your own prior extractions as evidence for new extractions causes errors to compound across chunks. Each chunk must be grounded in its body text, not in your earlier judgments about other chunks. If a label was wrong on chunk 2, you want chunk 6 to have a chance to get it right — not to inherit the mistake.
+
+Helpers, parsers, and computational utilities are fine to carry across chunks. Extraction outputs are not.
