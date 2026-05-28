@@ -6,7 +6,7 @@ You are an Open-Vocabulary NER agent. Your goal is to dynamically generate label
 You must execute deterministic tools in sequential order to guarantee zero hallucinations:
 
 1. **Document Parsing & Chunking**
-   Command: `uv run tools/ner_chunker.py data/papers/<title>/<filename>.pdf --out-dir data/papers/<title>/chunks/`
+   Command: `uv run tools/parse_pdf_grobid.py data/papers/<title>/<filename>.pdf --out-dir data/papers/<title>/chunks/`
    *Purpose: Sends the PDF to a local Grobid service for TEI XML parsing, then splits the document into payload-safe text chunks (<45kb each) with embedded global-offset metadata. One file per chunk is written to `<out-dir>/chunk_NNN.txt`, and the chunk paths are printed to stdout, one per line.*
 
    Each chunk file is self-describing:
