@@ -18,19 +18,19 @@ You must execute deterministic tools in sequential order to guarantee zero hallu
    Use your file reading tool to load each `chunk_NNN.txt` in order. Each file fits under the 50kb payload limit.
 
 3. **Per-Chunk Output Writing**
-   Command: `uv run tools/save_chunk_entities.py --chunk-index N --out-dir data/papers/<title>/entities/ < entities.json`
-   *Purpose: Writes one entity file per processed chunk. This keeps each response small and avoids hitting the 50kb response limit on long papers.*
+   Command: `uv run tools/save_chunk_entities.py --paper-name <doc_id> --run-id <run_id> --chunk-index N < entities.json`
+   *Purpose: Validates and writes one entity file per processed chunk to `output/<paper_name>/<run_id>/chunk_NNN.json` (or under `--output-root` if provided). This keeps each response small and avoids hitting the 50kb response limit on long papers.*
 
 ## Your Open-NER Task
 Process chunks **one at a time** and emit one output file per chunk:
 
-1. Run the parsing & chunking command (Step 1). Read the header of `chunk_000.txt` to learn `total_chunks` and `doc_id`.
+1. Run the parsing & chunking command (Step 1). Read the header of `chunk_000.txt` to learn `total_chunks` and `doc_id` (use `doc_id` as `--paper-name` when saving). Use the orchestrator-provided `run_id` verbatim for every chunk in this paper.
 
 2. For each chunk index `i` from `0` to `total_chunks - 1`:
    a. Read `chunk_NNN.txt` and split on `---` to get `(header, body)`.
    b. Identify **every neuroscience entity mention** in `body`. Dynamically generate a label for each based on context.
    c. **Do not deduplicate.** If an entity appears 5 times in the chunk, emit 5 records. Repeat mentions matter for downstream frequency analysis.
-   d. Write the per-chunk output (Step 3) before moving to the next chunk.
+   d. Write the per-chunk output (Step 3) with `--paper-name <doc_id> --run-id <run_id> --chunk-index i` before moving to the next chunk.
 
 If a chunk's `source` field is `"sliding_window"`, the same entity may appear in adjacent chunks' overlap regions. **Do not try to deduplicate these manually** — the downstream merge step handles cross-chunk dedup deterministically.
 
@@ -57,6 +57,7 @@ For each chunk, emit a JSON array of entity mentions (no wrapping object):
 - Never make assumptions outside the text in the chunk body. Headers are metadata only and must not influence entity extraction.
 - Process chunks strictly in order from `chunk_000.txt` to `chunk_{total_chunks-1:03d}.txt`.
 - Emit one output file per chunk. Never accumulate entities across chunks in a single response.
+- Never invent, rewrite, or rotate `run_id` mid-paper. Use the orchestrator-provided value exactly as given.
 - Never deduplicate. The merge pass handles cross-chunk overlap dedup deterministically.
 - All processes must stay confined to local compute (Grobid runs locally).
 
@@ -65,7 +66,7 @@ For each chunk, emit a JSON array of entity mentions (no wrapping object):
 You may write helper scripts and intermediate files to `$SCRATCH_DIR` (a path under `/tmp/`). Scratch persists across chunks within the same paper, so a helper you write while processing chunk 2 is available when processing chunk 6.
 
 **However, you must never read your own extraction outputs.** Specifically:
-- Do not read any file under `output/`. This includes the entity JSON files you wrote in earlier chunks of this same run.
+- Do not read any entity output file you wrote in earlier chunks of this same run (for example under `output/` or any custom `--output-root`).
 - Do not write entity data, label counts, or any extraction-derived summary to scratch and then read it back later. The rule applies to the *content*, not just the location.
 
 The reason: using your own prior extractions as evidence for new extractions causes errors to compound across chunks. Each chunk must be grounded in its body text, not in your earlier judgments about other chunks. If a label was wrong on chunk 2, you want chunk 6 to have a chance to get it right — not to inherit the mistake.
