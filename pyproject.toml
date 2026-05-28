@@ -5,5 +5,6 @@ description = "Chunk-based neuroscience NER pipeline with Grobid PDF parsing and
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "pymupdf4llm",
     "requests>=2.34.2",
 ]

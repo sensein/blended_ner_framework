@@ -4,14 +4,15 @@ A local, chunk-based NER workflow for neuroscience papers.
 
 This project is built around two CLI tools:
 
-- `tools/parse_pdf_grobid.py` — sends a PDF to a local Grobid server, extracts TEI XML, and writes payload-safe chunk files (`chunk_000.txt`, `chunk_001.txt`, ...).
+- `tools/parse_pdf_grobid.py` — parses a PDF via Grobid or PyMuPDF4LLM and writes payload-safe chunk files (`chunk_000.txt`, `chunk_001.txt`, ...).
 - `tools/save_chunk_entities.py` — validates a JSON entity array from `stdin` and writes one per-chunk result file under `output/<paper_name>/<run_id>/`.
 
 ## Requirements
 
 - Python `>=3.12`
 - [uv](https://docs.astral.sh/uv/) for dependency/environment management
-- A running Grobid server for PDF parsing (default: `http://localhost:8070`)
+- Optional but recommended: a running Grobid server (default: `http://localhost:8070`)
+- PyMuPDF4LLM is included as a fallback parser when Grobid is unavailable
 
 ## Setup
 
@@ -29,9 +30,11 @@ uv run tools/parse_pdf_grobid.py data/papers/example.pdf --out-dir data/papers/e
 
 Useful options:
 
+- `--parser auto` (default: try Grobid, fall back to PyMuPDF4LLM)
+- `--parser grobid` (force Grobid)
+- `--parser pymupdf4llm` (force PyMuPDF4LLM)
 - `--grobid-url http://localhost:8070`
 - `--max-chars 45000`
-- `--demo` (offline demo mode; no Grobid call)
 
 Chunk file format:
 

@@ -1,17 +1,19 @@
 """
 ner_chunker.py
 ==============
-End-to-end PDF → Grobid → chunked-text pipeline for an NER agent running on
-pi.dev (or any environment with a strict per-call payload limit).
+End-to-end PDF → parsed text → chunked-text pipeline for an NER agent running
+on pi.dev (or any environment with a strict per-call payload limit).
 
 Pipeline
 --------
     paper.pdf
         │
-        ▼  POST to Grobid /api/processFulltextDocument
-    TEI XML  (Grobid output)
+        ├─► Grobid (/api/processFulltextDocument) → TEI XML
+        │      └─► structural chunker (paragraph packer)
         │
-        ▼  Structural chunker (greedy paragraph packer)
+        └─► PyMuPDF4LLM (markdown/text extraction)
+               └─► sliding-window chunker
+
     chunk_000.txt, chunk_001.txt, ...
 
 Each chunk file embeds its own metadata header (JSON) followed by a `---`
@@ -29,17 +31,18 @@ Chunk file format
 
 CLI usage
 ---------
-    # Standard run: PDF → Grobid → chunks
+    # Default run (auto): try Grobid first, then fall back to PyMuPDF4LLM
     python ner_chunker.py paper.pdf --out-dir ./chunks/
 
-    # Custom Grobid URL and chunk size
+    # Force Grobid
     python ner_chunker.py paper.pdf \\
+        --parser grobid \\
         --grobid-url http://grobid.local:8070 \\
         --max-chars 40000 \\
         --out-dir ./out/
 
-    # Run the offline demo with a mock TEI XML string (no Grobid required)
-    python ner_chunker.py --demo
+    # Force PyMuPDF4LLM
+    python ner_chunker.py paper.pdf --parser pymupdf4llm --out-dir ./out/
 
 Library usage
 -------------
@@ -618,31 +621,107 @@ def read_chunk_file(path: Path) -> Tuple[dict, str]:
 # CLI
 # ---------------------------------------------------------------------------
 
-def _process_pdf(
+_PARSER_CHOICES = ("auto", "grobid", "pymupdf4llm")
+
+
+def _chunk_pdf_with_grobid(
     pdf_path: Path,
-    out_dir: Path,
     grobid_url: str,
     max_chars: int,
-) -> List[Path]:
-    """
-    Full pipeline: PDF → Grobid → TEI XML → chunks on disk.
-
-    Returns the list of written chunk file paths in order.
-    """
+) -> Tuple[List[TextChunk], OffsetTracker]:
+    """Parse a PDF with Grobid and return chunks + offset tracker."""
     client = GrobidClient(base_url=grobid_url)
     if not client.is_alive():
         raise RuntimeError(
             f"Grobid service at {grobid_url} is not responding. "
             f"Start it (e.g. `docker run -p 8070:8070 lfoppiano/grobid:0.8.1`) "
-            f"and retry."
+            f"or use `--parser pymupdf4llm`."
         )
 
-    print(f"→ Sending {pdf_path.name} to Grobid at {grobid_url} ...",
-          file=sys.stderr)
+    print(f"→ Sending {pdf_path.name} to Grobid at {grobid_url} ...", file=sys.stderr)
     tei_xml = client.process_fulltext(pdf_path)
     print(f"  Received {len(tei_xml):,} chars of TEI XML.", file=sys.stderr)
+    return chunk_tei_xml(tei_xml, max_chars=max_chars)
 
-    chunks, tracker = chunk_tei_xml(tei_xml, max_chars=max_chars)
+
+def _chunk_pdf_with_pymupdf4llm(
+    pdf_path: Path,
+    max_chars: int,
+) -> Tuple[List[TextChunk], OffsetTracker]:
+    """Parse a PDF with PyMuPDF4LLM and return chunks + offset tracker."""
+    try:
+        import pymupdf4llm
+    except ImportError as exc:  # pragma: no cover
+        raise RuntimeError(
+            "PyMuPDF4LLM parser requested but dependency is missing. "
+            "Install with: `uv add pymupdf4llm`"
+        ) from exc
+
+    print(f"→ Parsing {pdf_path.name} with PyMuPDF4LLM ...", file=sys.stderr)
+    try:
+        extracted = pymupdf4llm.to_markdown(str(pdf_path))
+    except Exception as exc:  # pragma: no cover
+        raise RuntimeError(f"PyMuPDF4LLM failed to parse {pdf_path.name}: {exc}") from exc
+
+    plain_text = re.sub(r"\n{3,}", "\n\n", extracted).strip()
+    if not plain_text:
+        raise RuntimeError(f"PyMuPDF4LLM returned empty text for {pdf_path.name}")
+
+    stride = max(1, int(max_chars * 0.85))
+    if stride >= max_chars:
+        stride = max_chars - 1
+    chunks, reconstructed = SlidingWindowChunker(
+        max_chars=max_chars,
+        stride=stride,
+    ).chunk_text(plain_text)
+    for chunk in chunks:
+        chunk.source = "pymupdf4llm"
+
+    tracker = OffsetTracker(reconstructed)
+    tracker.register_chunks(chunks)
+    return chunks, tracker
+
+
+def _process_pdf(
+    pdf_path: Path,
+    out_dir: Path,
+    grobid_url: str,
+    max_chars: int,
+    parser_name: str,
+) -> List[Path]:
+    """Full pipeline: PDF → parsed text → chunks on disk."""
+    if parser_name not in _PARSER_CHOICES:
+        raise ValueError(f"Unsupported parser: {parser_name!r}")
+
+    if parser_name == "grobid":
+        chunks, tracker = _chunk_pdf_with_grobid(
+            pdf_path=pdf_path,
+            grobid_url=grobid_url,
+            max_chars=max_chars,
+        )
+    elif parser_name == "pymupdf4llm":
+        chunks, tracker = _chunk_pdf_with_pymupdf4llm(
+            pdf_path=pdf_path,
+            max_chars=max_chars,
+        )
+    else:
+        try:
+            chunks, tracker = _chunk_pdf_with_grobid(
+                pdf_path=pdf_path,
+                grobid_url=grobid_url,
+                max_chars=max_chars,
+            )
+        except RuntimeError as grobid_exc:
+            print(
+                f"⚠ Grobid parse failed: {grobid_exc}\n"
+                f"  Falling back to PyMuPDF4LLM.",
+                file=sys.stderr,
+            )
+            chunks, tracker = _chunk_pdf_with_pymupdf4llm(
+                pdf_path=pdf_path,
+                max_chars=max_chars,
+            )
+
     doc_chars = len(tracker.plain_text)
     doc_id = pdf_path.stem
 
@@ -664,13 +743,12 @@ def cli_main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         prog="ner_chunker",
         description=(
-            "Parse a PDF with Grobid and emit payload-safe text chunks "
-            "with embedded global-offset metadata, ready for an NER agent."
+            "Parse a PDF with Grobid or PyMuPDF4LLM and emit payload-safe text "
+            "chunks with embedded global-offset metadata, ready for an NER agent."
         ),
     )
     parser.add_argument(
         "pdf",
-        nargs="?",
         type=Path,
         help="Path to the input PDF.",
     )
@@ -684,6 +762,15 @@ def cli_main(argv: Optional[List[str]] = None) -> int:
         ),
     )
     parser.add_argument(
+        "--parser",
+        choices=_PARSER_CHOICES,
+        default="auto",
+        help=(
+            "PDF parser to use: auto (try Grobid, then fallback), grobid, "
+            "or pymupdf4llm."
+        ),
+    )
+    parser.add_argument(
         "--grobid-url",
         default="http://localhost:8070",
         help="Base URL of the Grobid service (default: http://localhost:8070).",
@@ -694,21 +781,13 @@ def cli_main(argv: Optional[List[str]] = None) -> int:
         default=45_000,
         help="Maximum characters per chunk (default: 45000, ~45kb for ASCII).",
     )
-    parser.add_argument(
-        "--demo",
-        action="store_true",
-        help="Run an offline demo using a mock TEI XML string (no Grobid required).",
-    )
 
     args = parser.parse_args(argv)
 
-    if args.demo:
-        return _run_demo()
-
-    if args.pdf is None:
-        parser.error("a PDF path is required (or pass --demo)")
     if not args.pdf.is_file():
         parser.error(f"PDF not found: {args.pdf}")
+    if args.max_chars < 200:
+        parser.error("--max-chars must be >= 200")
 
     out_dir = args.out_dir or args.pdf.with_suffix("").parent / f"{args.pdf.stem}.chunks"
 
@@ -718,6 +797,7 @@ def cli_main(argv: Optional[List[str]] = None) -> int:
             out_dir=out_dir,
             grobid_url=args.grobid_url,
             max_chars=args.max_chars,
+            parser_name=args.parser,
         )
     except (FileNotFoundError, RuntimeError, ValueError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
@@ -726,111 +806,6 @@ def cli_main(argv: Optional[List[str]] = None) -> int:
     print(f"✓ Wrote {len(paths)} chunks to {out_dir}", file=sys.stderr)
     for p in paths:
         print(p)  # stdout: one path per line for easy piping
-    return 0
-
-
-# ---------------------------------------------------------------------------
-# Offline demo (--demo)
-# ---------------------------------------------------------------------------
-
-_MOCK_TEI_XML = """\
-<?xml version="1.0" encoding="UTF-8"?>
-<TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <text><body>
-    <div type="abstract"><p>
-      We investigated layer IV barrels in the primary somatosensory cortex
-      (S1) of Mus musculus using two-photon calcium imaging. Whisker-evoked
-      responses were localised to topographically matched barrel columns.
-    </p></div>
-    <div type="introduction"><p>
-      Each barrel in layer IV of S1 receives input primarily from a single
-      contralateral whisker via the ventral posteromedial nucleus (VPM) of
-      the thalamus.
-    </p><p>
-      Parvalbumin-positive (PV+) interneurons gate excitatory drive from
-      thalamocortical axons. PV+ disruption alters gamma oscillations in
-      the prefrontal cortex.
-    </p></div>
-    <div type="methods"><p>
-      Adult male C57BL/6J mice (n=12) were used. Cranial windows were made
-      under isoflurane anaesthesia. GCaMP7f was delivered via AAV1 injection.
-    </p></div>
-    <div type="results"><p>
-      Chemogenetic suppression of PV+ cells with CNO broadened the spatial
-      extent of sensory-evoked activity in S1.
-    </p></div>
-  </body></text>
-</TEI>
-"""
-
-
-def _run_demo() -> int:
-    """Offline demo: chunk mock TEI XML, write files, read them back."""
-    import tempfile
-
-    print("─" * 72)
-    print("OFFLINE DEMO — no Grobid call")
-    print("─" * 72)
-
-    # Force several chunks by using a small ceiling.
-    chunks, tracker = chunk_tei_xml(_MOCK_TEI_XML, max_chars=400)
-    doc_chars = len(tracker.plain_text)
-
-    with tempfile.TemporaryDirectory() as tmp:
-        out_dir = Path(tmp) / "demo.chunks"
-        paths: List[Path] = []
-        for ch in chunks:
-            p = write_chunk_file(
-                chunk=ch,
-                total_chunks=len(chunks),
-                doc_chars=doc_chars,
-                doc_id="demo_paper",
-                out_dir=out_dir,
-            )
-            paths.append(p)
-
-        print(f"\nWrote {len(paths)} chunk files to {out_dir}:")
-        for p in paths:
-            print(f"  {p.name}  ({p.stat().st_size} bytes)")
-
-        # Show one file in full so the format is obvious.
-        print("\nContents of chunk_000.txt:")
-        print("─" * 72)
-        print(paths[0].read_text(encoding="utf-8"))
-        print("─" * 72)
-
-        # Round-trip: read each chunk back, simulate NER, map to global.
-        all_spans: List[NerSpan] = []
-        for path in paths:
-            header, body = read_chunk_file(path)
-
-            # Mock NER: pick a few entities by regex.
-            local_spans = []
-            for pattern, label in [
-                (r"\bS1\b", "BrainRegion"),
-                (r"\bVPM\b", "BrainRegion"),
-                (r"\bPV\+\s+interneurons?\b", "CellType"),
-                (r"\bC57BL/6J\b", "Strain"),
-                (r"\bGCaMP7f\b", "Reagent"),
-                (r"\bCNO\b", "Drug"),
-                (r"\bMus musculus\b", "Species"),
-            ]:
-                for m in re.finditer(pattern, body):
-                    local_spans.append(
-                        {"start": m.start(), "end": m.end(), "label": label}
-                    )
-            if not local_spans:
-                continue
-
-            mapped = tracker.map_to_global(local_spans, header["chunk_index"])
-            all_spans.extend(mapped)
-
-        deduped = OffsetTracker.deduplicate(all_spans)
-        print(f"\nMapped {len(all_spans)} raw spans → "
-              f"{len(deduped)} after dedup:")
-        for sp in deduped:
-            print(f"  [{sp.label:<12}] ({sp.start:>4},{sp.end:>4})  '{sp.text}'")
-
     return 0
 
 
