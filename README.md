@@ -20,6 +20,16 @@ This project is built around two CLI tools:
 uv sync
 ```
 
+## Running the NER prompt in pi.dev
+
+If pi is installed and running in this repository, start the workflow by entering:
+
+```text
+/ner_pipeline
+```
+
+This invokes the prompt at `.pi/prompts/ner_pipeline.md`.
+
 ## Usage
 
 ### 1) Parse and chunk a PDF
