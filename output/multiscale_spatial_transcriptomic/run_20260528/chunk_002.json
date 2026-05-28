@@ -1,0 +1,283 @@
+{
+  "paper_name": "multiscale_spatial_transcriptomic",
+  "run_id": "run_20260528",
+  "chunk_index": 2,
+  "entity_count": 55,
+  "entities": [
+    {
+      "entity": "MERFISH",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "As the MERFISH imaging data is acquired on a field of view by field of view basis, the decoded transcript information is organized separately for each FOV."
+    },
+    {
+      "entity": "STRd D1 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "Next, we computed the differential gene expression between STRd D1 Matrix and STRd D2 matrix MSNs."
+    },
+    {
+      "entity": "D2 matrix MSNs",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "Next, we computed the differential gene expression between STRd D1 Matrix and STRd D2 matrix MSNs."
+    },
+    {
+      "entity": "STRd D1 Matrix MSN",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…ntial expression was quantified as a difference-in-difference: the deviation of STRd D1 Matrix MSN's pseudobulk expression from the across-cell-type mean, minus the deviation of STRd D2 matrix MSN's "
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "…obulk expression from the across-cell-type mean, minus the deviation of STRd D2 matrix MSN's pseudobulk expression from that mean."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "A Cell types -MERFISH+ 1 cm 1 cm STRd D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (sn…"
+    },
+    {
+      "entity": "STRd D1 Striosome",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "A Cell types -MERFISH+ 1 cm 1 cm STRd D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH…"
+    },
+    {
+      "entity": "STRd D1 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "A Cell types -MERFISH+ 1 cm 1 cm STRd D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hyb…"
+    },
+    {
+      "entity": "STRd D2 Striosome",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "A Cell types -MERFISH+ 1 cm 1 cm STRd D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUD"
+    },
+    {
+      "entity": "STRd D2 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…s -MERFISH+ 1 cm 1 cm STRd D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd "
+    },
+    {
+      "entity": "PDYN",
+      "label": "GeneMarker",
+      "context": "…m 1 cm STRd D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm "
+    },
+    {
+      "entity": "DRD1",
+      "label": "GeneMarker",
+      "context": "…m STRd D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm 0.5 m"
+    },
+    {
+      "entity": "DRD2",
+      "label": "GeneMarker",
+      "context": "…d D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm 0.5 mm 150"
+    },
+    {
+      "entity": "snRNA-seq",
+      "label": "TranscriptomicDataset",
+      "context": "…atrix D1 MSN STRd D2 Striosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm 0.5 mm 150 m 10 m B C D E F G H I "
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…riosome STRd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm 0.5 mm 150 m 10 m B C D E F G H I K 0.5 cm 1 cm GPi Core "
+    },
+    {
+      "entity": "STR D1D2 Hybrid",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…Rd D2 Matrix PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm 0.5 mm 150 m 10 m B C D E F G H I K 0.5 cm 1 cm GPi Core GPi Shell "
+    },
+    {
+      "entity": "STRv D1 NUDAP",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…N DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm 0.5 mm 150 m 10 m B C D E F G H I K 0.5 cm 1 cm GPi Core GPi Shell 1 cm J 1 cm 0.5 "
+    },
+    {
+      "entity": "STRd D2 Hybrid",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…SN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm 0.5 mm 150 m 10 m B C D E F G H I K 0.5 cm 1 cm GPi Core GPi Shell 1 cm J 1 cm 0.5 cm 1 cm GPe SOX6"
+    },
+    {
+      "entity": "GPe SOX6-CTXND1",
+      "label": "InterneuronSubtype",
+      "context": "…m 10 m B C D E F G H I K 0.5 cm 1 cm GPi Core GPi Shell 1 cm J 1 cm 0.5 cm 1 cm GPe SOX6-CTXND1 CN LHX6-GBX1 1 cm 0 100 80 60 40 20 Percent (%) M Dopa CN GABA-Glut CN CGE GABA F M GABA Cx GABA Immune"
+    },
+    {
+      "entity": "CN LHX6-GBX1",
+      "label": "InterneuronSubtype",
+      "context": "… G H I K 0.5 cm 1 cm GPi Core GPi Shell 1 cm J 1 cm 0.5 cm 1 cm GPe SOX6-CTXND1 CN LHX6-GBX1 1 cm 0 100 80 60 40 20 Percent (%) M Dopa CN GABA-Glut CN CGE GABA F M GABA Cx GABA Immune Vascular Astro-"
+    },
+    {
+      "entity": "CN GABA",
+      "label": "NeuronClass",
+      "context": "… cm 1 cm GPe SOX6-CTXND1 CN LHX6-GBX1 1 cm 0 100 80 60 40 20 Percent (%) M Dopa CN GABA-Glut CN CGE GABA F M GABA Cx GABA Immune Vascular Astro-Epen OPC-Oligo CN MGE GABA CN LGE GABA F M Glut Major c"
+    },
+    {
+      "entity": "Astro-Epen",
+      "label": "AstrocyteSubtype",
+      "context": "…20 Percent (%) M Dopa CN GABA-Glut CN CGE GABA F M GABA Cx GABA Immune Vascular Astro-Epen OPC-Oligo CN MGE GABA CN LGE GABA F M Glut Major cell classes 100 80 60 40 20 Percent (%) STRd D2 Hybrid STR"
+    },
+    {
+      "entity": "OPC-Oligo",
+      "label": "OligodendrocyteSubtype",
+      "context": "…(%) M Dopa CN GABA-Glut CN CGE GABA F M GABA Cx GABA Immune Vascular Astro-Epen OPC-Oligo CN MGE GABA CN LGE GABA F M Glut Major cell classes 100 80 60 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP "
+    },
+    {
+      "entity": "MGE GABA",
+      "label": "NeuronClass",
+      "context": "… GABA-Glut CN CGE GABA F M GABA Cx GABA Immune Vascular Astro-Epen OPC-Oligo CN MGE GABA CN LGE GABA F M Glut Major cell classes 100 80 60 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D"
+    },
+    {
+      "entity": "STRd D2 Hybrid",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…CN MGE GABA CN LGE GABA F M Glut Major cell classes 100 80 60 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 St"
+    },
+    {
+      "entity": "STRv D1 NUDAP",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…LGE GABA F M Glut Major cell classes 100 80 60 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cel"
+    },
+    {
+      "entity": "STRv D1",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…lut Major cell classes 100 80 60 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cell proportions "
+    },
+    {
+      "entity": "STR D1D2 Hybrid",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…r cell classes 100 80 60 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cell proportions 100 80 6"
+    },
+    {
+      "entity": "STRv D2",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…00 80 60 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cell proportions 100 80 60 40 20 Percent "
+    },
+    {
+      "entity": "STRd D1 Striosome",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "… 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cell proportions 100 80 60 40 20 Percent (%) AP26"
+    },
+    {
+      "entity": "STRd D1 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "… STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cell proportions 100 80 60 40 20 Percent (%) AP26 AP34 ALL GPe SOX6"
+    },
+    {
+      "entity": "STRd D2 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "… STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cell proportions 100 80 60 40 20 Percent (%) AP26 AP34 ALL GPe SOX6-CTXND1 GPe MEI"
+    },
+    {
+      "entity": "STRd D2 Striosome MSN",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cell proportions 100 80 60 40 20 Percent (%) AP26 AP34 ALL GPe SOX6-CTXND1 GPe MEIS2-SOX6 CN LHX6"
+    },
+    {
+      "entity": "GPe SOX6-CTXND1",
+      "label": "InterneuronSubtype",
+      "context": "…TRd D2 Striosome MSN cell proportions 100 80 60 40 20 Percent (%) AP26 AP34 ALL GPe SOX6-CTXND1 GPe MEIS2-SOX6 CN LHX6-GBX1 GPin-BF Chol GPi Core GPi Shell GP cell proportions 60 Transcriptomic cell "
+    },
+    {
+      "entity": "GPe MEIS2-SOX6",
+      "label": "InterneuronSubtype",
+      "context": "… MSN cell proportions 100 80 60 40 20 Percent (%) AP26 AP34 ALL GPe SOX6-CTXND1 GPe MEIS2-SOX6 CN LHX6-GBX1 GPin-BF Chol GPi Core GPi Shell GP cell proportions 60 Transcriptomic cell types All cell t"
+    },
+    {
+      "entity": "CN LHX6-GBX1",
+      "label": "InterneuronSubtype",
+      "context": "…rtions 100 80 60 40 20 Percent (%) AP26 AP34 ALL GPe SOX6-CTXND1 GPe MEIS2-SOX6 CN LHX6-GBX1 GPin-BF Chol GPi Core GPi Shell GP cell proportions 60 Transcriptomic cell types All cell types Oligo OPAL"
+    },
+    {
+      "entity": "Oligo OPALIN",
+      "label": "OligodendrocyteSubtype",
+      "context": "… Core GPi Shell GP cell proportions 60 Transcriptomic cell types All cell types Oligo OPALIN STRd D1 Striosome Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Ma"
+    },
+    {
+      "entity": "STRd D1 Striosome",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…ll GP cell proportions 60 Transcriptomic cell types All cell types Oligo OPALIN STRd D1 Striosome Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-"
+    },
+    {
+      "entity": "Oligo PLEKHG1",
+      "label": "OligodendrocyteSubtype",
+      "context": "…ions 60 Transcriptomic cell types All cell types Oligo OPALIN STRd D1 Striosome Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-"
+    },
+    {
+      "entity": "STRd D1 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…riptomic cell types All cell types Oligo OPALIN STRd D1 Striosome Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D"
+    },
+    {
+      "entity": "GPe MEIS2-SOX6",
+      "label": "InterneuronSubtype",
+      "context": "…ypes All cell types Oligo OPALIN STRd D1 Striosome Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Co"
+    },
+    {
+      "entity": "STRd D2 Striosome",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…ypes Oligo OPALIN STRd D1 Striosome Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDA"
+    },
+    {
+      "entity": "GPe SOX6-CTXND1",
+      "label": "InterneuronSubtype",
+      "context": "…STRd D1 Striosome Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1"
+    },
+    {
+      "entity": "STRd D2 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…e Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D"
+    },
+    {
+      "entity": "CN LHX6-GBX1",
+      "label": "InterneuronSubtype",
+      "context": "… STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D1 OPC ..."
+    },
+    {
+      "entity": "STRv D2",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…ix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D1 OPC ..."
+    },
+    {
+      "entity": "STRd D2 Hybrid",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…d D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D1 OPC ..."
+    },
+    {
+      "entity": "STRv D1 NUDAP",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D1 OPC ..."
+    },
+    {
+      "entity": "STR D1D2 Hybrid",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "… LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D1 OPC ..."
+    },
+    {
+      "entity": "STRv D1",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D1 OPC ..."
+    },
+    {
+      "entity": "OPC",
+      "label": "OligodendrocyteSubtype",
+      "context": "…BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D1 OPC ..."
+    },
+    {
+      "entity": "STRd D1 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…ion coefficient 0.0 0.2 0.4 0.6 Ca Pu NAc Ca Pu NAc Ca Pu Ca Pu GPe GPe GPi GPi STRd D1 Matrix STRd D2 Matrix STR D1D2 Hybrid STRd D1 Striosome Main Figure 2 Main Figure 6"
+    },
+    {
+      "entity": "STRd D2 Matrix",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "… 0.0 0.2 0.4 0.6 Ca Pu NAc Ca Pu NAc Ca Pu Ca Pu GPe GPe GPi GPi STRd D1 Matrix STRd D2 Matrix STR D1D2 Hybrid STRd D1 Striosome Main Figure 2 Main Figure 6"
+    },
+    {
+      "entity": "STR D1D2 Hybrid",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…6 Ca Pu NAc Ca Pu NAc Ca Pu Ca Pu GPe GPe GPi GPi STRd D1 Matrix STRd D2 Matrix STR D1D2 Hybrid STRd D1 Striosome Main Figure 2 Main Figure 6"
+    },
+    {
+      "entity": "STRd D1 Striosome",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "…u NAc Ca Pu Ca Pu GPe GPe GPi GPi STRd D1 Matrix STRd D2 Matrix STR D1D2 Hybrid STRd D1 Striosome Main Figure 2 Main Figure 6"
+    }
+  ]
+}

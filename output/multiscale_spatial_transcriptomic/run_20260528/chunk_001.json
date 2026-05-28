@@ -1,0 +1,1078 @@
+{
+  "paper_name": "multiscale_spatial_transcriptomic",
+  "run_id": "run_20260528",
+  "chunk_index": 1,
+  "entity_count": 214,
+  "entities": [
+    {
+      "entity": "subcellular transcript localization",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "In summary, by coupling genome-wide spatial profiling with subcellular transcript localization and community-level modeling, we deliver a multiscale, molecular atlas of human basal ganglia organizatio"
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "…ation and community-level modeling, we deliver a multiscale, molecular atlas of human basal ganglia organization from single transcripts to cellular communities and anatomical modules that shows feat"
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "…ts to cellular communities and anatomical modules that shows features unique to humans and those that are conserved across species."
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "This atlas establishes a foundational framework for studying human basal ganglia architecture and its disruption in neuropsychiatric and neurodegenerative disorders, enabling cross-species and disease"
+    },
+    {
+      "entity": "putamen",
+      "label": "BrainRegion",
+      "context": "The myeloarchitecture of impulsivity: premature responding in youth is associated with decreased myelination of ventral putamen."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "Emergence of context-dependent variability across a basal ganglia network."
+    },
+    {
+      "entity": "Parkinson's disease",
+      "label": "ClinicalCondition",
+      "context": "Loss of phosphodiesterase 10A expression is associated with progression and severity in Parkinson's disease."
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "of the human basal ganglia with Stereo-seq and MERFISH+ (A) Overview of study design, donor and sample quality and metadata, tissue sampling strategy, and adjacent-section workflows."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "of the human basal ganglia with Stereo-seq and MERFISH+ (A) Overview of study design, donor and sample quality and metadata, tissue sampling strategy, and adjacent-section workflows."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "of the human basal ganglia with Stereo-seq and MERFISH+ (A) Overview of study design, donor and sample quality and metadata, tissue sampling strategy, and adjacent-section workflows."
+    },
+    {
+      "entity": "Stereo-seq data",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "(B) Stereo-seq dataset from an anterior basal ganglia section (donor case ID 2724): left, spatial map with cell-type assignments; right, UM…"
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "(B) Stereo-seq dataset from an anterior basal ganglia section (donor case ID 2724): left, spatial map with cell-type assignments; right, UMAP embedding resolving 10 major ce…"
+    },
+    {
+      "entity": "MERFISH+ data",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "(C) MERFISH+ dataset from an adjacent anterior section."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "Left, spatial map with cell-type assignments; right, UMAP embedding resolving 10 major cell classes corresponding to Stereo-seq in (B)."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "(D-G, progressively greater magnification) Multi-scale Stereo-seq enlarged views of the boxed region in (B), illustrating the resolution span from centimeter-scale tissue anatomy to mic…"
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "(H-K, progressively greater magnification) Multi-scale MERFISH+ enlarged views of the boxed region in (C), showing transcripts for selected genes (DRD1, DRD2, PENK, CCK, SST, CHAT, MB…"
+    },
+    {
+      "entity": "DRD1",
+      "label": "GeneMarker",
+      "context": "…arged views of the boxed region in (C), showing transcripts for selected genes (DRD1, DRD2, PENK, CCK, SST, CHAT, MBP) (color coded) and other genes (gray coded) that define cell-types at micron-scal"
+    },
+    {
+      "entity": "DRD2",
+      "label": "GeneMarker",
+      "context": "…views of the boxed region in (C), showing transcripts for selected genes (DRD1, DRD2, PENK, CCK, SST, CHAT, MBP) (color coded) and other genes (gray coded) that define cell-types at micron-scale reso"
+    },
+    {
+      "entity": "PENK",
+      "label": "GeneMarker",
+      "context": "…of the boxed region in (C), showing transcripts for selected genes (DRD1, DRD2, PENK, CCK, SST, CHAT, MBP) (color coded) and other genes (gray coded) that define cell-types at micron-scale resolution"
+    },
+    {
+      "entity": "CCK",
+      "label": "GeneMarker",
+      "context": "… boxed region in (C), showing transcripts for selected genes (DRD1, DRD2, PENK, CCK, SST, CHAT, MBP) (color coded) and other genes (gray coded) that define cell-types at micron-scale resolution."
+    },
+    {
+      "entity": "SST",
+      "label": "GeneMarker",
+      "context": "…d region in (C), showing transcripts for selected genes (DRD1, DRD2, PENK, CCK, SST, CHAT, MBP) (color coded) and other genes (gray coded) that define cell-types at micron-scale resolution."
+    },
+    {
+      "entity": "CHAT",
+      "label": "GeneMarker",
+      "context": "…ion in (C), showing transcripts for selected genes (DRD1, DRD2, PENK, CCK, SST, CHAT, MBP) (color coded) and other genes (gray coded) that define cell-types at micron-scale resolution."
+    },
+    {
+      "entity": "MBP",
+      "label": "GeneMarker",
+      "context": "… (C), showing transcripts for selected genes (DRD1, DRD2, PENK, CCK, SST, CHAT, MBP) (color coded) and other genes (gray coded) that define cell-types at micron-scale resolution."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "Scale bars as indicated basal ganglia."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "(A) UMAP embedding of MERFISH+ single cell data with 60 transcriptionally defined basal ganglia (A) Fractional composition of major non-neuronal class…"
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "…) UMAP embedding of MERFISH+ single cell data with 60 transcriptionally defined basal ganglia (A) Fractional composition of major non-neuronal classes (left) and OPC/oligodendrocyte (Oligo) subtypes "
+    },
+    {
+      "entity": "OPC",
+      "label": "OligodendrocyteSubtype",
+      "context": "…sal ganglia (A) Fractional composition of major non-neuronal classes (left) and OPC/oligodendrocyte (Oligo) subtypes (right) for all combined sections and across the anterior-posterior axis (AP 18a, "
+    },
+    {
+      "entity": "internal capsule",
+      "label": "BrainRegion",
+      "context": "Zoomed-in views of the boxed regions: (1) internal capsule, (2) putamen with striatopallidal fiber bundles (arrows), and (3) GPe."
+    },
+    {
+      "entity": "putamen",
+      "label": "BrainRegion",
+      "context": "Zoomed-in views of the boxed regions: (1) internal capsule, (2) putamen with striatopallidal fiber bundles (arrows), and (3) GPe."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "AstrocyteSubtype",
+      "context": "(D) UMAP of six subtypes of astrocytes defined based on the MERFISH+ astrocytic genes measured, with expression maps for representative differentially expressed astrocytic genes."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "(D) UMAP of six subtypes of astrocytes defined based on the MERFISH+ astrocytic genes measured, with expression maps for representative differentially expressed astrocytic genes."
+    },
+    {
+      "entity": "astrocyte subtypes",
+      "label": "AstrocyteSubtype",
+      "context": "(F) Fractional composition of astrocyte subtypes for all combined sections and across the anterior-posterior (AP) axis (left -right: AP 18a, 19a, 26a, 34a, stacked bars)."
+    },
+    {
+      "entity": "astrocyte subtypes",
+      "label": "AstrocyteSubtype",
+      "context": "(G-J) Spatial distributions of the six astrocyte subtypes in anterior (AP 18a) and posterior (AP 34a) sections (G), including (H) white-matter-enriched astrocytes (WM_Astro) loc…"
+    },
+    {
+      "entity": "astrocytes",
+      "label": "AstrocyteSubtype",
+      "context": "…P 18a) and posterior (AP 34a) sections (G), including (H) white-matter-enriched astrocytes (WM_Astro) localized to the internal capsule with high AQP1 expression Color keys are consistent across pane"
+    },
+    {
+      "entity": "WM_Astro",
+      "label": "AstrocyteSubtype",
+      "context": "…osterior (AP 34a) sections (G), including (H) white-matter-enriched astrocytes (WM_Astro) localized to the internal capsule with high AQP1 expression Color keys are consistent across panels (G-J)."
+    },
+    {
+      "entity": "internal capsule",
+      "label": "BrainRegion",
+      "context": "…(G), including (H) white-matter-enriched astrocytes (WM_Astro) localized to the internal capsule with high AQP1 expression Color keys are consistent across panels (G-J)."
+    },
+    {
+      "entity": "AQP1",
+      "label": "GeneMarker",
+      "context": "…tter-enriched astrocytes (WM_Astro) localized to the internal capsule with high AQP1 expression Color keys are consistent across panels (G-J)."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "(A) Images of MERFISH+ transcripts pseudo-colored to indicate subcellular localization: nuclear (white), cytoplasmic (yellow), and putative cellular processes (red) across nine selected cell types."
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "(B) Estimated soma means and ranges of volumes (µm³) inferred from transcript-density segmentation across neuronal cell types in the human basal ganglia, including those shown in (A)."
+    },
+    {
+      "entity": "D2 matrix MSNs",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "(C) Plot of differential gene expression between D1 and D2 matrix MSNs measured by MERFISH+."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "(C) Plot of differential gene expression between D1 and D2 matrix MSNs measured by MERFISH+."
+    },
+    {
+      "entity": "D1 matrix MSNs",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "RELN",
+      "label": "GeneMarker",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "EBF1",
+      "label": "GeneMarker",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "SLIT2",
+      "label": "GeneMarker",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "D2 matrix MSNs",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "DRD2",
+      "label": "GeneMarker",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "PENK",
+      "label": "GeneMarker",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "CHRM3",
+      "label": "GeneMarker",
+      "context": "(D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom)."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "(E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom) gene expression with the expression in putative cellular processes across the entire posterior section (AP34a)."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "(E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom) gene expression with the expression in putative cellular processes across the entire posterior section (AP34a)."
+    },
+    {
+      "entity": "AP34a",
+      "label": "MouseSectionIdentifier",
+      "context": "(E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom) gene expression with the expression in putative cellular processes across the entire posterior section (AP34a)."
+    },
+    {
+      "entity": "SEMA3E",
+      "label": "GeneMarker",
+      "context": "(F) Gene expression map of SEMA3E transcripts modules of the human basal ganglia (A) Spatial map of major cell types of the posterior section (as shown i…"
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "(F) Gene expression map of SEMA3E transcripts modules of the human basal ganglia (A) Spatial map of major cell types of the posterior section (as shown in Figure 2D) and inferred cellular community mo"
+    },
+    {
+      "entity": "Allen Human Brain Atlas",
+      "label": "BrainAtlas",
+      "context": "Bottom: Corresponding anatomical reference images from the Allen Human Brain Atlas 59 ."
+    },
+    {
+      "entity": "putamen",
+      "label": "BrainRegion",
+      "context": "Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus."
+    },
+    {
+      "entity": "caudate",
+      "label": "BrainRegion",
+      "context": "Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus."
+    },
+    {
+      "entity": "nucleus accumbens",
+      "label": "BrainRegion",
+      "context": "Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "BrainRegion",
+      "context": "Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus."
+    },
+    {
+      "entity": "fast-spiking interneurons",
+      "label": "InterneuronSubtype",
+      "context": "(D) Spatial distribution of fast-spiking interneurons (STR FS PTHLH-PVALB) across A-P levels, highlighting preferential enrichment in caudate."
+    },
+    {
+      "entity": "PTHLH",
+      "label": "GeneMarker",
+      "context": "(D) Spatial distribution of fast-spiking interneurons (STR FS PTHLH-PVALB) across A-P levels, highlighting preferential enrichment in caudate."
+    },
+    {
+      "entity": "PVALB",
+      "label": "GeneMarker",
+      "context": "(D) Spatial distribution of fast-spiking interneurons (STR FS PTHLH-PVALB) across A-P levels, highlighting preferential enrichment in caudate."
+    },
+    {
+      "entity": "caudate",
+      "label": "BrainRegion",
+      "context": "(D) Spatial distribution of fast-spiking interneurons (STR FS PTHLH-PVALB) across A-P levels, highlighting preferential enrichment in caudate."
+    },
+    {
+      "entity": "caudate",
+      "label": "BrainRegion",
+      "context": "Right: odds-ratio plot quantifying caudate > putamen representation (* p = 0.021; Wilcoxon rank-sum)."
+    },
+    {
+      "entity": "putamen",
+      "label": "BrainRegion",
+      "context": "Right: odds-ratio plot quantifying caudate > putamen representation (* p = 0.021; Wilcoxon rank-sum)."
+    },
+    {
+      "entity": "cholinergic interneurons",
+      "label": "InterneuronSubtype",
+      "context": "(E) Spatial distribution of cholinergic interneurons (STRd ChAT+) across the A-P axis, showing relative enrichment in putamen compared to caudate."
+    },
+    {
+      "entity": "STRd ChAT+",
+      "label": "InterneuronSubtype",
+      "context": "(E) Spatial distribution of cholinergic interneurons (STRd ChAT+) across the A-P axis, showing relative enrichment in putamen compared to caudate."
+    },
+    {
+      "entity": "putamen",
+      "label": "BrainRegion",
+      "context": "(E) Spatial distribution of cholinergic interneurons (STRd ChAT+) across the A-P axis, showing relative enrichment in putamen compared to caudate."
+    },
+    {
+      "entity": "caudate",
+      "label": "BrainRegion",
+      "context": "(E) Spatial distribution of cholinergic interneurons (STRd ChAT+) across the A-P axis, showing relative enrichment in putamen compared to caudate."
+    },
+    {
+      "entity": "putamen",
+      "label": "BrainRegion",
+      "context": "Right: odds-ratio plot quantifying putamen > caudate representation (* p = 0.021; Wilcoxon rank-sum)."
+    },
+    {
+      "entity": "caudate",
+      "label": "BrainRegion",
+      "context": "Right: odds-ratio plot quantifying putamen > caudate representation (* p = 0.021; Wilcoxon rank-sum)."
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "(F) organization, gene-expression spatial gradients, and cross-species correspondence in the human basal ganglia."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "Leiden clustering defines the matrix (purple) and striosome (blue) (left)."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "Leiden clustering defines the matrix (purple) and striosome (blue) (left)."
+    },
+    {
+      "entity": "MSNs",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "Different types of MSNs are colored as indicated (right)."
+    },
+    {
+      "entity": "striosome and matrix compartments",
+      "label": "BrainRegion",
+      "context": "(B) Spatial maps of striosome and matrix compartments (defined in A) across anterior-posterior (A-P) sections (AP 18a, 19a, 26a, 34a)."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "(C) Cell-type enrichment (odds ratios) for striosome versus matrix compartments."
+    },
+    {
+      "entity": "matrix compartment",
+      "label": "BrainRegion",
+      "context": "(C) Cell-type enrichment (odds ratios) for striosome versus matrix compartments."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "For purpose of visualization, odds ratio values associated with the striosome are multiplied by -1."
+    },
+    {
+      "entity": "TAC3",
+      "label": "GeneMarker",
+      "context": "…Spatial distributions of interneuron subtypes showing compartmental biases: STR TAC3 GABAergic interneurons enriched in matrix and VIP+ GABAergic interneurons enriched the 60 transcriptomics cell typ"
+    },
+    {
+      "entity": "GABAergic interneurons",
+      "label": "InterneuronSubtype",
+      "context": "…al distributions of interneuron subtypes showing compartmental biases: STR TAC3 GABAergic interneurons enriched in matrix and VIP+ GABAergic interneurons enriched the 60 transcriptomics cell types id"
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "…types showing compartmental biases: STR TAC3 GABAergic interneurons enriched in matrix and VIP+ GABAergic interneurons enriched the 60 transcriptomics cell types identified by MERFISH+."
+    },
+    {
+      "entity": "VIP+ GABAergic interneurons",
+      "label": "InterneuronSubtype",
+      "context": "…ng compartmental biases: STR TAC3 GABAergic interneurons enriched in matrix and VIP+ GABAergic interneurons enriched the 60 transcriptomics cell types identified by MERFISH+."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…GABAergic interneurons enriched the 60 transcriptomics cell types identified by MERFISH+."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "The dot-plot shows 150 differential expressed genes out of the 673 MERFISH+ imaged genes, thus validating the distinction between 60 transcriptomics cell types."
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "pallidus-associated neuronal subtypes across anterior-posterior coronal sections of the human basal ganglia."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "BrainRegion",
+      "context": "(A) Relative proportions of all neuronal cell types including non-MSN and globus pallidus (GP) neuron subtypes-as well as CGEand MGE-derived GABAergic neuron subclasses, in both combined and individua"
+    },
+    {
+      "entity": "MGE-derived GABAergic neuron subclasses",
+      "label": "NeuronClass",
+      "context": "…es including non-MSN and globus pallidus (GP) neuron subtypes-as well as CGEand MGE-derived GABAergic neuron subclasses, in both combined and individual MERFISH+ assays, showing all sections versus A"
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…CGEand MGE-derived GABAergic neuron subclasses, in both combined and individual MERFISH+ assays, showing all sections versus AP-specific proportions."
+    },
+    {
+      "entity": "D1+ and D2+ medium spiny neurons",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "(B) Spatial distributions of D1+ and D2+ medium spiny neurons (MSNs) across anterior-posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "MSNs",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "(B) Spatial distributions of D1+ and D2+ medium spiny neurons (MSNs) across anterior-posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "(B) Spatial distributions of D1+ and D2+ medium spiny neurons (MSNs) across anterior-posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "(C) Spatial distributions of diverse non-MSN basal ganglia."
+    },
+    {
+      "entity": "Oligo OPALIN",
+      "label": "OligodendrocyteSubtype",
+      "context": "(A) Spatial distributions of two oligodendrocyte subtypes (Oligo OPALIN and Oligo PLEKHG1) in anterior and posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "Oligo PLEKHG1",
+      "label": "OligodendrocyteSubtype",
+      "context": "(A) Spatial distributions of two oligodendrocyte subtypes (Oligo OPALIN and Oligo PLEKHG1) in anterior and posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "(A) Spatial distributions of two oligodendrocyte subtypes (Oligo OPALIN and Oligo PLEKHG1) in anterior and posterior sections of the human basal ganglia."
+    },
+    {
+      "entity": "astrocyte subtypes",
+      "label": "AstrocyteSubtype",
+      "context": "(B) Spatial subregion specific distributions of six astrocyte subtypes across anteriorposterior sample sections."
+    },
+    {
+      "entity": "striosome-matrix boundaries",
+      "label": "BrainRegion",
+      "context": "striosome-matrix boundaries."
+    },
+    {
+      "entity": "striosome-matrix border",
+      "label": "BrainRegion",
+      "context": "(A) Heatmap of astrocytic gene expression as a function of distance from the striosome-matrix border."
+    },
+    {
+      "entity": "striosome-matrix border",
+      "label": "BrainRegion",
+      "context": "Distance is measured relative to the border (center), where 0 represents the striosome-matrix border, and spans -500 µm into matrix regions (negative values) and +500 µm into striosome interiors (posi"
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "…center), where 0 represents the striosome-matrix border, and spans -500 µm into matrix regions (negative values) and +500 µm into striosome interiors (positive values)."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "…order, and spans -500 µm into matrix regions (negative values) and +500 µm into striosome interiors (positive values)."
+    },
+    {
+      "entity": "astrocytes located within ±500 µm",
+      "label": "AstrocyteSubtype",
+      "context": "(B) UMAP embedding computed from clustering of astrocytes located within ±500 µm from the striosome-matrix border based on genes shown in (A) in the posterior sample AP26a (left) and the spatial map s"
+    },
+    {
+      "entity": "striosome-matrix border",
+      "label": "BrainRegion",
+      "context": "…mbedding computed from clustering of astrocytes located within ±500 µm from the striosome-matrix border based on genes shown in (A) in the posterior sample AP26a (left) and the spatial map showing th"
+    },
+    {
+      "entity": "AP26a",
+      "label": "MouseSectionIdentifier",
+      "context": "…the striosome-matrix border based on genes shown in (A) in the posterior sample AP26a (left) and the spatial map showing the distribution of the subclusters relative to striosome boundaries (middle)."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "…ft) and the spatial map showing the distribution of the subclusters relative to striosome boundaries (middle)."
+    },
+    {
+      "entity": "AP34a",
+      "label": "MouseSectionIdentifier",
+      "context": "(C) Same analysis as in (B), shown for posterior section AP34a: UMAP embedding (left), spatial distribution along striosome boundaries (middle), and zoom-in of the boxed region (right)."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "(C) Same analysis as in (B), shown for posterior section AP34a: UMAP embedding (left), spatial distribution along striosome boundaries (middle), and zoom-in of the boxed region (right)."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "…BLE 1226 REAGENT or RESOURCE SOURCE IDENTIFIER Biological samples Healthy adult basal ganglia brain tissue University of California Irvine BICAN Brain Bank Case#UCI-2724 Case#UCI-3924 Case#UCI-1311 C"
+    },
+    {
+      "entity": "BICAN",
+      "label": "BrainAtlas",
+      "context": "…amples Healthy adult basal ganglia brain tissue University of California Irvine BICAN Brain Bank Case#UCI-2724 Case#UCI-3924 Case#UCI-1311 Case#UCI-5129 Chemicals, peptides, and recombinant proteins "
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…-Aldrich Cat#215589-100G Agilent Technologies D1000 Reagents Agilent Cat# D1000 Stereo-seq Permeabilization Set for Chip-on-a-slide V1.1 Complete Genomics Cat#211SP11118-CG Stereo-seq Transcriptomics"
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…rmeabilization Set for Chip-on-a-slide V1.1 Complete Genomics Cat#211SP11118-CG Stereo-seq Transcriptomics Set (2cm*3cm) V1.2 STOmics/Complete Genomics Cat#111ST13231-CG Stereo-seq 16 Barcoded Librar"
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "… Transcriptomics Set (2cm*3cm) V1.2 STOmics/Complete Genomics Cat#111ST13231-CG Stereo-seq 16 Barcoded Library Preparation Kit V1.0 Complete Genomics Cat#111KL160 PE100 flow cells reagent Complete Ge"
+    },
+    {
+      "entity": "MERFISH",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…bes Integrated DNA Technologies (IDT) This paper; Supplemental Data Primers for MERFISH encoding probe synthesis Integrated DNA Technologies (IDT) This paper; Supplemental Data RT primer for cDNA syn"
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "…ultimodal investigation of the same donor sample, each pre-dissected postmortem human coronal brain slab, which is 5-10 mm thick and containing the basal ganglia, was used in this study."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "… postmortem human coronal brain slab, which is 5-10 mm thick and containing the basal ganglia, was used in this study."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "…ns for experiments, a tissue block measuring up to 4 cm × 5 cm and encompassing basal ganglia components was further dissected out of each coronal brain slab, quickly embedded in OCT embedding medium"
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…e then obtained using a Leica CM1850 cryostat at -18 to -20 °C and mounted onto Stereo-seq chips and specially coated 50 mm × 64 mm rectangular glass slides for MERFISH+, respectively."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…tereo-seq chips and specially coated 50 mm × 64 mm rectangular glass slides for MERFISH+, respectively."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "To fit the 2 cm × 3 cm Stereo-seq chips (STOmics/Complete Genomics, 111ST13231-CG), each large brain section was trimmed and/or subdivided within the cry…"
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "For Stereo-seq, tissue fixation and spatial transcriptomics procedures were conducted in accordance with the manufacturer's protocol and established methods."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "Briefly, tissue sections mounted on Stereo-seq chips were dried at 37°C (5 min), then fixed in precooled methanol (SigmaAldrich, 1060071000) for 30 mins at -20 °C."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "RNA captured on Stereo-seq chips from permeabilized tissue was reverse transcribed at 42°C."
+    },
+    {
+      "entity": "DNA nanoball (DNB)",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "For library construction, 20 ng of cDNA per sample was processed with a library preparation kit (Complete Genomics, 111KL160) followed by DNA nanoball (DNB) generation."
+    },
+    {
+      "entity": "DNBSEQ™ T7 platform",
+      "label": "SequencingPlatform",
+      "context": "Sequencing was performed on the DNBSEQ™ T7 platform at PacGenomics (Agoura Hill, CA, USA) with PE100 flow cells and 50 bp read 1 and 100 bp read 2 (Complete Genomics, 100008555)."
+    },
+    {
+      "entity": "reference Human basal ganglia snRNA-seq dataset",
+      "label": "TranscriptomicDataset",
+      "context": "… genes that were differentially expressed between Group level cell types in the reference Human basal ganglia snRNA-seq dataset from the Allen Brain Institute (RRID:SCR_006491) ."
+    },
+    {
+      "entity": "MERFISH library",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "The MERFISH library was designed using a similar pipeline described in previous studies 42- 44 ."
+    },
+    {
+      "entity": "MERFISH",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "However, we made one modification to this design by adding a 4th readout sequence in order to help us to troubleshoot MERFISH experiments through smFISH imaging."
+    },
+    {
+      "entity": "MERFISH codebook",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…sequences that were concatenated to a target sequence of a gene was guided by a MERFISH codebook, which is a set of unique binary barcodes that determines in which imaging round the fluorescence sign"
+    },
+    {
+      "entity": "MERFISH",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "As described in the method section for MERFISH imaging, the primary probes were used in combination with adapter probes and readout probes during each imaging round."
+    },
+    {
+      "entity": "basal ganglia",
+      "label": "BrainRegion",
+      "context": "Human postmortem basal ganglia samples in OCT block were sectioned (16 µm thick) using cryostat (Leica CM1850) at -20°C and mounted onto PDL-coated pre-silanized coverslips as aforedescribed."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "Finally, we generated a cell-by-gene count matrix by aggregating the transcript count of each gene in every cell."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "We preprocessed the cell by gene count matrix as follows."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "The count matrix was then normalized by volume of cells, in order to account for the effect of cell size variation on the expression level of genes."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "The matrix was again normalized by the total count of transcripts in the cells in order to reduce noise arising from the difference in the relative expression of genes between cells."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "First, the graph representation of the count matrix was generated using the neighbors module, scanpy.pp.neighbors(use_rep = 'X', n_neighbors = 15)."
+    },
+    {
+      "entity": "cell_type_mapper",
+      "label": "CellTypeAnnotationTool",
+      "context": "…ross-species Basal ganglion cell type taxonomy from the Allen institute through cell_type_mapper (the python backend for MapMyCells, RRID:SCR_024672) using two precomputed supporting files shared thr"
+    },
+    {
+      "entity": "MapMyCells",
+      "label": "CellTypeAnnotationTool",
+      "context": "…onomy from the Allen institute through cell_type_mapper (the python backend for MapMyCells, RRID:SCR_024672) using two precomputed supporting files shared through the BICAN consortium: query_markers "
+    },
+    {
+      "entity": "BICAN consortium",
+      "label": "BrainAtlas",
+      "context": "…lls, RRID:SCR_024672) using two precomputed supporting files shared through the BICAN consortium: query_markers (a lookup table of marker genes for the taxonomy) and precomputed_stats (HDF5 file that"
+    },
+    {
+      "entity": "query_markers",
+      "label": "CellTypeAnnotationTool",
+      "context": "…72) using two precomputed supporting files shared through the BICAN consortium: query_markers (a lookup table of marker genes for the taxonomy) and precomputed_stats (HDF5 file that defines the taxon"
+    },
+    {
+      "entity": "precomputed_stats",
+      "label": "CellTypeAnnotationTool",
+      "context": "…consortium: query_markers (a lookup table of marker genes for the taxonomy) and precomputed_stats (HDF5 file that defines the taxonomy)."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "AstrocyteSubtype",
+      "context": "We performed the subclustering analysis for astrocytes using only astrocytic genes in order to avoid artifacts from cross-talk or contamination from other cell types."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "To identify the genes, we applied the Wilcoxon rank sum method on the pre-processed count matrix as implemented in the rank_genes_groups function from the Scanpy package 80 ."
+    },
+    {
+      "entity": "astrocytes",
+      "label": "AstrocyteSubtype",
+      "context": "Next, we reduced the data to cells that were labeled as astrocytes at the Subclass level and to genes that were differentially expressed in them."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "Next, we did Principal Component Analysis (PCA) and harmony integration on the normalized count matrix using the functions sc.pl.pca and sc.external.pp.harmony_intergrate from Scanpy respectively."
+    },
+    {
+      "entity": "internal globus pallidus",
+      "label": "BrainRegion",
+      "context": "…rformed spatial module analysis with two different approaches, ( 1 however, the internal globus pallidus module partially overlapped with adjacent white matter tracts; its boundary was refined using "
+    },
+    {
+      "entity": "white matter tracts",
+      "label": "BrainRegion",
+      "context": "…however, the internal globus pallidus module partially overlapped with adjacent white matter tracts; its boundary was refined using the spatial location of GPi Shell neurons, which delineated the GPi"
+    },
+    {
+      "entity": "boundary",
+      "label": "BrainRegion",
+      "context": "…bus pallidus module partially overlapped with adjacent white matter tracts; its boundary was refined using the spatial location of GPi Shell neurons, which delineated the GPi border with high precisi"
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "To identify spatial modules corresponding to the striosome and matrix compartment, we followed similar but slightly different procedure to that used in global spatial modules analysis."
+    },
+    {
+      "entity": "matrix compartment",
+      "label": "BrainRegion",
+      "context": "To identify spatial modules corresponding to the striosome and matrix compartment, we followed similar but slightly different procedure to that used in global spatial modules analysis."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "…s were that we only used MSN cell types when building the cell type composition matrix and we only included the cells in the striatum for the analysis as the Striosome and Matrix compartments exist o"
+    },
+    {
+      "entity": "striatum",
+      "label": "BrainRegion",
+      "context": "…building the cell type composition matrix and we only included the cells in the striatum for the analysis as the Striosome and Matrix compartments exist only in this part of the Basal ganglia."
+    },
+    {
+      "entity": "MSNs",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "… the scikit-learn package 82 , then we queried the graph to identify 50 nearest MSNs for each cell in the striatum."
+    },
+    {
+      "entity": "striatum",
+      "label": "BrainRegion",
+      "context": "…82 , then we queried the graph to identify 50 nearest MSNs for each cell in the striatum."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "Next, as explained in 14 , we defined the composition matrix as distance weighted frequency count of neighboring MSN subtypes."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "This matrix was then L2 normalized and clustered using the Leiden algorithm from the Scanpy package."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "The same analysis approach was used in human and mouse datasets."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "The same analysis approach was used in human and mouse datasets."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "The resulting values were then multiplied with the gene expression matrix to get spatially weighted average gene expression for each cell."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "We first computed the confusion matrix between spatial modules and cell types at the group level using the pivot_table function from the pandas package."
+    },
+    {
+      "entity": "internal capsule",
+      "label": "BrainRegion",
+      "context": "To quantify the gene expression gradient along the ventromedial to dorsolateral (VM-DL) axis, we used the internal capsule as our reference since it is located approximately along this axis."
+    },
+    {
+      "entity": "internal capsule",
+      "label": "BrainRegion",
+      "context": "We first rotated the brain sections so that the internal capsule aligns with the horizontal axis."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "To identify the mouse homologues of the cell types detected in our human Basal ganglia MERFISH dataset, we used the imputed whole mouse brain…"
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "To identify the mouse homologues of the cell types detected in our human Basal ganglia MERFISH dataset, we used the imputed whole mouse brain MERFISH spatial transcriptomic dataset from an ear…"
+    },
+    {
+      "entity": "MERFISH",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "…tify the mouse homologues of the cell types detected in our human Basal ganglia MERFISH dataset, we used the imputed whole mouse brain MERFISH spatial transcriptomic dataset from an earlier publicati"
+    },
+    {
+      "entity": "imputed whole mouse brain MERFISH spatial transcriptomic dataset",
+      "label": "TranscriptomicDataset",
+      "context": "…the cell types detected in our human Basal ganglia MERFISH dataset, we used the imputed whole mouse brain MERFISH spatial transcriptomic dataset from an earlier publication 10 ."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "First, we manually insepcted the mouse MERFISH data to identify tissue sections that contain brain regions corresponding to those covered in the human samples."
+    },
+    {
+      "entity": "MERFISH",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "First, we manually insepcted the mouse MERFISH data to identify tissue sections that contain brain regions corresponding to those covered in the human samples."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "First, we manually insepcted the mouse MERFISH data to identify tissue sections that contain brain regions corresponding to those covered in the human samples."
+    },
+    {
+      "entity": "C57BL6J-638850.39 -50",
+      "label": "MouseSectionIdentifier",
+      "context": "We selected the sections of C57BL6J-638850.39 -50, which show the caudoputamen and globus pallidus regions."
+    },
+    {
+      "entity": "caudoputamen",
+      "label": "BrainRegion",
+      "context": "We selected the sections of C57BL6J-638850.39 -50, which show the caudoputamen and globus pallidus regions."
+    },
+    {
+      "entity": "globus pallidus",
+      "label": "BrainRegion",
+      "context": "We selected the sections of C57BL6J-638850.39 -50, which show the caudoputamen and globus pallidus regions."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "Then we used the parcellation_division label \"STR\" and \"PAL\" in the dataset to select all cells located in the mouse striatum and pallidum."
+    },
+    {
+      "entity": "striatum",
+      "label": "BrainRegion",
+      "context": "Then we used the parcellation_division label \"STR\" and \"PAL\" in the dataset to select all cells located in the mouse striatum and pallidum."
+    },
+    {
+      "entity": "pallidum",
+      "label": "BrainRegion",
+      "context": "Then we used the parcellation_division label \"STR\" and \"PAL\" in the dataset to select all cells located in the mouse striatum and pallidum."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "We then mapped the mouse genes to their human orthologs using the mouse human homologous gene table from the Mouse Genome informatics (MGI) database."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "We then mapped the mouse genes to their human orthologs using the mouse human homologous gene table from the Mouse Genome informatics (MGI) database."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "We then mapped the mouse genes to their human orthologs using the mouse human homologous gene table from the Mouse Genome informatics (MGI) database."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "We then mapped the mouse genes to their human orthologs using the mouse human homologous gene table from the Mouse Genome informatics (MGI) database."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes."
+    },
+    {
+      "entity": "MERFISH",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes."
+    },
+    {
+      "entity": "matrix",
+      "label": "BrainRegion",
+      "context": "Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "Following this, we computed the pseudobulk gene expression of each cell type at the supertype level for the mouse and at the group level for the human."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "Following this, we computed the pseudobulk gene expression of each cell type at the supertype level for the mouse and at the group level for the human."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "Then we performed the Pearson correlation between the mouse and human expression values."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "Then we performed the Pearson correlation between the mouse and human expression values."
+    },
+    {
+      "entity": "mouse",
+      "label": "SpeciesGroup",
+      "context": "Through this approach, we identified the mouse homologs of the human D1 Matrix and Striosome MSNs."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "Through this approach, we identified the mouse homologs of the human D1 Matrix and Striosome MSNs."
+    },
+    {
+      "entity": "MSNs",
+      "label": "MediumSpinyNeuronSubtype",
+      "context": "Through this approach, we identified the mouse homologs of the human D1 Matrix and Striosome MSNs."
+    },
+    {
+      "entity": "BICAN",
+      "label": "BrainAtlas",
+      "context": "Elizabeth and Edwin Monuki, along with our UCI colleagues, for their contributions to establishing the UCI BICAN Brain Bank and supporting the collection of neurotypical human brain samples."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "Elizabeth and Edwin Monuki, along with our UCI colleagues, for their contributions to establishing the UCI BICAN Brain Bank and supporting the collection of neurotypical human brain samples."
+    },
+    {
+      "entity": "Brain Initiative Cell Atlas Network",
+      "label": "BrainAtlas",
+      "context": "This publication was supported and coordinated through the Brain Initiative Cell Atlas Network (BICAN, RRID:SCR_022794)."
+    },
+    {
+      "entity": "BICAN",
+      "label": "BrainAtlas",
+      "context": "This publication was supported and coordinated through the Brain Initiative Cell Atlas Network (BICAN, RRID:SCR_022794)."
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "MERFISH+ spatial transcriptomics of a large human basal ganglia section visualized across scales."
+    },
+    {
+      "entity": "human basal ganglia",
+      "label": "BrainRegion",
+      "context": "MERFISH+ spatial transcriptomics of a large human basal ganglia section visualized across scales."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "Detailed information on human donor identification number, age, sex, race/ethnicity, postmortem interval (PMI) from time of death to tissue freezing,…"
+    },
+    {
+      "entity": "MERFISH+",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "Supplemental Data for the information related to the MERFISH+ encoding probes, adaptor probes, and readout probes and the gene panel codebook."
+    },
+    {
+      "entity": "Stereo-seq",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "Stereo-seq Analysis Workflow STOmics RRID:SCR_025001 STAR http://code.google.com/p/rna-star/ RRID:SCR_004463 Ensembl Ensembl RRID:…"
+    },
+    {
+      "entity": "Allen Institute",
+      "label": "BrainAtlas",
+      "context": "…gilent RRID:SCR_019547 Other 50mm x 64mm glass coverslips CellPath SAF-5064-02A Allen Institute for Brain Science http://www.brain-map.org RRID:SCR_006491 BRAIN Initiative Cell Atlas Network BRAIN In"
+    },
+    {
+      "entity": "DNBSEQ-T7",
+      "label": "SequencingPlatform",
+      "context": "…) RRID:SCR_016152 Echo Revolution microscope Discover Echo RRID: SCR_027699 MGI DNBSEQ-T7 Genetic Sequencer MGI RRID:SCR_024847 Complete Genomics Complete Genomics RRID:SCR_027007 PacGenomics PacGeno"
+    },
+    {
+      "entity": "Brain Image Board",
+      "label": "BrainAtlas",
+      "context": "Image and sequencing data are in the process of being deposited at the Brain Image Board (IRB)."
+    },
+    {
+      "entity": "human",
+      "label": "SpeciesGroup",
+      "context": "These adult human postmortem brain samples were from white males of 36 to 53 years old and showed no evidence of neurodegenerative pathology (Table S1)."
+    },
+    {
+      "entity": "Stereo-seq data",
+      "label": "SpatialTranscriptomicPlatform",
+      "context": "We processed the Stereo-seq data using the standard analysis workflow software The pipeline takes three files as an input: (1) paired-end FASTQ files, (…"
+    },
+    {
+      "entity": "striosome borders",
+      "label": "BrainRegion",
+      "context": "We first identified the contours for striosome borders from the spatial map of the brain section using the function findcontours from the Opencv package."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "Then we used the KDTree module from SciPy 81 to find the distance of each cell from the contour of the nearest striosome."
+    },
+    {
+      "entity": "striosome compartment",
+      "label": "BrainRegion",
+      "context": "We set the distance of cells within the striosome compartment as positive and negative for those that are outside."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "When doing the calculation, we only considered cells that are 200 microns away from the striosome border and 500 microns into the center of the striosome."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "When doing the calculation, we only considered cells that are 200 microns away from the striosome border and 500 microns into the center of the striosome."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "We also removed cell types that were very sparse -with less than 1 % abundance near the striosome."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "To quantify the gene expression gradient with respect to the border striosomes, we computed the mean log1p gene expression of cells that are within the binned distances."
+    },
+    {
+      "entity": "striosome",
+      "label": "BrainRegion",
+      "context": "Then, we performed lowess regression using the statsmodel package to quantify the dependence of the mean gene expression on the distance of cells from the striosomes."
+    }
+  ]
+}
