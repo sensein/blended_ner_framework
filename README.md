@@ -30,7 +30,9 @@ If pi is installed and running in this repository, start the workflow by enterin
 
 This invokes the prompt at `.pi/prompts/ner_pipeline.md`.
 
-## Usage
+## Tools (used by the `/ner_pipeline` workflow)
+
+These scripts can be run directly, but they are primarily intended to be invoked by the agentic pipeline prompt.
 
 ### 1) Parse and chunk a PDF
 
