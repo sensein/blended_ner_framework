@@ -66,16 +66,8 @@ import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterator, List, Optional, Tuple
+from typing import Any, Iterator, List, Optional, Tuple
 from xml.etree import ElementTree as ET
-
-# `requests` is used only by GrobidClient; importing at module top-level is
-# fine because it is a near-universal dependency. If absent at runtime we
-# fail loudly with a clear install hint.
-try:
-    import requests
-except ImportError:  # pragma: no cover
-    requests = None  # type: ignore[assignment]
 
 
 # ---------------------------------------------------------------------------
@@ -167,21 +159,26 @@ class GrobidClient:
         timeout: float = 300.0,
         consolidate_citations: int = 0,
     ) -> None:
-        if requests is None:
+        try:
+            import requests as requests_mod
+        except ImportError as exc:  # pragma: no cover
             raise ImportError(
                 "The `requests` package is required for GrobidClient. "
-                "Install with: pip install requests"
-            )
+                "Install with: uv add requests"
+            ) from exc
+
+        self._requests: Any = requests_mod
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
         self.consolidate_citations = consolidate_citations
 
     def is_alive(self) -> bool:
         """Return True if the Grobid server responds at /api/isalive."""
+        req = self._requests
         try:
-            r = requests.get(self.base_url + self.ISALIVE_ENDPOINT, timeout=5)
+            r = req.get(self.base_url + self.ISALIVE_ENDPOINT, timeout=5)
             return r.status_code == 200
-        except requests.RequestException:
+        except req.RequestException:
             return False
 
     def process_fulltext(self, pdf_path: Path) -> str:
@@ -210,15 +207,16 @@ class GrobidClient:
             raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
         url = self.base_url + self.FULLTEXT_ENDPOINT
+        req = self._requests
         try:
             with pdf_path.open("rb") as fh:
-                resp = requests.post(
+                resp = req.post(
                     url,
                     files={"input": (pdf_path.name, fh, "application/pdf")},
                     data={"consolidateCitations": str(self.consolidate_citations)},
                     timeout=self.timeout,
                 )
-        except requests.RequestException as exc:
+        except req.RequestException as exc:
             raise RuntimeError(
                 f"Grobid request to {url} failed: {exc}. "
                 f"Is the Grobid server running and reachable?"
@@ -483,17 +481,11 @@ class OffsetTracker:
         sorted_spans = sorted(spans, key=lambda s: (s.start, -s.length))
         accepted: List[NerSpan] = []
         for cand in sorted_spans:
-            dominated = False
-            for kept in accepted:
-                if not cand.overlaps(kept):
-                    continue
-                if cand.length > kept.length:
-                    accepted.remove(kept)
-                    break
-                dominated = True
-                break
-            if not dominated:
-                accepted.append(cand)
+            overlapping = [kept for kept in accepted if cand.overlaps(kept)]
+            if any(kept.length >= cand.length for kept in overlapping):
+                continue
+            accepted = [kept for kept in accepted if not cand.overlaps(kept)]
+            accepted.append(cand)
         return sorted(accepted, key=lambda s: s.start)
 
     def resolve_surface(self, span: NerSpan) -> str:
@@ -650,11 +642,11 @@ def _chunk_pdf_with_pymupdf4llm(
 ) -> Tuple[List[TextChunk], OffsetTracker]:
     """Parse a PDF with PyMuPDF4LLM and return chunks + offset tracker."""
     try:
-        import pymupdf4llm
-    except ImportError as exc:  # pragma: no cover
+        import pymupdf4llm  # pyright: ignore[reportMissingImports]
+    except Exception as exc:  # pragma: no cover
         raise RuntimeError(
-            "PyMuPDF4LLM parser requested but dependency is missing. "
-            "Install with: `uv add pymupdf4llm`"
+            "PyMuPDF4LLM parser requested but the package failed to import. "
+            "Install with: `uv add pymupdf4llm` and activate the project virtualenv."
         ) from exc
 
     print(f"→ Parsing {pdf_path.name} with PyMuPDF4LLM ...", file=sys.stderr)
