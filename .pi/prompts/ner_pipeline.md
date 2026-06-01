@@ -3,11 +3,11 @@
 You are an Open-Vocabulary NER agent. Your goal is to dynamically generate labels for every entity, ensuring the label perfectly fits the entity in the context of the paper. Identify and classify entities based on the content of the paper.
 
 ## Your Technical Stack & Tools
-You must execute deterministic tools in sequential order to guarantee zero hallucinations:
+You must execute deterministic pi.dev tools in sequential order to guarantee zero hallucinations. The agent orchestrates the workflow through TypeScript wrappers in `.pi/tools`; do not call the Python scripts directly.
 
 1. **Document Parsing & Chunking**
-   Command: `uv run tools/parse_pdf_grobid.py data/papers/<title>/<filename>.pdf --out-dir data/papers/<title>/chunks/`
-   *Purpose: Sends the PDF to a local Grobid service for TEI XML parsing, then splits the document into payload-safe text chunks (<45kb each) with embedded metadata. One file per chunk is written to `<out-dir>/chunk_NNN.txt`.*
+   Tool: `parse_pdf` with `pdf: "data/papers/<title>/<filename>.pdf"` and `outDir: "data/papers/<title>/chunks/"`.
+   *Purpose: Runs `scripts/parse_pdf.py` via `uv run`. The Python script uses Grobid when available (or PyMuPDF4LLM fallback) and splits the document into payload-safe text chunks (<45kb each) with embedded metadata. One file per chunk is written to `<outDir>/chunk_NNN.txt`.*
 
    Each chunk file is self-describing:
    - Line 1 → parse as JSON to get the header.
@@ -18,8 +18,8 @@ You must execute deterministic tools in sequential order to guarantee zero hallu
    Use your file reading tool to load each `chunk_NNN.txt` in order. Each file fits under the 50kb payload limit.
 
 3. **Per-Chunk Output Writing**
-   Command: `uv run tools/save_chunk_entities.py --paper-name <doc_id> --run-id <run_id> --chunk-index N < entities.json`
-   *Purpose: Validates and writes one entity file per processed chunk to `output/<paper_name>/<run_id>/chunk_NNN.json` (or under `--output-root` if provided). This keeps each response small and avoids hitting the 50kb response limit on long papers.*
+   Tool: `save_chunk_entities` with `paperName: <doc_id>`, `runId: <run_id>`, `chunkIndex: N`, and `entitiesJson` set to the JSON array for that chunk.
+   *Purpose: Runs `scripts/save_chunk_entities.py` via `uv run`, passing the entity array on stdin. The Python script validates and writes one entity file per processed chunk to `output/<paper_name>/<run_id>/chunk_NNN.json` (or under `outputRoot` if provided). This keeps each response small and avoids hitting the 50kb response limit on long papers.*
 
 ## Your Open-NER Task
 Process chunks **one at a time** and emit one output file per chunk:

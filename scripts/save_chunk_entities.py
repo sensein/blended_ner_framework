@@ -24,7 +24,7 @@ This tool exists for three reasons:
 Usage
 -----
     echo '[{"entity":"S1","label":"BrainRegion","context":"..."}]' | \\
-        uv run tools/save_chunk_entities.py \\
+        uv run scripts/save_chunk_entities.py \\
             --paper-name smith_2024 \\
             --run-id 20260528T143215_a3f1 \\
             --chunk-index 0

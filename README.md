@@ -2,10 +2,11 @@
 
 A local, chunk-based NER workflow for neuroscience papers.
 
-This project is built around two CLI tools:
+This project is built around two core Python scripts plus thin pi.dev agent wrappers:
 
-- `tools/parse_pdf_grobid.py` — parses a PDF via Grobid or PyMuPDF4LLM and writes payload-safe chunk files (`chunk_000.txt`, `chunk_001.txt`, ...).
-- `tools/save_chunk_entities.py` — validates a JSON entity array from `stdin` and writes one per-chunk result file under `output/<paper_name>/<run_id>/`.
+- `scripts/parse_pdf.py` — parses a PDF via Grobid or PyMuPDF4LLM and writes payload-safe chunk files (`chunk_000.txt`, `chunk_001.txt`, ...).
+- `scripts/save_chunk_entities.py` — validates a JSON entity array from `stdin` and writes one per-chunk result file under `output/<paper_name>/<run_id>/`.
+- `.pi/tools/parse_pdf.ts` and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
 
 ## Requirements
 
@@ -30,14 +31,14 @@ If pi is installed and running in this repository, start the workflow by enterin
 
 This invokes the prompt at `.pi/prompts/ner_pipeline.md`.
 
-## Tools (used by the `/ner_pipeline` workflow)
+## Core scripts and agent tools
 
-These scripts can be run directly, but they are primarily intended to be invoked by the agentic pipeline prompt.
+The core Python scripts can be run directly. The `/ner_pipeline` workflow should use the pi.dev wrappers in `.pi/tools` instead of calling Python directly.
 
 ### 1) Parse and chunk a PDF
 
 ```bash
-uv run tools/parse_pdf_grobid.py data/papers/example.pdf --out-dir data/papers/example.chunks
+uv run scripts/parse_pdf.py data/papers/example.pdf --out-dir data/papers/example.chunks
 ```
 
 Useful options:
@@ -68,7 +69,7 @@ Example:
 
 ```bash
 echo '[{"entity":"S1","label":"BrainRegion","context":"Layer IV of S1..."}]' \
-  | uv run tools/save_chunk_entities.py \
+  | uv run scripts/save_chunk_entities.py \
       --paper-name example \
       --run-id 20260528T143215_a3f1 \
       --chunk-index 0
@@ -84,9 +85,15 @@ output/example/20260528T143215_a3f1/chunk_000.json
 
 ```text
 .
-├── tools/
-│   ├── parse_pdf_grobid.py
+├── scripts/
+│   ├── parse_pdf.py
 │   └── save_chunk_entities.py
+├── .pi/
+│   ├── prompts/
+│   │   └── ner_pipeline.md
+│   └── tools/
+│       ├── parse_pdf.ts
+│       └── save_chunk_entities.ts
 ├── data/
 ├── output/
 ├── pyproject.toml
