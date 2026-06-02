@@ -2,9 +2,10 @@
 
 A local, chunk-based NER workflow for neuroscience papers.
 
-This project is built around two core Python scripts plus thin pi.dev agent wrappers:
+This project is built around core Python scripts plus thin pi.dev agent wrappers:
 
-- `scripts/parse_pdf.py` — parses a PDF via Grobid or PyMuPDF4LLM and writes payload-safe chunk files (`chunk_000.txt`, `chunk_001.txt`, ...).
+- `scripts/ingest_chunk.py` — parses a PDF via local Grobid when available, falls back to PyMuPDF4LLM, and writes model-token-aware chunk files (`chunk_000.txt`, `chunk_001.txt`, ...).
+- `scripts/parse_pdf.py` — legacy character-based PDF chunker.
 - `scripts/save_chunk_entities.py` — validates a JSON entity array from `stdin` and writes one per-chunk result file under `output/<paper_name>/<run_id>/`.
 - `.pi/tools/parse_pdf.ts` and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
 
@@ -37,17 +38,49 @@ The core Python scripts can be run directly. The `/ner_pipeline` workflow should
 
 ### 1) Parse and chunk a PDF
 
+Recommended token-aware chunking:
+
 ```bash
-uv run scripts/parse_pdf.py data/papers/example.pdf --out-dir data/papers/example.chunks
+uv run scripts/ingest_chunk.py data/papers/example.pdf \
+  --model-id Qwen/Qwen2.5-7B-Instruct \
+  --out-dir data/papers/example/<datetime>/chunks/ \
+  --max-tokens 4000
+```
+
+The `--model-id` argument is the Hugging Face tokenizer/model ID used for chunking, not necessarily the model used later for NER. The tokenizer is loaded with `AutoTokenizer.from_pretrained(...)`; this may download tokenizer files into the local Hugging Face cache, but it does not download or run full model weights.
+
+Use `--max-tokens` to choose a chunk size suitable for the downstream LLM that will process each chunk. For GPT-5.5-style downstream processing, `--max-tokens 4000` is a practical reliability-oriented default that keeps each chunk comfortably sized for extraction and saving.
+
+Example request:
+
+```text
+Process data/papers/multiscale_spatial_transcriptomic/2025.12.02.691876v1.full.pdf using modelId Qwen/Qwen2.5-7B-Instruct and outDir data/papers/multiscale_spatial_transcriptomic/<datetime>/chunks/. I will be using gpt5.5 when processing the chunks so choose max-tokens accordingly.
+```
+
+Equivalent command:
+
+```bash
+dt=$(date +%Y%m%dT%H%M%S)
+uv run scripts/ingest_chunk.py \
+  data/papers/multiscale_spatial_transcriptomic/2025.12.02.691876v1.full.pdf \
+  --model-id Qwen/Qwen2.5-7B-Instruct \
+  --out-dir "data/papers/multiscale_spatial_transcriptomic/${dt}/chunks/" \
+  --max-tokens 4000
 ```
 
 Useful options:
 
-- `--parser auto` (default: try Grobid, fall back to PyMuPDF4LLM)
-- `--parser grobid` (force Grobid)
-- `--parser pymupdf4llm` (force PyMuPDF4LLM)
+- `--model-id <hugging-face-model-id>` (required tokenizer used for token-aware chunking)
+- `--out-dir <path>`
+- `--max-tokens 4000` (override tokenizer-derived chunk limit)
 - `--grobid-url http://localhost:8070`
-- `--max-chars 45000`
+- `--grobid-timeout 60`
+
+Legacy character-based chunking is still available:
+
+```bash
+uv run scripts/parse_pdf.py data/papers/example.pdf --out-dir data/papers/example.chunks
+```
 
 Chunk file format:
 
@@ -86,6 +119,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 ```text
 .
 ├── scripts/
+│   ├── ingest_chunk.py
 │   ├── parse_pdf.py
 │   └── save_chunk_entities.py
 ├── .pi/
