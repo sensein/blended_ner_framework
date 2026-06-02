@@ -7,33 +7,36 @@ const execFileAsync = promisify(execFile);
 export default {
   name: "parse_pdf",
   description:
-    "Parse a PDF into payload-safe chunk files by running scripts/parse_pdf.py via uv. Heavy PDF parsing and file I/O stay inside the Python script; this wrapper returns only lightweight execution metadata.",
+    "Parse a PDF into model-token-aware chunk files by running scripts/ingest_chunk.py via uv. The Python script tries local Grobid first, falls back to PyMuPDF4LLM, and chunks with the Hugging Face tokenizer for the provided modelId.",
   parameters: Type.Object({
     pdf: Type.String({ description: "Path to the input PDF." }),
+    modelId: Type.String({
+      description:
+        "Hugging Face model identifier whose tokenizer should be used for token-aware chunking, e.g. bert-base-uncased or any accessible LLM tokenizer.",
+    }),
     outDir: Type.Optional(
       Type.String({ description: "Directory where chunk_NNN.txt files should be written." }),
-    ),
-    parser: Type.Optional(
-      Type.Union([
-        Type.Literal("auto"),
-        Type.Literal("grobid"),
-        Type.Literal("pymupdf4llm"),
-      ], { description: "Parser backend to use. Defaults to auto." }),
     ),
     grobidUrl: Type.Optional(
       Type.String({ description: "Base URL of the local Grobid service." }),
     ),
-    maxChars: Type.Optional(
-      Type.Number({ description: "Maximum characters per chunk." }),
+    grobidTimeout: Type.Optional(
+      Type.Number({ description: "Timeout in seconds for Grobid parse requests." }),
+    ),
+    maxTokens: Type.Optional(
+      Type.Number({
+        description:
+          "Optional maximum tokenizer tokens per chunk. If omitted, the script derives a limit from tokenizer.model_max_length.",
+      }),
     ),
   }),
   async execute(_toolCallId: string, params: any, signal?: AbortSignal) {
-    const args = ["run", "scripts/parse_pdf.py", params.pdf];
+    const args = ["run", "scripts/ingest_chunk.py", params.pdf, "--model-id", params.modelId];
 
     if (params.outDir) args.push("--out-dir", params.outDir);
-    if (params.parser) args.push("--parser", params.parser);
     if (params.grobidUrl) args.push("--grobid-url", params.grobidUrl);
-    if (params.maxChars !== undefined) args.push("--max-chars", String(params.maxChars));
+    if (params.grobidTimeout !== undefined) args.push("--grobid-timeout", String(params.grobidTimeout));
+    if (params.maxTokens !== undefined) args.push("--max-tokens", String(params.maxTokens));
 
     try {
       const { stdout, stderr } = await execFileAsync("uv", args, {
@@ -41,7 +44,11 @@ export default {
         maxBuffer: 1024 * 1024,
       });
       const chunkPaths = stdout.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
-      const summaryLine = stderr.split(/\r?\n/).find((line) => line.includes("Wrote")) ?? "parse_pdf completed";
+      const summaryLine =
+        stderr
+          .split(/\r?\n/)
+          .filter((line) => line.includes("wrote") || line.includes("Wrote"))
+          .pop() ?? "parse_pdf completed";
 
       return {
         content: [
@@ -54,6 +61,7 @@ export default {
           command: `uv ${args.join(" ")}`,
           chunkCount: chunkPaths.length,
           outDir: params.outDir,
+          modelId: params.modelId,
         },
       };
     } catch (error: any) {
