@@ -10,7 +10,8 @@ This project is built around core Python scripts plus thin pi.dev agent wrappers
 - `scripts/hybrid_ner_orchestrator.py` — derives GLiNER labels from both explicit user intent and a document text sample, then invokes the local GLiNER runner.
 - `scripts/ner.py` — local GLiNER runner that accepts `--input` and `--labels`, runs GLiNER over chunk/text files, and writes JSON outputs.
 - `scripts/llm_refinement.py` — injects GLiNER entities inline as `[Entity](LABEL)`, sends decorated chunks to an LLM for verification/deep-pass extraction, and writes `llm_pass1_entities.json`.
-- `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, `.pi/tools/llm_refinement.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
+- `scripts/llm_masked_pass.py` — masks pass-1 entities with `*`, runs a blind LLM recall pass for missed entities, and writes `master_extracted_entities.json`.
+- `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, `.pi/tools/llm_refinement.ts`, `.pi/tools/llm_masked_pass.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
 
 ## Requirements
 
@@ -197,7 +198,34 @@ uv run scripts/llm_refinement.py \
   --dry-run
 ```
 
-### 4) Save NER output for one chunk
+### 4) Run masked LLM recall and write the master entity list
+
+After `llm_pass1_entities.json` exists, run a blind masked pass to force the LLM to search only the unmasked text for missed entities:
+
+```bash
+uv run scripts/llm_masked_pass.py \
+  --llm-pass1 output/gliner/20260602T192415/llm_pass1_entities.json \
+  --model gpt-5.5
+```
+
+This writes by default:
+
+```text
+output/gliner/20260602T192415/master_extracted_entities.json
+output/gliner/20260602T192415/llm_masked_pass_artifacts/masked_text/
+```
+
+The masked text artifacts replace already-validated pass-1 entities with same-length `*` blocks. This preserves character positions while preventing the LLM from re-extracting previously found entities.
+
+Dry run without calling the LLM:
+
+```bash
+uv run scripts/llm_masked_pass.py \
+  --llm-pass1 output/gliner/20260602T192415/llm_pass1_entities.json \
+  --dry-run
+```
+
+### 5) Save NER output for one chunk
 
 `save_chunk_entities.py` expects a JSON **array** on `stdin`:
 
@@ -230,6 +258,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 ├── scripts/
 │   ├── hybrid_ner_orchestrator.py
 │   ├── ingest_chunk.py
+│   ├── llm_masked_pass.py
 │   ├── llm_refinement.py
 │   ├── ner.py
 │   ├── parse_pdf.py
@@ -239,6 +268,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 │   │   └── ner_pipeline.md
 │   └── tools/
 │       ├── hybrid_ner_orchestrator.ts
+│       ├── llm_masked_pass.ts
 │       ├── llm_refinement.ts
 │       ├── parse_pdf.ts
 │       └── save_chunk_entities.ts
