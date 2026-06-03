@@ -1,0 +1,137 @@
+[
+  {
+    "entity": "mouse",
+    "label": "ORGANISM",
+    "score": 0.9465689659118652,
+    "start": 111,
+    "end": 116,
+    "context": "d the parcellation_division label \"STR\" and \"PAL\" in the dataset to select all cells located in the mouse striatum and pallidum. Next, we filtered the data by removing low abundance cell types; cell types",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "striatum",
+    "label": "BRAIN_STRUCTURE",
+    "score": 0.6198655962944031,
+    "start": 117,
+    "end": 125,
+    "context": "parcellation_division label \"STR\" and \"PAL\" in the dataset to select all cells located in the mouse striatum and pallidum. Next, we filtered the data by removing low abundance cell types; cell types with less",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "pallidum",
+    "label": "BRAIN_STRUCTURE",
+    "score": 0.58023601770401,
+    "start": 130,
+    "end": 138,
+    "context": "division label \"STR\" and \"PAL\" in the dataset to select all cells located in the mouse striatum and pallidum. Next, we filtered the data by removing low abundance cell types; cell types with less than 150 cel",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "mouse",
+    "label": "ORGANISM",
+    "score": 0.7111790776252747,
+    "start": 267,
+    "end": 272,
+    "context": "by removing low abundance cell types; cell types with less than 150 cell counts. We then mapped the mouse genes to their human orthologs using the mouse human homologous gene table from the Mouse Genome in",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.7677901387214661,
+    "start": 273,
+    "end": 278,
+    "context": "oving low abundance cell types; cell types with less than 150 cell counts. We then mapped the mouse genes to their human orthologs using the mouse human homologous gene table from the Mouse Genome informat",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "mouse",
+    "label": "ORGANISM",
+    "score": 0.5755561590194702,
+    "start": 314,
+    "end": 319,
+    "context": "s with less than 150 cell counts. We then mapped the mouse genes to their human orthologs using the mouse human homologous gene table from the Mouse Genome informatics (MGI) database. Next, we identified t",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.7503641843795776,
+    "start": 422,
+    "end": 427,
+    "context": "man homologous gene table from the Mouse Genome informatics (MGI) database. Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both m",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "mouse",
+    "label": "ORGANISM",
+    "score": 0.7956036925315857,
+    "start": 447,
+    "end": 452,
+    "context": "from the Mouse Genome informatics (MGI) database. Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the com",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "mouse",
+    "label": "ORGANISM",
+    "score": 0.803755521774292,
+    "start": 526,
+    "end": 531,
+    "context": "s shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes. Following this, we computed the pseudobulk gene expression of each c",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.8597362041473389,
+    "start": 556,
+    "end": 561,
+    "context": "human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes. Following this, we computed the pseudobulk gene expression of each cell type at the supertype leve",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "mouse",
+    "label": "ORGANISM",
+    "score": 0.8066104054450989,
+    "start": 671,
+    "end": 676,
+    "context": "g this, we computed the pseudobulk gene expression of each cell type at the supertype level for the mouse and at the group level for the human. Then we performed the Pearson correlation between the mouse a",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "mouse",
+    "label": "ORGANISM",
+    "score": 0.6720952391624451,
+    "start": 769,
+    "end": 774,
+    "context": "e mouse and at the group level for the human. Then we performed the Pearson correlation between the mouse and human expression values. Through this approach, we identified the mouse homologs of the human D",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "Striosome MSNs",
+    "label": "STRIOSOME_MATRIX_COMPARTMENT",
+    "score": 0.6390985250473022,
+    "start": 887,
+    "end": 901,
+    "context": "pression values. Through this approach, we identified the mouse homologs of the human D1 Matrix and Striosome MSNs. Both Main Figure 7 Figure 1. Figure 2. Figure 3. Figure 4. Figure 5. Figure 6. Figure 7. F",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "human",
+    "label": "ORGANISM",
+    "score": 0.6410633325576782,
+    "start": 1457,
+    "end": 1462,
+    "context": "ontributions to establishing the UCI BICAN Brain Bank and supporting the collection of neurotypical human brain samples. This work was in part funded by the NIH grant [UM1MH130994 Center for Multiomic Huma",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "human",
+    "label": "ORGANISM",
+    "score": 0.7642399072647095,
+    "start": 1888,
+    "end": 1893,
+    "context": "UTIONS Supplementary Materials Supplementary Movie 1. MERFISH+ spatial transcriptomics of a large human basal ganglia section visualized across scales. The movie depicts successively greater magnified vi",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  }
+]

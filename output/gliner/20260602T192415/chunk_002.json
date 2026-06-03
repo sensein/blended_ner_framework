@@ -1,0 +1,29 @@
+[
+  {
+    "entity": "mouse",
+    "label": "ORGANISM",
+    "score": 0.5004063844680786,
+    "start": 520,
+    "end": 525,
+    "context": "h delineates boundary-aligned glial microdomains. Cross-species comparison with the MERFISH-derived mouse cell type atlas 10,14 identifies orthologous MSN counterparts (e.g., mouse 0268 D1 and 0267 D1 supe",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  },
+  {
+    "entity": "projection-inferred connectivity",
+    "label": "NEURAL_PATHWAY",
+    "score": 0.8023034930229187,
+    "start": 1229,
+    "end": 1261,
+    "context": "cture MERFISH+ subcellular transcript localizations enable characterization of cell morphology and projection-inferred connectivity. Our 3D analysis of RNA transcript localization provides soma-volume measurements that span ~5-fold",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  },
+  {
+    "entity": "basal ganglia",
+    "label": "BASAL_GANGLIA_REGION",
+    "score": 0.7954649329185486,
+    "start": 2016,
+    "end": 2029,
+    "context": "MSNs are among the smallest. These findings are supported by previous histological observations in basal ganglia [51][52][53]. While the nine MSN subtypes show largely similar volumes, SST+ interneuron subclasses",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  }
+]

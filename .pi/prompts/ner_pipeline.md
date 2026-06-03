@@ -16,17 +16,23 @@ You must execute deterministic pi.dev tools in sequential order to guarantee zer
    - Line 2 → `---` separator (skip).
    - Lines 3+ → the chunk body. Send only the body to your NER reasoning, never the header.
 
-2. **File Reading**
+2. **Hybrid Label Generation for GLiNER**
+   Tool: `hybrid_ner_orchestrator` with `prompt: "<the user's natural-language request including the target path and desired entity focus>"`, optional `model`, optional `sampleChars`, optional `nerScript`, optional `dryRun`, and optional `extraNerArgs`.
+   *Purpose: Runs `scripts/hybrid_ner_orchestrator.py` via `uv run`. The Python script automatically loads repo-root `.env`, infers the target file/folder path from the natural-language prompt, samples the target text or first generated chunk, sends both explicit user intent and the document sample to an LLM via LiteLLM, validates a single deduplicated list of 20–30 uppercase neuroscience labels with Pydantic, prints the labels, and optionally invokes the local GLiNER script (`scripts/ner.py` by default) with `--input <target> --labels <COMMA,SEPARATED,LABELS>`.*
+
+   Use this tool when the user asks for GLiNER/local NER execution, fixed label generation, hybrid label generation, or intent-plus-document-driven labels. If the user only asks to parse/chunk a PDF, do not run GLiNER.
+
+3. **File Reading**
    Use your file reading tool to load each `chunk_NNN.txt` in order. Each file fits under the 50kb payload limit.
 
-3. **Per-Chunk Output Writing**
+4. **Per-Chunk Output Writing**
    Tool: `save_chunk_entities` with `paperName: <doc_id>`, `runId: <run_id>`, `chunkIndex: N`, and `entitiesJson` set to the JSON array for that chunk.
    *Purpose: Runs `scripts/save_chunk_entities.py` via `uv run`, passing the entity array on stdin. The Python script validates and writes one entity file per processed chunk to `output/<paper_name>/<run_id>/chunk_NNN.json` (or under `outputRoot` if provided). This keeps each response small and avoids hitting the 50kb response limit on long papers.*
 
 ## Anti-Loop Execution Rule
 Do **not** narrate intentions. Do **not** say “I need to…”, “Let me…”, “I will…”, or “Now I have…”. Those are failure modes.
 
-When the next action is deterministic, immediately call the appropriate tool. Do not read source code or prompt files to learn how to run the pipeline; the instructions in this active prompt are authoritative. There is no separate NER pipeline script to discover or run. The NER pipeline is this prompt plus the `parse_pdf`, file-reading, and `save_chunk_entities` tools. Never search the codebase for a pipeline script. Never read `scripts/ingest_chunk.py`, `scripts/parse_pdf.py`, `scripts/save_chunk_entities.py`, `.pi/tools/*.ts`, or `.pi/prompts/ner_pipeline.md` as part of the NER workflow unless the user explicitly asks you to modify/debug the code or prompt. When the next action is NER extraction, immediately produce the chunk’s JSON entity array and call `save_chunk_entities` in the same turn. Never stop after saying that you are going to extract or save.
+When the next action is deterministic, immediately call the appropriate tool. Do not read source code or prompt files to learn how to run the pipeline; the instructions in this active prompt are authoritative. There is no separate NER pipeline script to discover or run. The NER pipeline is this prompt plus the `parse_pdf`, optional `hybrid_ner_orchestrator`, file-reading, and `save_chunk_entities` tools. Never search the codebase for a pipeline script. Never read `scripts/ingest_chunk.py`, `scripts/parse_pdf.py`, `scripts/hybrid_ner_orchestrator.py`, `scripts/save_chunk_entities.py`, `.pi/tools/*.ts`, or `.pi/prompts/ner_pipeline.md` as part of the NER workflow unless the user explicitly asks you to modify/debug the code or prompt. When the next action is NER extraction, immediately produce the chunk’s JSON entity array and call `save_chunk_entities` in the same turn. Never stop after saying that you are going to extract or save.
 
 For each chunk, the required sequence is:
 
@@ -40,9 +46,11 @@ If a chunk is long, still complete the extraction and save for that chunk. Do no
 ## Your Open-NER Task
 Process chunks **one at a time** and emit one output file per chunk:
 
-1. Run the parsing & chunking command (Step 1), or if chunks already exist/regeneration just succeeded, proceed directly to reading chunks. Read the header of `chunk_000.txt` to learn `total_chunks` and `doc_id` (use `doc_id` as `--paper-name` when saving). Use the orchestrator-provided `run_id` verbatim for every chunk in this paper. Do not inspect helper scripts after chunking; the next action is always to read `chunk_000.txt`.
+1. Run the parsing & chunking command (Step 1), or if chunks already exist/regeneration just succeeded, proceed directly to the next applicable action. Read the header of `chunk_000.txt` to learn `total_chunks` and `doc_id` (use `doc_id` as `--paper-name` when saving). Use the orchestrator-provided `run_id` verbatim for every chunk in this paper. Do not inspect helper scripts after chunking; the next action is always either hybrid GLiNER label generation (when requested) or reading `chunk_000.txt`.
 
-2. For each chunk index `i` from `0` to `total_chunks - 1`:
+2. If the user requested GLiNER/local NER or hybrid label generation, immediately call `hybrid_ner_orchestrator` after chunking. Pass the user's natural-language request as `prompt`, preserving the target path and entity intent. If chunks were just generated and the user's original path was a PDF, include the generated chunks directory in the prompt so the orchestrator samples `chunk_000.txt`. Use `dryRun: true` only if the user asked to preview labels without running GLiNER. After this tool completes, report the generated labels/tool result. Do not continue to manual per-chunk extraction unless the user also explicitly requested agent-based extraction and per-chunk JSON saves.
+
+3. For each chunk index `i` from `0` to `total_chunks - 1`:
    a. Read `chunk_NNN.txt` and split on `---` to get `(header, body)`.
    b. Identify **every neuroscience entity mention** in `body`. Dynamically generate a label for each based on context.
    c. **Do not deduplicate.** If an entity appears 5 times in the chunk, emit 5 records. Repeat mentions matter for downstream frequency analysis.

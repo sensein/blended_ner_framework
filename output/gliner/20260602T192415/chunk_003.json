@@ -1,0 +1,155 @@
+[
+  {
+    "entity": "transcripts",
+    "label": "RNA",
+    "score": 0.765215277671814,
+    "start": 94,
+    "end": 105,
+    "context": "Scale bars as indicated. somatic morphology and projection signatures. (A) Images of MERFISH+ transcripts pseudo-colored to indicate subcellular localization: nuclear (white), cytoplasmic (yellow), and put",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "DAPI",
+    "label": "RNA",
+    "score": 0.7630457878112793,
+    "start": 377,
+    "end": 381,
+    "context": "localization profiles highlight cell-type-specific soma size, shape, and putative neuritic extent. DAPI shown in blue but largely masked by the nuclear transcript signal. (B) Estimated soma means and ran",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "Genes",
+    "label": "GENE",
+    "score": 0.7887001633644104,
+    "start": 726,
+    "end": 731,
+    "context": "n (A). (C) Plot of differential gene expression between D1 and D2 matrix MSNs measured by MERFISH+. Genes are ranked based on differential expressions. Top differential expressed genes are annotated. (D) S",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.8191216588020325,
+    "start": 805,
+    "end": 810,
+    "context": "easured by MERFISH+. Genes are ranked based on differential expressions. Top differential expressed genes are annotated. (D) Spatial maps of transcripts localized in putative cellular processes for genes e",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "transcripts",
+    "label": "RNA",
+    "score": 0.6458449959754944,
+    "start": 846,
+    "end": 857,
+    "context": "ed on differential expressions. Top differential expressed genes are annotated. (D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; t",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.7234799265861511,
+    "start": 903,
+    "end": 908,
+    "context": "d genes are annotated. (D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom).",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "RELN",
+    "label": "GENE",
+    "score": 0.6956591010093689,
+    "start": 937,
+    "end": 941,
+    "context": "maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation map",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "EBF1",
+    "label": "GENE",
+    "score": 0.8116769194602966,
+    "start": 943,
+    "end": 947,
+    "context": "of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "SLIT2",
+    "label": "GENE",
+    "score": 0.7923968434333801,
+    "start": 949,
+    "end": 954,
+    "context": "nscripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D1 matri",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "D2",
+    "label": "ORGANISM",
+    "score": 0.5290318131446838,
+    "start": 965,
+    "end": 967,
+    "context": "ed in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D1 matrix MSN (top) a",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "PENK",
+    "label": "GENE",
+    "score": 0.7681350708007812,
+    "start": 987,
+    "end": 991,
+    "context": "r processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "CHRM3",
+    "label": "GENE",
+    "score": 0.7845370173454285,
+    "start": 993,
+    "end": 998,
+    "context": "esses for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom) gene",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "putative cellular processes",
+    "label": "CELLULAR_COMMUNITY",
+    "score": 0.5330861806869507,
+    "start": 1132,
+    "end": 1159,
+    "context": "ation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom) gene expression with the expression in putative cellular processes across the entire posterior section (AP34a). Dashed blue outline marks GPe and dashed yellow outlin",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "posterior section",
+    "label": "BASAL_GANGLIA_REGION",
+    "score": 0.5558738112449646,
+    "start": 1178,
+    "end": 1195,
+    "context": "x MSN (bottom) gene expression with the expression in putative cellular processes across the entire posterior section (AP34a). Dashed blue outline marks GPe and dashed yellow outline marks GPi. Projection-biased local",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "transcripts",
+    "label": "RNA",
+    "score": 0.5938970446586609,
+    "start": 1405,
+    "end": 1416,
+    "context": "flects direct (D1→GPi) versus indirect (D2→GPe) pathway topology. (F) Gene expression map of SEMA3E transcripts modules of the human basal ganglia (A) Spatial map of major cell types of the posterior section (as",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "BRAIN_STRUCTURE",
+    "score": 0.5769544243812561,
+    "start": 1432,
+    "end": 1451,
+    "context": "us indirect (D2→GPe) pathway topology. (F) Gene expression map of SEMA3E transcripts modules of the human basal ganglia (A) Spatial map of major cell types of the posterior section (as shown in Figure 2D) and inferred c",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "posterior section",
+    "label": "BASAL_GANGLIA_REGION",
+    "score": 0.5765833258628845,
+    "start": 1495,
+    "end": 1512,
+    "context": "of SEMA3E transcripts modules of the human basal ganglia (A) Spatial map of major cell types of the posterior section (as shown in Figure 2D) and inferred cellular community modules derived from the local neighborhood",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  }
+]

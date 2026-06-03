@@ -29,6 +29,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import tempfile
@@ -44,6 +45,23 @@ from transformers import AutoTokenizer, PreTrainedTokenizerBase
 TEI_NS = "http://www.tei-c.org/ns/1.0"
 CHUNK_SEPARATOR = "---"
 VERY_LARGE_MODEL_MAX_LENGTH = 1_000_000
+
+
+def load_dotenv(path: Path = Path(".env")) -> None:
+    """Load simple KEY=VALUE pairs from .env without overriding existing env vars."""
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#") or "=" not in stripped:
+            continue
+        key, value = stripped.split("=", 1)
+        key = key.strip()
+        if key.startswith("export "):
+            key = key.removeprefix("export ").strip()
+        value = value.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
 
 
 @dataclass
@@ -524,6 +542,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: Iterable[str] | None = None) -> int:
+    load_dotenv()
     args = build_arg_parser().parse_args(argv)
     try:
         pdfs = discover_pdfs(args.input)

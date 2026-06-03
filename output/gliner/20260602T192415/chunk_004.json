@@ -1,0 +1,74 @@
+[
+  {
+    "entity": "RNA",
+    "label": "RNA",
+    "score": 0.9561419486999512,
+    "start": 494,
+    "end": 497,
+    "context": "product was purified and concentrated with Zymo DNA clean & concentrator-25 (Zymo Research, D4006). RNA was generated from the purified PCR-amplified DNA through in-vitro transcription (IVT) using HiScri",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "RNA",
+    "label": "RNA",
+    "score": 0.9299124479293823,
+    "start": 700,
+    "end": 703,
+    "context": "T7 ARCA mRNA kit (NEB, E2060S). Next, single strand DNA (ssDNA) was generated from the IVT-derived RNA through reverse transcription (RT) using Thermo Scientific Maxima Reverse Transcriptase (Thermo Fis",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "RNA",
+    "label": "RNA",
+    "score": 0.9628825783729553,
+    "start": 917,
+    "end": 920,
+    "context": ", EP0743). The RT product went through alkaline hydrolysis (1:1 of 1M NaOH and 0.5M EDTA) to remove RNA followed by ssDNA (encoding probes) purification using Zymo Oligo Clean & Concentrator (Zymo Resear",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "encoding probes",
+    "label": "OLIGODENDROCYTE_SUBTYPE",
+    "score": 0.5269378423690796,
+    "start": 1293,
+    "end": 1308,
+    "context": "on (RRID:SCR_019547). During the RT step, the forward primer introduced an acrydite anchor into the encoding probes which allowed the encoding probes to covalently bind with the polyacrylamide gel post encoding prob",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "encoding probes",
+    "label": "OLIGODENDROCYTE_SUBTYPE",
+    "score": 0.5149089694023132,
+    "start": 1327,
+    "end": 1342,
+    "context": "T step, the forward primer introduced an acrydite anchor into the encoding probes which allowed the encoding probes to covalently bind with the polyacrylamide gel post encoding probes hybridization. Adaptor and rea",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "Adaptor probes",
+    "label": "OLIGODENDROCYTE_SUBTYPE",
+    "score": 0.5238526463508606,
+    "start": 1467,
+    "end": 1481,
+    "context": "the polyacrylamide gel post encoding probes hybridization. Adaptor and readout probe preparation: Adaptor probes (total 28 adaptors) and readout probes (total 3 readout probes each tagged with one of the three fl",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "Adaptor probes",
+    "label": "OLIGODENDROCYTE_SUBTYPE",
+    "score": 0.5028929114341736,
+    "start": 1668,
+    "end": 1682,
+    "context": "the three fluorophores: 5Alex750N/3AlexF750N, 5Cy5/3Cy5Sp, 5Cy3/3Cy3Sp) were purchased from IDT. Adaptor probes and readout probes were diluted with a pre-hybridization buffer (PreHB, 0.1% Tween-20, 35% formamid",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "CellPath",
+    "label": "CELLULAR_COMMUNITY",
+    "score": 0.7442331910133362,
+    "start": 1928,
+    "end": 1936,
+    "context": "1:2000, respectively. 5. Silanization and PDL-coating of coverslips: 50mm x 64mm glass coverslips (CellPath, SAF-5064-02A) were incubated in 18.5% HCl in methanol for 30 min at room temperature (RT) followed",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  }
+]

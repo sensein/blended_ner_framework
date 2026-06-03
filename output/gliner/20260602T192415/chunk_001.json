@@ -1,0 +1,209 @@
+[
+  {
+    "entity": "astrocytes",
+    "label": "ORGANISM",
+    "score": 0.8147218227386475,
+    "start": 14,
+    "end": 24,
+    "context": "We found that astrocytes also exhibit pronounced regional heterogeneity. Subclustering analysis identifies six astrocyte sub",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "astrocyte",
+    "label": "ORGANISM",
+    "score": 0.6244724988937378,
+    "start": 111,
+    "end": 120,
+    "context": "at astrocytes also exhibit pronounced regional heterogeneity. Subclustering analysis identifies six astrocyte subtypes, each defined by distinct marker gene combinations that include aquaporin 4 (AQP4), aquapo",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "aquaporin 4",
+    "label": "RNA",
+    "score": 0.9256671071052551,
+    "start": 194,
+    "end": 205,
+    "context": "s identifies six astrocyte subtypes, each defined by distinct marker gene combinations that include aquaporin 4 (AQP4), aquaporin 1 (AQP1), solute carrier family 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "AQP4",
+    "label": "RNA",
+    "score": 0.8640641570091248,
+    "start": 207,
+    "end": 211,
+    "context": "six astrocyte subtypes, each defined by distinct marker gene combinations that include aquaporin 4 (AQP4), aquaporin 1 (AQP1), solute carrier family 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1), and",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "aquaporin 1",
+    "label": "RNA",
+    "score": 0.9019603133201599,
+    "start": 214,
+    "end": 225,
+    "context": "rocyte subtypes, each defined by distinct marker gene combinations that include aquaporin 4 (AQP4), aquaporin 1 (AQP1), solute carrier family 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1), and adhesion G pr",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "AQP1",
+    "label": "RNA",
+    "score": 0.8355701565742493,
+    "start": 227,
+    "end": 231,
+    "context": "es, each defined by distinct marker gene combinations that include aquaporin 4 (AQP4), aquaporin 1 (AQP1), solute carrier family 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1), and adhesion G protein-",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "solute carrier family 6 member 11",
+    "label": "RNA",
+    "score": 0.719194233417511,
+    "start": 234,
+    "end": 267,
+    "context": "h defined by distinct marker gene combinations that include aquaporin 4 (AQP4), aquaporin 1 (AQP1), solute carrier family 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1), and adhesion G protein-coupled receptor V1 (ADGRV1) (Figure",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "SLC6A11",
+    "label": "GENE",
+    "score": 0.8502469062805176,
+    "start": 269,
+    "end": 276,
+    "context": "ombinations that include aquaporin 4 (AQP4), aquaporin 1 (AQP1), solute carrier family 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1), and adhesion G protein-coupled receptor V1 (ADGRV1) (Figure 3D). The",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "chitinase 3-like 1",
+    "label": "GENE",
+    "score": 0.7932499051094055,
+    "start": 279,
+    "end": 297,
+    "context": "s that include aquaporin 4 (AQP4), aquaporin 1 (AQP1), solute carrier family 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1), and adhesion G protein-coupled receptor V1 (ADGRV1) (Figure 3D). These subtypes form disc",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "adhesion G protein-coupled receptor V1",
+    "label": "GENE",
+    "score": 0.6151001453399658,
+    "start": 312,
+    "end": 350,
+    "context": ", aquaporin 1 (AQP1), solute carrier family 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1), and adhesion G protein-coupled receptor V1 (ADGRV1) (Figure 3D). These subtypes form discrete clusters in UMAP space with divergent transcript",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "ADGRV1",
+    "label": "GENE",
+    "score": 0.7192738056182861,
+    "start": 352,
+    "end": 358,
+    "context": "ily 6 member 11 (SLC6A11), chitinase 3-like 1 (CHI3L1), and adhesion G protein-coupled receptor V1 (ADGRV1) (Figure 3D). These subtypes form discrete clusters in UMAP space with divergent transcriptional si",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "astrocytes",
+    "label": "ORGANISM",
+    "score": 0.7121796607971191,
+    "start": 516,
+    "end": 526,
+    "context": "AP space with divergent transcriptional signatures (Figure 3E). Except for the ventricle-associated astrocytes (Ventricle_Astro, captured in section AP19), the relative abundances of astrocyte subtypes are gene",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "AQP1",
+    "label": "RNA",
+    "score": 0.8490248918533325,
+    "start": 836,
+    "end": 840,
+    "context": "nct topographic specializations (Figure 3G and Figure S6B-C): WM_Astro cells, characterized by high AQP1 expression, are localized primarily to white matter tracts and the peripheral globus pallidus (Figu",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "white matter tracts",
+    "label": "NEURAL_PATHWAY",
+    "score": 0.8932440876960754,
+    "start": 880,
+    "end": 899,
+    "context": "nd Figure S6B-C): WM_Astro cells, characterized by high AQP1 expression, are localized primarily to white matter tracts and the peripheral globus pallidus (Figure 3H); STR_Astro-2 cells, defined by ADGRV1, are enriched",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "globus pallidus",
+    "label": "BRAIN_STRUCTURE",
+    "score": 0.6089866757392883,
+    "start": 919,
+    "end": 934,
+    "context": "cterized by high AQP1 expression, are localized primarily to white matter tracts and the peripheral globus pallidus (Figure 3H); STR_Astro-2 cells, defined by ADGRV1, are enriched in striatum (Figure 3I), and GP-TH_",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "ADGRV1",
+    "label": "GENE",
+    "score": 0.7224124073982239,
+    "start": 978,
+    "end": 984,
+    "context": "o white matter tracts and the peripheral globus pallidus (Figure 3H); STR_Astro-2 cells, defined by ADGRV1, are enriched in striatum (Figure 3I), and GP-TH_Astro cells, expressing SLC6A11, are selectively c",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "striatum",
+    "label": "BRAIN_STRUCTURE",
+    "score": 0.7982604503631592,
+    "start": 1002,
+    "end": 1010,
+    "context": "d the peripheral globus pallidus (Figure 3H); STR_Astro-2 cells, defined by ADGRV1, are enriched in striatum (Figure 3I), and GP-TH_Astro cells, expressing SLC6A11, are selectively concentrated in the globus",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "SLC6A11",
+    "label": "GENE",
+    "score": 0.8385980129241943,
+    "start": 1058,
+    "end": 1065,
+    "context": "2 cells, defined by ADGRV1, are enriched in striatum (Figure 3I), and GP-TH_Astro cells, expressing SLC6A11, are selectively concentrated in the globus pallidus (Figure 3J). The differential gene expression",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "globus pallidus",
+    "label": "BRAIN_STRUCTURE",
+    "score": 0.725797176361084,
+    "start": 1103,
+    "end": 1118,
+    "context": "triatum (Figure 3I), and GP-TH_Astro cells, expressing SLC6A11, are selectively concentrated in the globus pallidus (Figure 3J). The differential gene expression of these varied astrocytic cell types likely provides",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "SLC6A11",
+    "label": "GENE",
+    "score": 0.8126867413520813,
+    "start": 1268,
+    "end": 1275,
+    "context": "these varied astrocytic cell types likely provides clues for their specific function. For instance, SLC6A11 (also known as GAT-3) is a GABA transporter that is important for GABA uptake and metabolism in ast",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "astrocytes",
+    "label": "ORGANISM",
+    "score": 0.7939429879188538,
+    "start": 1372,
+    "end": 1382,
+    "context": "A11 (also known as GAT-3) is a GABA transporter that is important for GABA uptake and metabolism in astrocytes 49,50, consistent with the high abundance of GABAergic neurons in the globus pallidus. These findin",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "globus pallidus",
+    "label": "BRAIN_STRUCTURE",
+    "score": 0.5685458779335022,
+    "start": 1453,
+    "end": 1468,
+    "context": "and metabolism in astrocytes 49,50, consistent with the high abundance of GABAergic neurons in the globus pallidus. These findings underscore the molecular, cellular, and spatial heterogeneity of glial and neuronal",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "UBERON_ANATOMICAL_STRUCTURE",
+    "score": 0.6073610186576843,
+    "start": 1625,
+    "end": 1644,
+    "context": "spatial heterogeneity of glial and neuronal populations that define the complex architecture of the human basal ganglia. Subcellular transcript localization for somatic size estimation and projection inference The hig",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_001.txt"
+  }
+]

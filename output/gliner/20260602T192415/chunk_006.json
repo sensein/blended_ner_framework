@@ -1,0 +1,65 @@
+[
+  {
+    "entity": "Basal Ganglia",
+    "label": "BASAL_GANGLIA_REGION",
+    "score": 0.755951464176178,
+    "start": 12,
+    "end": 25,
+    "context": "Ann Neurol Basal Ganglia disorders associated with imbalances in the striatal striosome and matrix compartments Front Neuro",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "Semaphorins",
+    "label": "GENE",
+    "score": 0.5371838212013245,
+    "start": 201,
+    "end": 212,
+    "context": "ompartments Front Neuroanat Semaphorin regulation of cellular morphology Annu Rev Cell Dev Biol Semaphorins and their Signaling Mechanisms Methods Mol Biol Semaphorins and the dynamic regulation of synapse",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "Semaphorins",
+    "label": "GENE",
+    "score": 0.574292004108429,
+    "start": 263,
+    "end": 274,
+    "context": "r morphology Annu Rev Cell Dev Biol Semaphorins and their Signaling Mechanisms Methods Mol Biol Semaphorins and the dynamic regulation of synapse assembly, refinement, and function Curr Opin Neurobiol Spat",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "Spatially organized cellular communities",
+    "label": "CELLULAR_COMMUNITY",
+    "score": 0.5359945297241211,
+    "start": 370,
+    "end": 410,
+    "context": "rins and the dynamic regulation of synapse assembly, refinement, and function Curr Opin Neurobiol Spatially organized cellular communities form the developing human heart Nature Comprehensive cellular-resolution atlas of the adult human",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "Basal Ganglia",
+    "label": "BRAIN_STRUCTURE",
+    "score": 0.7826277613639832,
+    "start": 1153,
+    "end": 1166,
+    "context": "tional distinctions Continuous and Discrete Neuron Types of the Adult Murine Striatum Neuron The Basal Ganglia Over 500 Million Years Curr Biol The mouse cortico-basal gangliathalamic network Nature Next ge",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "DRD1",
+    "label": "GENE",
+    "score": 0.5360539555549622,
+    "start": 2103,
+    "end": 2107,
+    "context": "scale views. Cell-segmented higher-magnification panels highlight representative gene expression of DRD1 in D1 MSN (1), DRD2 in D2 MSN (2), DRD1 and PDYN Mesoscale cellular community architecture of the",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "BASAL_GANGLIA_REGION",
+    "score": 0.756808876991272,
+    "start": 2207,
+    "end": 2226,
+    "context": "in D1 MSN (1), DRD2 in D2 MSN (2), DRD1 and PDYN Mesoscale cellular community architecture of the human basal ganglia\"). (E) Zoomed-in view of D1 and D2 MSNs within the boxed region of the posterior section (AP 34a) i",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  }
+]

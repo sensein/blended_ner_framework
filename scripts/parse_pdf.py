@@ -62,12 +62,30 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Iterator, List, Optional, Tuple
 from xml.etree import ElementTree as ET
+
+
+def load_dotenv(path: Path = Path(".env")) -> None:
+    """Load simple KEY=VALUE pairs from .env without overriding existing env vars."""
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#") or "=" not in stripped:
+            continue
+        key, value = stripped.split("=", 1)
+        key = key.strip()
+        if key.startswith("export "):
+            key = key.removeprefix("export ").strip()
+        value = value.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
 
 
 # ---------------------------------------------------------------------------
@@ -774,6 +792,7 @@ def cli_main(argv: Optional[List[str]] = None) -> int:
         help="Maximum characters per chunk (default: 45000, ~45kb for ASCII).",
     )
 
+    load_dotenv()
     args = parser.parse_args(argv)
 
     if not args.pdf.is_file():
