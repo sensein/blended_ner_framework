@@ -22,17 +22,23 @@ You must execute deterministic pi.dev tools in sequential order to guarantee zer
 
    Use this tool when the user asks for GLiNER/local NER execution, fixed label generation, hybrid label generation, or intent-plus-document-driven labels. If the user only asks to parse/chunk a PDF, do not run GLiNER.
 
-3. **File Reading**
+3. **LLM Refinement Pass over GLiNER Outputs**
+   Tool: `llm_refinement` with `chunksDir: "data/papers/<title>/<datetime>/chunks"`, `glinerDir: "output/gliner/<run_timestamp>"`, optional `model`, optional `output`, optional `artifactsDir`, optional `chunkIndex`, optional `maxChars`, optional `temperature`, and optional `dryRun`.
+   *Purpose: Runs `scripts/llm_refinement.py` via `uv run`. The Python script automatically loads repo-root `.env`, injects local GLiNER entities directly into raw chunk text as `[Entity Text](GLiNER_LABEL)`, sends the decorated chunk text to a frontier LLM through LiteLLM for verification, boundary expansion, and deep-pass extraction, parses the refined inline markdown, computes new character indices relative to the clean refined text, and writes `llm_pass1_entities.json` under the GLiNER output directory by default.*
+
+   Use this tool when the user asks to refine GLiNER results, run an LLM/deep-pass verification step, or process an existing chunks directory plus GLiNER output directory. If the user says to "call that directory" after GLiNER has run, treat the chunks directory as `chunksDir` and the matching `output/gliner/<timestamp>` directory as `glinerDir`.
+
+4. **File Reading**
    Use your file reading tool to load each `chunk_NNN.txt` in order. Each file fits under the 50kb payload limit.
 
-4. **Per-Chunk Output Writing**
+5. **Per-Chunk Output Writing**
    Tool: `save_chunk_entities` with `paperName: <doc_id>`, `runId: <run_id>`, `chunkIndex: N`, and `entitiesJson` set to the JSON array for that chunk.
    *Purpose: Runs `scripts/save_chunk_entities.py` via `uv run`, passing the entity array on stdin. The Python script validates and writes one entity file per processed chunk to `output/<paper_name>/<run_id>/chunk_NNN.json` (or under `outputRoot` if provided). This keeps each response small and avoids hitting the 50kb response limit on long papers.*
 
 ## Anti-Loop Execution Rule
 Do **not** narrate intentions. Do **not** say “I need to…”, “Let me…”, “I will…”, or “Now I have…”. Those are failure modes.
 
-When the next action is deterministic, immediately call the appropriate tool. Do not read source code or prompt files to learn how to run the pipeline; the instructions in this active prompt are authoritative. There is no separate NER pipeline script to discover or run. The NER pipeline is this prompt plus the `parse_pdf`, optional `hybrid_ner_orchestrator`, file-reading, and `save_chunk_entities` tools. Never search the codebase for a pipeline script. Never read `scripts/ingest_chunk.py`, `scripts/parse_pdf.py`, `scripts/hybrid_ner_orchestrator.py`, `scripts/save_chunk_entities.py`, `.pi/tools/*.ts`, or `.pi/prompts/ner_pipeline.md` as part of the NER workflow unless the user explicitly asks you to modify/debug the code or prompt. When the next action is NER extraction, immediately produce the chunk’s JSON entity array and call `save_chunk_entities` in the same turn. Never stop after saying that you are going to extract or save.
+When the next action is deterministic, immediately call the appropriate tool. Do not read source code or prompt files to learn how to run the pipeline; the instructions in this active prompt are authoritative. There is no separate NER pipeline script to discover or run. The NER pipeline is this prompt plus the `parse_pdf`, optional `hybrid_ner_orchestrator`, optional `llm_refinement`, file-reading, and `save_chunk_entities` tools. Never search the codebase for a pipeline script. Never read `scripts/ingest_chunk.py`, `scripts/parse_pdf.py`, `scripts/hybrid_ner_orchestrator.py`, `scripts/llm_refinement.py`, `scripts/save_chunk_entities.py`, `.pi/tools/*.ts`, or `.pi/prompts/ner_pipeline.md` as part of the NER workflow unless the user explicitly asks you to modify/debug the code or prompt. When the next action is NER extraction, immediately produce the chunk’s JSON entity array and call `save_chunk_entities` in the same turn. Never stop after saying that you are going to extract or save.
 
 For each chunk, the required sequence is:
 
@@ -50,7 +56,9 @@ Process chunks **one at a time** and emit one output file per chunk:
 
 2. If the user requested GLiNER/local NER or hybrid label generation, immediately call `hybrid_ner_orchestrator` after chunking. Pass the user's natural-language request as `prompt`, preserving the target path and entity intent. If chunks were just generated and the user's original path was a PDF, include the generated chunks directory in the prompt so the orchestrator samples `chunk_000.txt`. Use `dryRun: true` only if the user asked to preview labels without running GLiNER. After this tool completes, report the generated labels/tool result. Do not continue to manual per-chunk extraction unless the user also explicitly requested agent-based extraction and per-chunk JSON saves.
 
-3. For each chunk index `i` from `0` to `total_chunks - 1`:
+3. If the user requested LLM refinement/deep-pass extraction after GLiNER, immediately call `llm_refinement` after GLiNER completes. Use the generated chunks directory as `chunksDir` and the GLiNER output directory as `glinerDir`. Use the user's requested LiteLLM model when specified; otherwise use the tool default. The default output is `<glinerDir>/llm_pass1_entities.json`.
+
+4. For each chunk index `i` from `0` to `total_chunks - 1`:
    a. Read `chunk_NNN.txt` and split on `---` to get `(header, body)`.
    b. Identify **every neuroscience entity mention** in `body`. Dynamically generate a label for each based on context.
    c. **Do not deduplicate.** If an entity appears 5 times in the chunk, emit 5 records. Repeat mentions matter for downstream frequency analysis.

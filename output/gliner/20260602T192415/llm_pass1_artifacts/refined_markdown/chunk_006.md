@@ -1,0 +1,75 @@
+Ann Neurol
+
+[Basal Ganglia](BASAL_GANGLIA_REGION) disorders associated with imbalances in the striatal striosome and matrix compartments
+
+Front Neuroanat
+
+Semaphorin regulation of cellular morphology
+
+Annu Rev Cell Dev Biol
+
+[Semaphorins](GENE) and their Signaling Mechanisms
+
+Methods Mol Biol
+
+[Semaphorins](GENE) and the dynamic regulation of synapse assembly, refinement, and function
+
+Curr Opin Neurobiol
+
+[Spatially organized cellular communities](CELLULAR_COMMUNITY) form the developing human heart
+
+Nature
+
+Comprehensive cellular-resolution atlas of the adult human brain
+
+J Comp Neurol
+
+Transcriptional vulnerabilities of striatal neurons in human and rodent models of Huntington's disease
+
+Nat Commun
+
+Striosomes and Matrisomes: Scaffolds for Dynamic Coupling of Volition and Action
+
+Annu Rev Neurosci
+
+Innovations present in the primate interneuron repertoire
+
+Nature
+
+The development and evolution of inhibitory neurons in primate cerebrum
+
+Nature
+
+Conservation and alteration of mammalian striatal interneurons
+
+Nature
+
+Differential inputs to striatal cholinergic and parvalbumin interneurons imply functional distinctions
+
+Continuous and Discrete Neuron Types of the Adult Murine Striatum
+
+Neuron
+
+The [Basal Ganglia](BASAL_GANGLIA_REGION) Over 500 Million Years
+
+Curr Biol
+
+The mouse cortico-basal gangliathalamic network
+
+Nature
+
+Next generation
+
+Scikit-learn: Machine Learning in Python
+
+J. Mach. Learn. Res
+
+Single-cell brain organoid screening identifies developmental defects in autism
+
+Nature
+
+(F) Fractional composition of MSN subtypes for all sections combined, then along the A-P axis (AP 18a, 19a, 26a, 34a shown for each section stacked bars). (G) Spatial distributions of STR D1D2 Hybrid, STRv D1 NUDAP, and STRd D2 Hybrid MSNs at anterior (AP 19a) and posterior (AP 34a) sections. (H) Multiscale spatial gene-expression maps for [PDYN](GENE), [DRD1](GENE), and [DRD2](GENE) in a posterior section (AP 34a) showing PDYN-enriched striosomes and D1/D2 MSNs predominantly in the putamen matrix territories. Boxed regions show sequential progressively magnified centimeter→millimeter→micron-scale views. Cell-segmented higher-magnification panels highlight representative gene expression of [DRD1](GENE) in D1 MSN (1), [DRD2](GENE) in D2 MSN (2), [DRD1](GENE) and [PDYN](GENE)
+
+Mesoscale cellular community architecture of the [human basal ganglia](BASAL_GANGLIA_REGION). (E) Zoomed-in view of D1 and D2 MSNs within the boxed region of the posterior section (AP 34a) in (D)
+
+PyVista: 3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit (VTK) See cell type color keys in (A) The contour lines in the sample sections / maps shown in this figure and subsequent figures denote the anatomical regional boundaries derived from the cellular community analysis (further described later in the results section of Journal of Open Source Software (B) High correlation between MERFISH+ defined cell types and snRNA-seq-defined clusters. (C) Fractional composition of 12 major cell types for all sections combined and across the anterior-posterior (A-P) axis / position (AP 18a, 19a, 26a, 34a), defined based on Allen institute human brain atlas 59 (stacked bars). (D) Spatial distributions of MERFISH+ mapped cell types in the brain section samples across the AP axis (left-right AP 18a, 19a, 26a, 34a) in STRd D1 Striosome (3), and both [DRD1](GENE) and [DRD2](GENE) in STR D1D2 Hybrid (4) cells. (I) Fractional composition of [globus pallidus](BASAL_GANGLIA_REGION) (GP) neuronal subtypes for all combined sections and for AP 26a and AP 34a.

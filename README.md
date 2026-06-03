@@ -9,7 +9,8 @@ This project is built around core Python scripts plus thin pi.dev agent wrappers
 - `scripts/save_chunk_entities.py` — validates a JSON entity array from `stdin` and writes one per-chunk result file under `output/<paper_name>/<run_id>/`.
 - `scripts/hybrid_ner_orchestrator.py` — derives GLiNER labels from both explicit user intent and a document text sample, then invokes the local GLiNER runner.
 - `scripts/ner.py` — local GLiNER runner that accepts `--input` and `--labels`, runs GLiNER over chunk/text files, and writes JSON outputs.
-- `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
+- `scripts/llm_refinement.py` — injects GLiNER entities inline as `[Entity](LABEL)`, sends decorated chunks to an LLM for verification/deep-pass extraction, and writes `llm_pass1_entities.json`.
+- `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, `.pi/tools/llm_refinement.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
 
 ## Requirements
 
@@ -139,7 +140,64 @@ uv run scripts/ner.py \
 
 `uv run scripts/ner.py` uses inline dependency management for `gliner`. The first full run may download the GLiNER package, model files, and backend ML dependencies. If you want to use a different GLiNER runner, pass its location with `--ner-script` and append repeated `--extra-ner-arg` values as needed.
 
-### 3) Save NER output for one chunk
+### 3) Refine GLiNER output with an LLM deep pass
+
+After GLiNER has produced `output/gliner/<timestamp>/chunk_NNN.json` files, run the LLM refinement pass against the chunks directory and GLiNER output directory:
+
+```bash
+uv run scripts/llm_refinement.py \
+  --chunks-dir data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks \
+  --gliner-dir output/gliner/20260602T192415 \
+  --model gpt-5.5
+```
+
+This writes by default:
+
+```text
+output/gliner/20260602T192415/llm_pass1_entities.json
+```
+
+It also writes decorated/refined markdown artifacts under:
+
+```text
+output/gliner/20260602T192415/llm_pass1_artifacts/
+```
+
+Artifact directory contents:
+
+```text
+output/gliner/<timestamp>/
+├── chunk_000.json                  # raw local GLiNER entities for chunk_000
+├── chunk_001.json                  # raw local GLiNER entities for chunk_001
+├── ...
+├── manifest.json                   # GLiNER run metadata: model, labels, input files
+├── llm_pass1_entities.json         # structured entities parsed from the LLM-refined markdown
+└── llm_pass1_artifacts/
+    ├── decorated/
+    │   └── chunk_000.md            # original chunk body with GLiNER entities injected as [Entity](LABEL)
+    ├── refined_markdown/
+    │   └── chunk_000.md            # LLM-reviewed annotation layer with corrected/expanded/new [Entity](LABEL) markup
+    └── clean_text/
+        └── chunk_000.txt           # refined_markdown with annotation syntax removed; indices in llm_pass1_entities.json refer to this clean text
+```
+
+How to interpret the LLM refinement artifacts:
+
+- `decorated/` is the input sent to the LLM: the original chunk body plus preliminary GLiNER inline markup.
+- `refined_markdown/` is the human-readable LLM output. It shows corrected labels, expanded boundaries, and newly discovered entities using `[Entity Text](LABEL)` syntax.
+- `clean_text/` is produced by removing the inline markdown labels from `refined_markdown/`. It should usually be close to the original chunk body, but it can differ if the LLM changed spacing, punctuation, or wording while refining. The `start`/`end` offsets in `llm_pass1_entities.json` are relative to this clean refined text, not necessarily the original chunk file.
+- `llm_pass1_entities.json` is the main structured downstream output for the LLM refinement pass.
+
+For a preview that injects GLiNER entities and parses the markdown without calling an LLM:
+
+```bash
+uv run scripts/llm_refinement.py \
+  --chunks-dir data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks \
+  --gliner-dir output/gliner/20260602T192415 \
+  --dry-run
+```
+
+### 4) Save NER output for one chunk
 
 `save_chunk_entities.py` expects a JSON **array** on `stdin`:
 
@@ -172,6 +230,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 ├── scripts/
 │   ├── hybrid_ner_orchestrator.py
 │   ├── ingest_chunk.py
+│   ├── llm_refinement.py
 │   ├── ner.py
 │   ├── parse_pdf.py
 │   └── save_chunk_entities.py
@@ -180,6 +239,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 │   │   └── ner_pipeline.md
 │   └── tools/
 │       ├── hybrid_ner_orchestrator.ts
+│       ├── llm_refinement.ts
 │       ├── parse_pdf.ts
 │       └── save_chunk_entities.ts
 ├── data/
