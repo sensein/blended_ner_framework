@@ -39,6 +39,34 @@ LOCAL_CONCEPT_MAPPING_URL=http://localhost:8000
 
 `.env` is ignored by git; do not commit real API tokens.
 
+## LLM backend roles: pi vs LiteLLM
+
+Pi is the interactive orchestration and code-review layer for this project. The Python pipeline scripts use [LiteLLM](https://docs.litellm.ai/) for direct, repeatable batch LLM calls during label generation, LLM refinement, and masked recall.
+
+The scripts do **not** automatically inherit the model or authentication state from the current pi chat session. The `--model` arguments in scripts such as `hybrid_ner_orchestrator.py`, `llm_refinement.py`, and `llm_masked_pass.py` refer to the LiteLLM model used by those standalone Python processes. You can point LiteLLM at the same underlying model you use in pi if you have API-key access to that provider/model, but the execution path is separate from pi's interactive model/session.
+
+This separation is intentional:
+
+- pi remains responsible for orchestration, code edits, review, debugging, and deciding which deterministic tool to run.
+- LiteLLM handles high-volume, structured batch inference from Python scripts without spawning nested pi agents per chunk.
+- The pipeline remains portable to non-interactive environments such as remote nodes, Slurm jobs, notebooks, or CI.
+
+For example:
+
+```bash
+LITELLM_MODEL=gpt-5.5
+OPENROUTER_API_KEY=your_key_here
+```
+
+or pass a model explicitly:
+
+```bash
+uv run scripts/llm_refinement.py \
+  --chunks-dir data/papers/example/chunks \
+  --gliner-dir output/gliner/example_run \
+  --model gpt-5.5
+```
+
 ## Running the NER prompt in pi.dev
 
 If pi is installed and running in this repository, start the workflow by entering:
