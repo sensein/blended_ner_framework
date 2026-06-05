@@ -66,7 +66,7 @@ uv run scripts/ingest_chunk.py data/papers/example.pdf \
 
 The `--model-id` argument is the Hugging Face tokenizer/model ID used for chunking, not necessarily the model used later for NER. The tokenizer is loaded with `AutoTokenizer.from_pretrained(...)`; this may download tokenizer files into the local Hugging Face cache, but it does not download or run full model weights.
 
-Use `--max-tokens` to choose a chunk size suitable for the downstream LLM that will process each chunk. For GPT-5.5-style downstream processing, `--max-tokens 4000` is a practical reliability-oriented default that keeps each chunk comfortably sized for extraction and saving.
+Use `--max-tokens` to choose a chunk size suitable for the downstream LLM that will process each chunk. For GPT-5.5-style downstream processing, `--max-tokens 4000` is a practical reliability-oriented default that keeps each chunk comfortably sized for extraction and saving. Chunking is sentence-aware and includes a fixed one-sentence overlap between adjacent chunks when the overlap fits under the token limit, reducing boundary-related missed entities/context.
 
 Example request:
 
@@ -101,7 +101,7 @@ uv run scripts/parse_pdf.py data/papers/example.pdf --out-dir data/papers/exampl
 
 Chunk file format:
 
-1. Line 1: JSON header (includes `chunk_index`, `global_offset`, `total_chunks`, etc.)
+1. Line 1: JSON header (includes `chunk_index`, `char_start`, `char_end`, `total_chunks`, `chunking_strategy`, `sentence_overlap`, etc.)
 2. Line 2: `---`
 3. Line 3+: chunk body text
 
@@ -218,7 +218,7 @@ output/gliner/20260602T192415/master_extracted_entities.json
 output/gliner/20260602T192415/llm_masked_pass_artifacts/masked_text/
 ```
 
-The masked text artifacts replace already-validated pass-1 entities with same-length `*` blocks. This preserves character positions while preventing the LLM from re-extracting previously found entities.
+The masked text artifacts replace already-validated pass-1 entities with same-length `*` blocks. This preserves character positions while preventing the LLM from re-extracting previously found entities. When chunk headers include `char_start`, the master merge records `global_start`/`global_end` and uses them to deduplicate duplicate entity mentions introduced by the one-sentence chunk overlap while preserving true repeated mentions at different document positions.
 
 Dry run without calling the LLM:
 

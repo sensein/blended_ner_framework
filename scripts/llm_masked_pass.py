@@ -88,6 +88,8 @@ class MasterEntity(BaseModel):
     chunk: str
     start: int | None = Field(description="Start offset relative to the original raw chunk body when available.")
     end: int | None = Field(description="End offset relative to the original raw chunk body when available.")
+    global_start: int | None = Field(default=None, description="Start offset relative to the parsed full document when chunk metadata is available.")
+    global_end: int | None = Field(default=None, description="End offset relative to the parsed full document when chunk metadata is available.")
     source_pass: str
     context: str | None = None
     source_chunk_path: str | None = None
@@ -180,6 +182,35 @@ def strip_chunk_header(text: str) -> str:
 
 def read_chunk_body(path: Path) -> str:
     return strip_chunk_header(path.read_text(encoding="utf-8", errors="replace"))
+
+
+_CHUNK_CHAR_START_CACHE: dict[str, int | None] = {}
+
+
+def chunk_char_start(source_chunk_path: str | None) -> int | None:
+    """Read char_start from a chunk header so overlap duplicates can be deduped globally."""
+    if not source_chunk_path:
+        return None
+    if source_chunk_path in _CHUNK_CHAR_START_CACHE:
+        return _CHUNK_CHAR_START_CACHE[source_chunk_path]
+    value: int | None = None
+    try:
+        first_line = Path(source_chunk_path).read_text(encoding="utf-8", errors="replace").splitlines()[0]
+        header = json.loads(first_line)
+        raw = header.get("char_start")
+        if isinstance(raw, int):
+            value = raw
+    except Exception:
+        value = None
+    _CHUNK_CHAR_START_CACHE[source_chunk_path] = value
+    return value
+
+
+def global_span(source_chunk_path: str | None, start: int | None, end: int | None) -> tuple[int | None, int | None]:
+    base = chunk_char_start(source_chunk_path)
+    if base is None or start is None or end is None:
+        return None, None
+    return base + start, base + end
 
 
 def chunk_index(chunk_name: str) -> int | None:
@@ -276,6 +307,7 @@ def mask_pass1_entities(raw_text: str, chunk_payload: dict[str, Any]) -> Masking
         occupied.append((start, end))
         occupied.sort()
         masks.append(MaskRecord(entity=entity, label=label, start=start, end=end, pass1_start=pass1_start, pass1_end=pass1_end))
+        global_start, global_end = global_span(source_chunk_path, start, end)
         pass1_master.append(
             MasterEntity(
                 entity=raw_text[start:end],
@@ -283,6 +315,8 @@ def mask_pass1_entities(raw_text: str, chunk_payload: dict[str, Any]) -> Masking
                 chunk=chunk_name,
                 start=start,
                 end=end,
+                global_start=global_start,
+                global_end=global_end,
                 source_pass="llm_pass1",
                 context=context_for(raw_text, start, end),
                 source_chunk_path=source_chunk_path,
@@ -373,6 +407,7 @@ def find_second_pass_entities(masked_text: str, raw_text: str, chunk_name: str, 
         # Because masking preserves string length, masked offsets equal raw chunk offsets.
         occupied.append((start, end))
         occupied.sort()
+        global_start, global_end = global_span(source_chunk_path, start, end)
         results.append(
             MasterEntity(
                 entity=raw_text[start:end],
@@ -380,6 +415,8 @@ def find_second_pass_entities(masked_text: str, raw_text: str, chunk_name: str, 
                 chunk=chunk_name,
                 start=start,
                 end=end,
+                global_start=global_start,
+                global_end=global_end,
                 source_pass="llm_masked_pass",
                 context=context_for(raw_text, start, end),
                 source_chunk_path=source_chunk_path,
@@ -395,6 +432,12 @@ def spans_overlap(a: MasterEntity, b: MasterEntity) -> bool:
     return a.start < b.end and a.end > b.start
 
 
+def global_spans_overlap(a: MasterEntity, b: MasterEntity) -> bool:
+    if a.global_start is None or a.global_end is None or b.global_start is None or b.global_end is None:
+        return False
+    return a.global_start < b.global_end and a.global_end > b.global_start
+
+
 def normalized_text(value: str) -> str:
     return re.sub(r"\s+", " ", value.casefold()).strip()
 
@@ -407,9 +450,18 @@ def deduplicate_entities(entities: list[MasterEntity]) -> list[MasterEntity]:
     they have no reliable span.
     """
     deduped: list[MasterEntity] = []
-    for ent in sorted(entities, key=lambda e: (e.chunk, e.start is None, e.start or 10**12, -(len(e.entity)), e.label, e.source_pass)):
+    for ent in sorted(entities, key=lambda e: (e.global_start is None, e.global_start or 10**12, e.chunk, e.start is None, e.start or 10**12, -(len(e.entity)), e.label, e.source_pass)):
         duplicate = False
         for existing in deduped:
+            both_global_mapped = ent.global_start is not None and ent.global_end is not None and existing.global_start is not None and existing.global_end is not None
+            if both_global_mapped:
+                same_global_span = ent.global_start == existing.global_start and ent.global_end == existing.global_end
+                compatible_text = normalized_text(ent.entity) == normalized_text(existing.entity)
+                compatible_label = ent.label.casefold() == existing.label.casefold()
+                if same_global_span or (global_spans_overlap(ent, existing) and compatible_text and compatible_label):
+                    duplicate = True
+                    break
+
             if ent.chunk != existing.chunk:
                 continue
 

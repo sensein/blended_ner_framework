@@ -80,7 +80,7 @@ Process chunks **one at a time** and emit one output file per chunk:
    c. **Do not deduplicate.** If an entity appears 5 times in the chunk, emit 5 records. Repeat mentions matter for downstream frequency analysis.
    d. Immediately call `save_chunk_entities` with `paperName: <doc_id>`, `runId: <run_id>`, `chunkIndex: i`, and `entitiesJson` set to the JSON array you just extracted. Do not merely say that you will save; actually call the tool before moving to the next chunk.
 
-If a chunk's `source` field is `"sliding_window"`, the same entity may appear in adjacent chunks' overlap regions. **Do not try to deduplicate these manually** — the downstream merge step handles cross-chunk dedup deterministically.
+If a chunk's `chunking_strategy` is `"semantic_sentence_overlap"`, the same entity may appear in adjacent chunks' one-sentence overlap region. **Do not try to deduplicate these manually** — the downstream merge step handles overlap dedup deterministically.
 
 ## Per-Chunk Output Format
 For each chunk, emit a JSON array of entity mentions (no wrapping object):

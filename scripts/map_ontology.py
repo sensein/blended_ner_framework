@@ -73,6 +73,8 @@ class EnrichedEntity(BaseModel):
     chunk: str | None = None
     start: int | None = None
     end: int | None = None
+    global_start: int | None = None
+    global_end: int | None = None
     source_pass: str | None = None
     context: str | None = None
     source_chunk_path: str | None = None
@@ -463,6 +465,8 @@ def enriched_entity(entity: dict[str, Any], mapping: dict[str, Any], backend: st
         chunk=entity.get("chunk"),
         start=entity.get("start"),
         end=entity.get("end"),
+        global_start=entity.get("global_start"),
+        global_end=entity.get("global_end"),
         source_pass=entity.get("source_pass"),
         context=entity.get("context"),
         source_chunk_path=entity.get("source_chunk_path"),
@@ -482,6 +486,8 @@ def write_csv(path: Path, entities: list[EnrichedEntity]) -> None:
         "chunk",
         "start",
         "end",
+        "global_start",
+        "global_end",
         "source_pass",
         "context",
         "source_chunk_path",

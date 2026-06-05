@@ -45,6 +45,7 @@ from transformers import AutoTokenizer, PreTrainedTokenizerBase
 TEI_NS = "http://www.tei-c.org/ns/1.0"
 CHUNK_SEPARATOR = "---"
 VERY_LARGE_MODEL_MAX_LENGTH = 1_000_000
+SENTENCE_OVERLAP = 1
 
 
 def load_dotenv(path: Path = Path(".env")) -> None:
@@ -350,11 +351,8 @@ def semantic_units(
     tokenizer: PreTrainedTokenizerBase,
     max_tokens: int,
 ) -> Iterator[tuple[int, int, str]]:
-    """Yield paragraph/sentence units small enough for token packing."""
+    """Yield sentence-level units small enough for token packing."""
     for p_start, _p_end, paragraph in paragraph_spans(text):
-        if count_tokens(tokenizer, paragraph) <= max_tokens:
-            yield p_start, p_start + len(paragraph), paragraph
-            continue
         for s_start, _s_end, sentence in sentence_spans(paragraph, base_offset=p_start):
             if count_tokens(tokenizer, sentence) <= max_tokens:
                 yield s_start, s_start + len(sentence), sentence
@@ -368,16 +366,19 @@ def chunk_text_semantically(
     max_tokens: int,
 ) -> list[Chunk]:
     """
-    Greedily pack paragraph/sentence units without exceeding max_tokens.
-    Boundaries are semantic: paragraphs first, sentences second, and only
-    pathological over-limit sentences are split further.
+    Greedily pack sentence-level units without exceeding max_tokens.
+    Boundaries are semantic: sentences are kept intact, and only pathological
+    over-limit sentences are split further.
 
-    Chunk text is always copied from the original parsed document span so the
-    recorded char_start/char_end offsets remain valid for downstream mapping.
+    Each chunk after the first starts with the previous chunk's final sentence
+    when that one-sentence overlap still fits under max_tokens. Chunk text is
+    always copied from the original parsed document span so the recorded
+    char_start/char_end offsets remain valid for downstream mapping.
     """
     chunks: list[Chunk] = []
     chunk_start: int | None = None
     chunk_end: int | None = None
+    chunk_units: list[tuple[int, int]] = []
 
     def emit(start: int, end: int) -> None:
         body = text[start:end].strip()
@@ -396,15 +397,26 @@ def chunk_text_semantically(
     for unit_start, unit_end, _unit_text in semantic_units(text, tokenizer, max_tokens):
         if chunk_start is None:
             chunk_start, chunk_end = unit_start, unit_end
+            chunk_units = [(unit_start, unit_end)]
             continue
 
         assert chunk_end is not None
         candidate = text[chunk_start:unit_end].strip()
         if count_tokens(tokenizer, candidate) > max_tokens:
             emit(chunk_start, chunk_end)
-            chunk_start, chunk_end = unit_start, unit_end
+
+            overlap_units = chunk_units[-SENTENCE_OVERLAP:] if SENTENCE_OVERLAP > 0 else []
+            overlap_start = overlap_units[0][0] if overlap_units else unit_start
+            overlap_candidate = text[overlap_start:unit_end].strip()
+            if overlap_units and count_tokens(tokenizer, overlap_candidate) <= max_tokens:
+                chunk_start, chunk_end = overlap_start, unit_end
+                chunk_units = [*overlap_units, (unit_start, unit_end)]
+            else:
+                chunk_start, chunk_end = unit_start, unit_end
+                chunk_units = [(unit_start, unit_end)]
         else:
             chunk_end = unit_end
+            chunk_units.append((unit_start, unit_end))
 
     if chunk_start is not None and chunk_end is not None:
         emit(chunk_start, chunk_end)
@@ -458,6 +470,10 @@ def write_chunks(
             "chars": len(chunk.text),
             "doc_chars": len(parsed.text),
             "source": parsed.source,
+            "chunking_strategy": "semantic_sentence_overlap",
+            "sentence_overlap": SENTENCE_OVERLAP,
+            "overlap_with_previous": chunk.chunk_index > 0 and chunks[chunk.chunk_index - 1].char_end > chunk.char_start,
+            "overlap_chars_with_previous": max(0, chunks[chunk.chunk_index - 1].char_end - chunk.char_start) if chunk.chunk_index > 0 else 0,
             "doc_id": pdf_path.stem,
             "model_id": model_id,
         }
@@ -474,6 +490,8 @@ def write_chunks(
         "parser_source": parsed.source,
         "model_id": model_id,
         "max_tokens": max_tokens,
+        "chunking_strategy": "semantic_sentence_overlap",
+        "sentence_overlap": SENTENCE_OVERLAP,
         "doc_chars": len(parsed.text),
         "total_chunks": len(chunks),
         "chunks": [str(p.name) for p in paths],
@@ -507,7 +525,7 @@ def process_pdf(
 
 def build_arg_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="Ingest PDFs with Grobid→pymupdf4llm fallback and model-specific token chunking.",
+        description="Ingest PDFs with Grobid→pymupdf4llm fallback and model-specific sentence-aware token chunking with one-sentence overlap.",
     )
     parser.add_argument("input", type=Path, help="PDF file or directory containing PDFs.")
     parser.add_argument(
@@ -525,7 +543,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "--max-tokens",
         type=int,
         default=None,
-        help="Optional per-chunk token ceiling. Defaults to 85%% of tokenizer.model_max_length, or 4096 when unknown.",
+        help="Optional per-chunk token ceiling. Defaults to 85%% of tokenizer.model_max_length, or 4096 when unknown. Adjacent chunks include one sentence of overlap when it fits."
     )
     parser.add_argument(
         "--grobid-url",
