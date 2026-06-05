@@ -35,6 +35,7 @@ OPENAI_API_KEY=your_openai_key_here
 HF_TOKEN=your_huggingface_token_here
 BIOPORTAL_API_KEY=your_bioportal_key_here
 LOCAL_CONCEPT_MAPPING_URL=http://localhost:8000
+LITELLM_CONCURRENCY=4
 ```
 
 `.env` is ignored by git; do not commit real API tokens.
@@ -189,8 +190,11 @@ After GLiNER has produced `output/gliner/<timestamp>/chunk_NNN.json` files, run 
 uv run scripts/llm_refinement.py \
   --chunks-dir data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks \
   --gliner-dir output/gliner/20260602T192415 \
-  --model gpt-5.5
+  --model gpt-5.5 \
+  --concurrency 4
 ```
+
+The refinement pass uses `asyncio` plus LiteLLM `acompletion()` to process chunks concurrently. Concurrency is bounded with `--concurrency` or `LITELLM_CONCURRENCY` to avoid unbounded provider/API rate-limit pressure.
 
 This writes by default:
 
@@ -245,8 +249,11 @@ After `llm_pass1_entities.json` exists, run a blind masked pass to force the LLM
 ```bash
 uv run scripts/llm_masked_pass.py \
   --llm-pass1 output/gliner/20260602T192415/llm_pass1_entities.json \
-  --model gpt-5.5
+  --model gpt-5.5 \
+  --concurrency 4
 ```
+
+The masked recall pass also uses bounded async LiteLLM calls. Increase `--concurrency` for higher-throughput providers; reduce it if you encounter rate limits or model-side queuing.
 
 This writes by default:
 

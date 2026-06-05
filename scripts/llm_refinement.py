@@ -24,6 +24,7 @@ Example:
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 import os
 import re
@@ -33,7 +34,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable
 
-from litellm import completion
+from litellm import acompletion
 from pydantic import BaseModel, Field, ValidationError, field_validator
 
 
@@ -95,6 +96,7 @@ class RefinedChunk(BaseModel):
 class RefinementOutput(BaseModel):
     created_at: str
     model: str
+    concurrency: int
     chunks_dir: str
     gliner_dir: str
     chunks: list[RefinedChunk]
@@ -117,6 +119,13 @@ def load_dotenv(path: Path = Path(".env")) -> None:
             os.environ[key] = value
 
 
+def env_int(name: str, default: int) -> int:
+    try:
+        return int(os.getenv(name, str(default)))
+    except (TypeError, ValueError):
+        return default
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Refine GLiNER annotations with an LLM deep pass.")
     parser.add_argument("--chunks-dir", required=True, type=Path, help="Directory containing chunk_NNN.txt files.")
@@ -127,6 +136,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--chunk-index", type=int, action="append", help="Only process the given chunk index; repeatable.")
     parser.add_argument("--max-chars", type=int, default=0, help="Optional maximum raw chunk characters to send per chunk; 0 means no truncation.")
     parser.add_argument("--temperature", type=float, default=0.0, help="LLM sampling temperature.")
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=env_int("LITELLM_CONCURRENCY", 4),
+        help="Maximum concurrent LiteLLM requests. Defaults to LITELLM_CONCURRENCY or 4.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Write decorated text artifacts but do not call the LLM.")
     return parser.parse_args()
 
@@ -216,8 +231,8 @@ def strip_code_fences(text: str) -> str:
     return stripped
 
 
-def refine_with_llm(model: str, decorated_text: str, temperature: float) -> str:
-    response = completion(
+async def refine_with_llm(model: str, decorated_text: str, temperature: float) -> str:
+    response = await acompletion(
         model=model,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
@@ -285,7 +300,7 @@ def write_text(path: Path, text: str) -> str:
     return str(path)
 
 
-def process_chunk(
+async def process_chunk(
     *,
     chunk_path: Path,
     gliner_path: Path,
@@ -294,6 +309,7 @@ def process_chunk(
     max_chars: int,
     temperature: float,
     dry_run: bool,
+    semaphore: asyncio.Semaphore,
 ) -> RefinedChunk:
     raw_text = read_chunk_body(chunk_path, max_chars=max_chars)
     gliner_entities = load_gliner_entities(gliner_path, len(raw_text))
@@ -309,7 +325,8 @@ def process_chunk(
     if dry_run:
         refined_markdown = decorated
     else:
-        refined_markdown = refine_with_llm(model, decorated, temperature)
+        async with semaphore:
+            refined_markdown = await refine_with_llm(model, decorated, temperature)
 
     clean_text, entities = parse_refined_markdown(refined_markdown)
 
@@ -337,9 +354,10 @@ def selected_chunk_paths(chunks_dir: Path, selected_indices: Iterable[int] | Non
     return [p for p in paths if chunk_sort_key(p) in wanted]
 
 
-def main() -> int:
+async def main_async() -> int:
     load_dotenv()
     args = parse_args()
+    concurrency = max(1, args.concurrency)
 
     chunks_dir = args.chunks_dir.expanduser().resolve()
     gliner_dir = args.gliner_dir.expanduser().resolve()
@@ -355,28 +373,35 @@ def main() -> int:
     if not chunk_paths:
         raise FileNotFoundError(f"No selected chunk_*.txt files found in {chunks_dir}")
 
-    refined_chunks: list[RefinedChunk] = []
+    semaphore = asyncio.Semaphore(concurrency)
+    tasks: list[asyncio.Task[RefinedChunk]] = []
     for chunk_path in chunk_paths:
         gliner_path = gliner_dir / f"{chunk_path.stem}.json"
         if not gliner_path.exists():
             print(f"⚠ skipping {chunk_path.name}: missing {gliner_path}", file=sys.stderr)
             continue
-        print(f"Refining {chunk_path.name} with {gliner_path.name}...", file=sys.stderr)
-        refined_chunks.append(
-            process_chunk(
-                chunk_path=chunk_path,
-                gliner_path=gliner_path,
-                model=args.model,
-                artifacts_dir=artifacts_dir,
-                max_chars=args.max_chars,
-                temperature=args.temperature,
-                dry_run=args.dry_run,
+        print(f"Queueing refinement for {chunk_path.name} with {gliner_path.name}...", file=sys.stderr)
+        tasks.append(
+            asyncio.create_task(
+                process_chunk(
+                    chunk_path=chunk_path,
+                    gliner_path=gliner_path,
+                    model=args.model,
+                    artifacts_dir=artifacts_dir,
+                    max_chars=args.max_chars,
+                    temperature=args.temperature,
+                    dry_run=args.dry_run,
+                    semaphore=semaphore,
+                )
             )
         )
+
+    refined_chunks = list(await asyncio.gather(*tasks)) if tasks else []
 
     result = RefinementOutput(
         created_at=datetime.now().isoformat(timespec="seconds"),
         model=args.model,
+        concurrency=concurrency,
         chunks_dir=str(chunks_dir),
         gliner_dir=str(gliner_dir),
         chunks=refined_chunks,
@@ -391,10 +416,14 @@ def main() -> int:
     output_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
     total_entities = sum(chunk.entity_count for chunk in refined_chunks)
-    print(f"Wrote {total_entities} refined entities across {len(refined_chunks)} chunk(s) to {output_path}")
+    print(f"Wrote {total_entities} refined entities across {len(refined_chunks)} chunk(s) to {output_path} with concurrency={concurrency}")
     if artifacts_dir:
         print(f"Wrote refinement artifacts to {artifacts_dir}")
     return 0
+
+
+def main() -> int:
+    return asyncio.run(main_async())
 
 
 if __name__ == "__main__":

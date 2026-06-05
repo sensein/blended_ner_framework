@@ -15,6 +15,7 @@ export default {
     artifactsDir: Type.Optional(Type.String({ description: "Optional directory for masked text artifacts. Defaults to <llmPass1 parent>/llm_masked_pass_artifacts." })),
     chunkIndex: Type.Optional(Type.Array(Type.Number(), { description: "Optional list of chunk indices to process." })),
     temperature: Type.Optional(Type.Number({ description: "LLM sampling temperature. Defaults to 0.0." })),
+    concurrency: Type.Optional(Type.Number({ description: "Maximum concurrent LiteLLM requests. Defaults to LITELLM_CONCURRENCY or 4." })),
     dryRun: Type.Optional(Type.Boolean({ description: "If true, create masked artifacts and merge pass-1 entities without calling the LLM." })),
   }),
   async execute(_toolCallId: string, params: any, signal?: AbortSignal) {
@@ -27,6 +28,7 @@ export default {
       for (const index of params.chunkIndex) args.push("--chunk-index", String(index));
     }
     if (params.temperature !== undefined) args.push("--temperature", String(params.temperature));
+    if (params.concurrency !== undefined) args.push("--concurrency", String(params.concurrency));
     if (params.dryRun) args.push("--dry-run");
 
     try {

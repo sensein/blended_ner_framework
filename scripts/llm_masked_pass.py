@@ -23,6 +23,7 @@ Example:
 from __future__ import annotations
 
 import argparse
+import asyncio
 import json
 import os
 import re
@@ -32,7 +33,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Iterable
 
-from litellm import completion
+from litellm import acompletion
 from pydantic import BaseModel, Field, ValidationError, field_validator
 
 
@@ -128,6 +129,7 @@ class ChunkMaskedPassResult(BaseModel):
 class MasterOutput(BaseModel):
     created_at: str
     model: str
+    concurrency: int
     llm_pass1_path: str
     output_path: str
     total_master_entities: int
@@ -143,6 +145,14 @@ class MaskingResult:
     masks: list[MaskRecord]
     unmatched: list[UnmatchedPass1Entity]
     pass1_master_entities: list[MasterEntity]
+
+
+@dataclass
+class ProcessedMaskedChunk:
+    chunk_result: ChunkMaskedPassResult
+    master_entities: list[MasterEntity]
+    pass1_count: int
+    second_pass_count: int
 
 
 def load_dotenv(path: Path = Path(".env")) -> None:
@@ -162,6 +172,13 @@ def load_dotenv(path: Path = Path(".env")) -> None:
             os.environ[key] = value
 
 
+def env_int(name: str, default: int) -> int:
+    try:
+        return int(os.getenv(name, str(default)))
+    except (TypeError, ValueError):
+        return default
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run a blind masked LLM recall pass and merge extracted entities.")
     parser.add_argument("--llm-pass1", required=True, type=Path, help="Path to llm_pass1_entities.json.")
@@ -170,6 +187,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--artifacts-dir", type=Path, help="Optional directory for masked text artifacts. Defaults to <llm-pass1-dir>/llm_masked_pass_artifacts.")
     parser.add_argument("--chunk-index", type=int, action="append", help="Only process the given chunk index; repeatable.")
     parser.add_argument("--temperature", type=float, default=0.0, help="LLM sampling temperature.")
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=env_int("LITELLM_CONCURRENCY", 4),
+        help="Maximum concurrent LiteLLM requests. Defaults to LITELLM_CONCURRENCY or 4.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Create masked artifacts and merge pass-1 entities without calling the LLM.")
     return parser.parse_args()
 
@@ -352,9 +375,9 @@ def extract_json_object(raw: str) -> dict[str, Any]:
     raise ValueError("LLM JSON response must be an object or list")
 
 
-def discover_with_llm(model: str, masked_text: str, temperature: float) -> list[NewEntity]:
+async def discover_with_llm(model: str, masked_text: str, temperature: float) -> list[NewEntity]:
     schema = LLMDiscoveryResponse.model_json_schema()
-    response = completion(
+    response = await acompletion(
         model=model,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
@@ -489,9 +512,60 @@ def write_text(path: Path, text: str) -> str:
     return str(path)
 
 
-def main() -> int:
+async def process_chunk_payload(
+    *,
+    chunk_payload: dict[str, Any],
+    source_chunk_path: Path,
+    model: str,
+    temperature: float,
+    artifacts_dir: Path,
+    dry_run: bool,
+    semaphore: asyncio.Semaphore,
+) -> ProcessedMaskedChunk:
+    chunk_name = str(chunk_payload.get("chunk", ""))
+    raw_text = read_chunk_body(source_chunk_path)
+    masking = mask_pass1_entities(raw_text, chunk_payload)
+    masked_path = write_text(artifacts_dir / "masked_text" / f"{chunk_name}.txt", masking.masked_text)
+
+    print(f"Masked {chunk_name}: {len(masking.masks)} entities, {len(masking.unmatched)} unmatched", file=sys.stderr)
+
+    if dry_run:
+        discoveries: list[NewEntity] = []
+    else:
+        async with semaphore:
+            discoveries = await discover_with_llm(model, masking.masked_text, temperature)
+
+    second_pass_entities = find_second_pass_entities(
+        masking.masked_text,
+        raw_text,
+        chunk_name,
+        str(source_chunk_path),
+        discoveries,
+    )
+    master_entities = [*masking.pass1_master_entities, *second_pass_entities]
+    chunk_result = ChunkMaskedPassResult(
+        chunk=chunk_name,
+        source_chunk_path=str(source_chunk_path),
+        masked_text_path=masked_path,
+        mask_count=len(masking.masks),
+        unmatched_pass1_count=len(masking.unmatched),
+        second_pass_count=len(second_pass_entities),
+        masks=masking.masks,
+        unmatched_pass1_entities=masking.unmatched,
+        second_pass_entities=second_pass_entities,
+    )
+    return ProcessedMaskedChunk(
+        chunk_result=chunk_result,
+        master_entities=master_entities,
+        pass1_count=len(masking.pass1_master_entities),
+        second_pass_count=len(second_pass_entities),
+    )
+
+
+async def main_async() -> int:
     load_dotenv()
     args = parse_args()
+    concurrency = max(1, args.concurrency)
 
     pass1_path = args.llm_pass1.expanduser().resolve()
     if not pass1_path.is_file():
@@ -506,10 +580,8 @@ def main() -> int:
         raise ValueError("llm_pass1_entities.json must contain a top-level 'chunks' array")
 
     selected = set(args.chunk_index or [])
-    chunk_results: list[ChunkMaskedPassResult] = []
-    all_master_entities: list[MasterEntity] = []
-    second_pass_total = 0
-    pass1_total = 0
+    semaphore = asyncio.Semaphore(concurrency)
+    tasks: list[asyncio.Task[ProcessedMaskedChunk]] = []
 
     for chunk_payload in chunks:
         if not isinstance(chunk_payload, dict):
@@ -524,47 +596,32 @@ def main() -> int:
             print(f"⚠ skipping {chunk_name}: source chunk missing: {source_chunk_path}", file=sys.stderr)
             continue
 
-        raw_text = read_chunk_body(source_chunk_path)
-        masking = mask_pass1_entities(raw_text, chunk_payload)
-        masked_path = write_text(artifacts_dir / "masked_text" / f"{chunk_name}.txt", masking.masked_text)
-
-        print(f"Masked {chunk_name}: {len(masking.masks)} entities, {len(masking.unmatched)} unmatched", file=sys.stderr)
-
-        if args.dry_run:
-            discoveries: list[NewEntity] = []
-        else:
-            discoveries = discover_with_llm(args.model, masking.masked_text, args.temperature)
-
-        second_pass_entities = find_second_pass_entities(
-            masking.masked_text,
-            raw_text,
-            chunk_name,
-            str(source_chunk_path),
-            discoveries,
-        )
-        second_pass_total += len(second_pass_entities)
-        pass1_total += len(masking.pass1_master_entities)
-        all_master_entities.extend(masking.pass1_master_entities)
-        all_master_entities.extend(second_pass_entities)
-
-        chunk_results.append(
-            ChunkMaskedPassResult(
-                chunk=chunk_name,
-                source_chunk_path=str(source_chunk_path),
-                masked_text_path=masked_path,
-                mask_count=len(masking.masks),
-                unmatched_pass1_count=len(masking.unmatched),
-                second_pass_count=len(second_pass_entities),
-                masks=masking.masks,
-                unmatched_pass1_entities=masking.unmatched,
-                second_pass_entities=second_pass_entities,
+        print(f"Queueing masked recall for {chunk_name}...", file=sys.stderr)
+        tasks.append(
+            asyncio.create_task(
+                process_chunk_payload(
+                    chunk_payload=chunk_payload,
+                    source_chunk_path=source_chunk_path,
+                    model=args.model,
+                    temperature=args.temperature,
+                    artifacts_dir=artifacts_dir,
+                    dry_run=args.dry_run,
+                    semaphore=semaphore,
+                )
             )
         )
+
+    processed_chunks = list(await asyncio.gather(*tasks)) if tasks else []
+    chunk_results = [item.chunk_result for item in processed_chunks]
+    all_master_entities = [entity for item in processed_chunks for entity in item.master_entities]
+    pass1_total = sum(item.pass1_count for item in processed_chunks)
+    second_pass_total = sum(item.second_pass_count for item in processed_chunks)
 
     master_entities = deduplicate_entities(all_master_entities)
     result = MasterOutput(
         created_at=datetime.now().isoformat(timespec="seconds"),
         model=args.model,
+        concurrency=concurrency,
         llm_pass1_path=str(pass1_path),
         output_path=str(output_path),
         total_master_entities=len(master_entities),
@@ -576,9 +633,13 @@ def main() -> int:
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(result.model_dump(mode="json"), indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"Wrote {len(master_entities)} master entities to {output_path}")
+    print(f"Wrote {len(master_entities)} master entities to {output_path} with concurrency={concurrency}")
     print(f"Wrote masked-pass artifacts to {artifacts_dir}")
     return 0
+
+
+def main() -> int:
+    return asyncio.run(main_async())
 
 
 if __name__ == "__main__":
