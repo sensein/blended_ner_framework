@@ -133,16 +133,25 @@ The included local GLiNER runner accepts:
 --input <file-or-folder> --labels <COMMA,SEPARATED,LABELS>
 ```
 
+It dynamically routes PyTorch inference to the fastest available local device:
+
+1. `cuda:0` for NVIDIA CUDA or AMD ROCm builds
+2. `mps` for Apple Silicon Metal Performance Shaders
+3. `cpu` only as a warning-producing fallback
+
+You can override detection with `--device cuda:0`, `--device mps`, or `--device cpu`. CUDA/ROCm runs use FP16 by default (`--fp16 auto`) to reduce memory and improve tensor-core throughput; MPS and CPU avoid explicit FP16 casting by default. On Apple Silicon, the runner periodically calls `torch.mps.empty_cache()` during long file loops to reduce MPS allocator fragmentation; tune with `--mps-empty-cache-every` or disable with `0`.
+
 Direct GLiNER runner example:
 
 ```bash
 uv run scripts/ner.py \
   --input data/papers/multiscale_spatial_transcriptomic/20260602T143152/chunks \
   --labels BRAIN_REGION,CELL_TYPE,GENE,TECHNIQUE \
+  --device auto \
   --output-dir output/gliner/example_run
 ```
 
-`uv run scripts/ner.py` uses inline dependency management for `gliner`. The first full run may download the GLiNER package, model files, and backend ML dependencies. If you want to use a different GLiNER runner, pass its location with `--ner-script` and append repeated `--extra-ner-arg` values as needed.
+`uv run scripts/ner.py` uses inline dependency management for `gliner`. The first full run may download the GLiNER package, model files, and backend ML dependencies. If you want to use a different GLiNER runner, pass its location with `--ner-script` and append repeated `--extra-ner-arg` values as needed. To force device routing through the hybrid orchestrator, append arguments such as `--extra-ner-arg --device --extra-ner-arg mps`.
 
 ### 3) Refine GLiNER output with an LLM deep pass
 
