@@ -51,6 +51,9 @@ Additional requirements:
 - Do not include text that contains asterisks.
 - Do not infer or recover entities hidden under asterisks.
 - Use concise neuroscience labels in PascalCase or UPPER_SNAKE_CASE.
+- Target biomedical/neuroscientific concepts that can be mapped to ontology identifiers (IRIs) and labels.
+- Useful for diseases, genes, proteins, chemicals, anatomical structures, etc.
+- Prefer exact source-text entity strings; downstream concept mapping will pass each term with its source sentence as context.
 """
 
 

@@ -11,7 +11,8 @@ This project is built around core Python scripts plus thin pi.dev agent wrappers
 - `scripts/ner.py` — local GLiNER runner that accepts `--input` and `--labels`, runs GLiNER over chunk/text files, and writes JSON outputs.
 - `scripts/llm_refinement.py` — injects GLiNER entities inline as `[Entity](LABEL)`, sends decorated chunks to an LLM for verification/deep-pass extraction, and writes `llm_pass1_entities.json`.
 - `scripts/llm_masked_pass.py` — masks pass-1 entities with `*`, runs a blind LLM recall pass for missed entities, and writes `master_extracted_entities.json`.
-- `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, `.pi/tools/llm_refinement.ts`, `.pi/tools/llm_masked_pass.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
+- `scripts/map_ontology.py` — maps extracted entities to ontology identifiers using migrated local/BioPortal concept-mapping logic from the prior CrewAI implementation, without CrewAI overhead.
+- `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, `.pi/tools/llm_refinement.ts`, `.pi/tools/llm_masked_pass.ts`, `.pi/tools/map_ontology.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
 
 ## Requirements
 
@@ -19,7 +20,7 @@ This project is built around core Python scripts plus thin pi.dev agent wrappers
 - [uv](https://docs.astral.sh/uv/) for dependency/environment management
 - Optional but recommended: a running Grobid server (default: `http://localhost:8070`)
 - PyMuPDF4LLM is included as a fallback parser when Grobid is unavailable
-- API tokens in a local `.env` file when using LiteLLM/Hugging Face credentials
+- API tokens in a local `.env` file when using LiteLLM/Hugging Face/BioPortal credentials
 
 ## Setup
 
@@ -32,6 +33,8 @@ Optional local credentials for LiteLLM/Hugging Face can be placed in a repo-root
 ```bash
 OPENAI_API_KEY=your_openai_key_here
 HF_TOKEN=your_huggingface_token_here
+BIOPORTAL_API_KEY=your_bioportal_key_here
+LOCAL_CONCEPT_MAPPING_URL=http://localhost:8000
 ```
 
 `.env` is ignored by git; do not commit real API tokens.
@@ -225,7 +228,63 @@ uv run scripts/llm_masked_pass.py \
   --dry-run
 ```
 
-### 5) Save NER output for one chunk
+### 5) Map final entities to ontologies
+
+After `master_extracted_entities.json` exists, map extracted entities to ontology identifiers:
+
+```bash
+uv run scripts/map_ontology.py \
+  --input output/gliner/20260602T192415/master_extracted_entities.json \
+  --backend auto
+```
+
+In `--backend auto` mode, fallback is **per term**, not per file: the script keeps successful local mappings and calls BioPortal only for terms that the local service did not map. If the local service is unavailable entirely, all terms automatically fall back to BioPortal as long as `BIOPORTAL_API_KEY` is available in `.env` or the shell environment.
+
+This writes by default:
+
+```text
+output/gliner/20260602T192415/neuro_entities_mapped.json
+```
+
+`map_ontology.py` ports the deterministic logic from the prior CrewAI concept-mapping tools while removing CrewAI framework overhead. It preserves:
+
+- robust text sanitization and 500-character max query length
+- context-aware mapping with source sentence context truncated to 200 characters
+- local concept mapping through `POST <LOCAL_CONCEPT_MAPPING_URL>/map/batch`
+- batch deduplication, in-memory caching, configurable batch size/workers, and request timeouts
+- per-term BioPortal fallback/search using `http://data.bioontology.org/search` when `--backend auto` and local mapping fails for an individual term
+- BioPortal exact-match-first lookup, followed by fuzzy fallback when no exact result is found
+- configurable BioPortal ontology filtering, defaulting to `UBERON,NIFSTD,FMA,GO,SNOMEDCT`
+- tenacity exponential backoff/retries for BioPortal `429 Too Many Requests` and `5xx` errors
+- final enriched fields: `extracted_text`, `llm_label`, `bioportal_prefLabel`, and `ontology_uri`
+
+Useful environment variables:
+
+```bash
+LOCAL_CONCEPT_MAPPING_URL=http://localhost:8000
+LOCAL_CONCEPT_MAPPING_TIMEOUT=30
+LOCAL_CONCEPT_MAPPING_BATCH_SIZE=4000
+LOCAL_CONCEPT_MAPPING_WORKERS=4
+MAX_CONCEPT_MAPPING_RESULTS=1
+BIOPORTAL_API_KEY=your_bioportal_key_here
+# BioPortal retries are handled by tenacity exponential backoff.
+BIOPORTAL_API_KEY=your_bioportal_key_here
+```
+
+Force BioPortal and restrict ontology acronyms:
+
+```bash
+uv run scripts/map_ontology.py \
+  --input output/gliner/20260602T192415/master_extracted_entities.json \
+  --backend bioportal \
+  --ontologies UBERON,CL,GO,NCIT,MONDO \
+  --max-results 3 \
+  --csv
+```
+
+The `--csv` flag writes an easy-viewing CSV next to the JSON output. You can also pass an explicit CSV path, for example `--csv output/my_entities.csv`.
+
+### 6) Save NER output for one chunk
 
 `save_chunk_entities.py` expects a JSON **array** on `stdin`:
 
@@ -260,6 +319,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 │   ├── ingest_chunk.py
 │   ├── llm_masked_pass.py
 │   ├── llm_refinement.py
+│   ├── map_ontology.py
 │   ├── ner.py
 │   ├── parse_pdf.py
 │   └── save_chunk_entities.py
@@ -270,6 +330,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 │       ├── hybrid_ner_orchestrator.ts
 │       ├── llm_masked_pass.ts
 │       ├── llm_refinement.ts
+│       ├── map_ontology.ts
 │       ├── parse_pdf.ts
 │       └── save_chunk_entities.ts
 ├── data/

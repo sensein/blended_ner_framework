@@ -34,17 +34,23 @@ You must execute deterministic pi.dev tools in sequential order to guarantee zer
 
    Use this tool when the user asks for masked recall, blind second-pass extraction, final/master entity consolidation, or a complete post-refinement master list. If LLM refinement just completed, pass its output path as `llmPass1`.
 
-5. **File Reading**
+5. **Ontology Mapping**
+   Tool: `map_ontology` with `input: "output/gliner/<run_timestamp>/master_extracted_entities.json"`, optional `output`, optional `csv`, optional `backend`, optional `maxResults`, and optional `ontologies`.
+   *Purpose: Runs `scripts/map_ontology.py` via `uv run`. The Python script ports the useful deterministic logic from the prior CrewAI concept-mapping tools without CrewAI overhead: python-dotenv `.env` loading for `BIOPORTAL_API_KEY`, robust text sanitization, context truncation to 200 characters, batch local `/map/batch` requests, environment-driven local/BioPortal configuration, in-memory caching, local-service parallel sub-batches, BioPortal exact-match-first search against `http://data.bioontology.org/search`, configurable ontology filtering defaulting to `UBERON,NIFSTD,FMA,GO,SNOMEDCT`, tenacity exponential backoff/retries for BioPortal 429/5xx errors, and final enriched fields (`extracted_text`, `llm_label`, `bioportal_prefLabel`, `ontology_uri`).*
+
+   Use this tool when the user asks to map extracted entities to ontologies, align concepts, produce ontology identifiers/IRIs, or complete the final mapped output. Prefer `backend: "auto"` unless the user specifies local or BioPortal. In `auto` mode, fallback is per term: keep successful local mappings and call BioPortal only for terms that local did not map.
+
+6. **File Reading**
    Use your file reading tool to load each `chunk_NNN.txt` in order. Each file fits under the 50kb payload limit.
 
-6. **Per-Chunk Output Writing**
+7. **Per-Chunk Output Writing**
    Tool: `save_chunk_entities` with `paperName: <doc_id>`, `runId: <run_id>`, `chunkIndex: N`, and `entitiesJson` set to the JSON array for that chunk.
    *Purpose: Runs `scripts/save_chunk_entities.py` via `uv run`, passing the entity array on stdin. The Python script validates and writes one entity file per processed chunk to `output/<paper_name>/<run_id>/chunk_NNN.json` (or under `outputRoot` if provided). This keeps each response small and avoids hitting the 50kb response limit on long papers.*
 
 ## Anti-Loop Execution Rule
 Do **not** narrate intentions. Do **not** say “I need to…”, “Let me…”, “I will…”, or “Now I have…”. Those are failure modes.
 
-When the next action is deterministic, immediately call the appropriate tool. Do not read source code or prompt files to learn how to run the pipeline; the instructions in this active prompt are authoritative. There is no separate NER pipeline script to discover or run. The NER pipeline is this prompt plus the `parse_pdf`, optional `hybrid_ner_orchestrator`, optional `llm_refinement`, optional `llm_masked_pass`, file-reading, and `save_chunk_entities` tools. Never search the codebase for a pipeline script. Never read `scripts/ingest_chunk.py`, `scripts/parse_pdf.py`, `scripts/hybrid_ner_orchestrator.py`, `scripts/llm_refinement.py`, `scripts/llm_masked_pass.py`, `scripts/save_chunk_entities.py`, `.pi/tools/*.ts`, or `.pi/prompts/ner_pipeline.md` as part of the NER workflow unless the user explicitly asks you to modify/debug the code or prompt. When the next action is NER extraction, immediately produce the chunk’s JSON entity array and call `save_chunk_entities` in the same turn. Never stop after saying that you are going to extract or save.
+When the next action is deterministic, immediately call the appropriate tool. Do not read source code or prompt files to learn how to run the pipeline; the instructions in this active prompt are authoritative. There is no separate NER pipeline script to discover or run. The NER pipeline is this prompt plus the `parse_pdf`, optional `hybrid_ner_orchestrator`, optional `llm_refinement`, optional `llm_masked_pass`, optional `map_ontology`, file-reading, and `save_chunk_entities` tools. Never search the codebase for a pipeline script. Never read `scripts/ingest_chunk.py`, `scripts/parse_pdf.py`, `scripts/hybrid_ner_orchestrator.py`, `scripts/llm_refinement.py`, `scripts/llm_masked_pass.py`, `scripts/map_ontology.py`, `scripts/save_chunk_entities.py`, `.pi/tools/*.ts`, or `.pi/prompts/ner_pipeline.md` as part of the NER workflow unless the user explicitly asks you to modify/debug the code or prompt. When the next action is NER extraction, immediately produce the chunk’s JSON entity array and call `save_chunk_entities` in the same turn. Never stop after saying that you are going to extract or save.
 
 For each chunk, the required sequence is:
 
@@ -66,7 +72,9 @@ Process chunks **one at a time** and emit one output file per chunk:
 
 4. If the user requested masked recall, blind second-pass extraction, final consolidation, or a master entity list, immediately call `llm_masked_pass` after LLM refinement completes. Use `<glinerDir>/llm_pass1_entities.json` as `llmPass1` unless the user provided a different path. The default output is `<glinerDir>/master_extracted_entities.json`.
 
-5. For each chunk index `i` from `0` to `total_chunks - 1`:
+5. If the user requested ontology mapping, concept mapping, ontology alignment, IRIs, or final mapped output, immediately call `map_ontology` after the master entity list exists. Use `<glinerDir>/master_extracted_entities.json` as `input` unless the user provided a different path. The default output is `<glinerDir>/neuro_entities_mapped.json`. If the user asks for a spreadsheet/easy viewing, pass `csv: "AUTO"` or the requested CSV path.
+
+6. For each chunk index `i` from `0` to `total_chunks - 1`:
    a. Read `chunk_NNN.txt` and split on `---` to get `(header, body)`.
    b. Identify **every neuroscience entity mention** in `body`. Dynamically generate a label for each based on context.
    c. **Do not deduplicate.** If an entity appears 5 times in the chunk, emit 5 records. Repeat mentions matter for downstream frequency analysis.

@@ -51,6 +51,9 @@ Additional requirements:
 - Preserve the original prose and ordering as much as possible.
 - Do not summarize, omit, or rewrite non-entity text.
 - Keep labels compact, specific, and ontology-like, using PascalCase or UPPER_SNAKE_CASE consistently.
+- Target biomedical/neuroscientific concepts that can be mapped to ontology identifiers (IRIs) and labels.
+- Useful for diseases, genes, proteins, chemicals, anatomical structures, etc.
+- Prefer exact source-text entity spans and preserve enough surrounding source sentence context for downstream ontology re-ranking.
 - Return only the refined markdown text chunk, with no commentary, no preamble, and no fenced code block.
 """
 
