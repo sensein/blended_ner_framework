@@ -13,6 +13,7 @@ This project is built around core Python scripts plus thin pi.dev agent wrappers
 - `scripts/llm_masked_pass.py` — masks pass-1 entities with `*`, runs a blind LLM recall pass for missed entities, and writes `master_extracted_entities.json`.
 - `scripts/map_ontology.py` — maps extracted entities to ontology identifiers using migrated local/BioPortal concept-mapping logic from the prior CrewAI implementation, without CrewAI overhead.
 - `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, `.pi/tools/llm_refinement.ts`, `.pi/tools/llm_masked_pass.ts`, `.pi/tools/map_ontology.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
+- `.pi/skills/neuroscience-ner-orchestrator.md` and `.pi/skills/chunk_extractor.md` — pi skills that route pipeline stages and handle manual per-chunk extraction when requested.
 
 ## Requirements
 
@@ -68,19 +69,33 @@ uv run scripts/llm_refinement.py \
   --model gpt-5.5
 ```
 
-## Running the NER prompt in pi.dev
+## Running the NER Pipeline
 
-If pi is installed and running in this repository, start the workflow by entering:
+This repository uses a modular, skill-based architecture for pi.dev. To initialize the agent with the correct routing rules, launch your session from the repository root using the Orchestrator skill:
 
-```text
-/ner_pipeline
+```bash
+pi chat --skill .pi/skills/neuroscience-ner-orchestrator.md
 ```
 
-This invokes the prompt at `.pi/prompts/ner_pipeline.md`.
+Once the session is active, you can instruct the agent using natural language.
+
+**Standard Automated Run:**
+
+> "Run the full pipeline on `data/papers/smith_2026.pdf` using the hybrid GLiNER model."
+
+**Step-by-Step Execution:**
+
+You can also trigger individual stages if you need to inspect outputs:
+
+1. > "Parse and chunk the PDF at `data/papers/smith_2026.pdf`."
+2. > "Run the hybrid orchestrator to generate local labels for the chunks."
+3. > "Map the extracted entities to the BioPortal ontologies."
+
+For manual per-chunk extraction, explicitly ask the orchestrator to bypass the automated Python pipeline and use the Chunk Extractor skill.
 
 ## Core scripts and agent tools
 
-The core Python scripts can be run directly. The `/ner_pipeline` workflow should use the pi.dev wrappers in `.pi/tools` instead of calling Python directly.
+The core Python scripts can be run directly. The pi skill-based workflow should use the deterministic TypeScript wrappers in `.pi/tools` instead of calling Python directly.
 
 ### 1) Parse and chunk a PDF
 
@@ -368,8 +383,9 @@ output/example/20260528T143215_a3f1/chunk_000.json
 │   ├── parse_pdf.py
 │   └── save_chunk_entities.py
 ├── .pi/
-│   ├── prompts/
-│   │   └── ner_pipeline.md
+│   ├── skills/
+│   │   ├── neuroscience-ner-orchestrator.md
+│   │   └── chunk_extractor.md
 │   └── tools/
 │       ├── hybrid_ner_orchestrator.ts
 │       ├── llm_masked_pass.ts

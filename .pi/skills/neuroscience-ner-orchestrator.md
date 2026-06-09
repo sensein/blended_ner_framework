@@ -1,6 +1,6 @@
 ---
-name: neuroscience-ner-orchestrator
-description: Routes neuroscience NER pipeline requests to the correct deterministic TypeScript tool wrapper or hands off to manual chunk extraction. Use when deciding the next pipeline stage from user intent and workspace state.
+name: ner-orchestrator
+description: The default project manager for the Neuroscience NER pipeline. Use this skill to route tasks, run Python pipeline scripts, and manage the automated workflow.
 ---
 
 # Neuroscience NER Orchestrator

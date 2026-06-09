@@ -1,6 +1,6 @@
 ---
 name: chunk-extractor
-description: Deterministically extracts neuroscience entity mentions from pre-chunked document text and saves per-chunk JSON using save_chunk_entities. Use only for manual per-chunk extraction loops when automated Python pipeline stages are bypassed.
+description: MANDATORY skill for manual LLM entity extraction. You MUST load this skill anytime the user asks to manually extract entities from chunk files. It contains strict anti-loop and JSON formatting guardrails.
 ---
 
 # Neuroscience Chunk Extractor
