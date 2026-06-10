@@ -35,7 +35,7 @@ Evaluate the user's request and workspace state to trigger the *next* logical st
 5. **Ontology Mapping**
    - **Trigger:** User asks to map entities, align concepts, or get BioPortal IRIs.
    - **Tool:** `map_ontology`
-   - **Args:** `input` (defaults to the master entity JSON). Prefer `backend: "auto"`. If the user asks for a spreadsheet, pass `csv: "AUTO"`.
+   - **Args:** `input` (defaults to the master entity JSON). Prefer `backend: "auto"`. If the user asks for a spreadsheet, pass `csv: "AUTO"`. Optional validation controls: `strictIri`, `failOnInvalid`.
 
 6. **Final Output Audit & Normalization**
    - **Trigger:** User asks to audit, validate, normalize, summarize, group, QA, or finalize extracted/mapped NER output; or the automated full pipeline has completed ontology mapping.

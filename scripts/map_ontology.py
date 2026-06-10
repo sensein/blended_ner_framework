@@ -35,6 +35,7 @@ import os
 import re
 import sys
 import threading
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
@@ -57,6 +58,43 @@ BIOPORTAL_SEARCH_URL = "http://data.bioontology.org/search"
 _CONCEPT_MAPPING_CACHE: dict[str, dict[str, Any]] = {}
 _CONCEPT_MAPPING_CACHE_LOCK = threading.Lock()
 
+# Structural ontology IRI validation. The known-pattern registry is used for
+# high-confidence checks, but valid unfamiliar namespaces from BioPortal/local
+# services are accepted when they are well-formed URLs/CURIEs/URNs.
+_OBO_PREFIX_PATTERN = r"^https?://purl\.obolibrary\.org/obo/{prefix}_[0-9]+(?:[/#?].*)?$"
+_CURIE_PATTERN = r"^{prefix}:[0-9A-Za-z\-_]+$"
+_IRI_PATTERNS: dict[str, tuple[re.Pattern[str], ...]] = {
+    "uberon": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="UBERON")), re.compile(_CURIE_PATTERN.format(prefix="UBERON"))),
+    "cl": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="CL")), re.compile(_CURIE_PATTERN.format(prefix="CL"))),
+    "pcl": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="PCL")), re.compile(_CURIE_PATTERN.format(prefix="PCL"))),
+    "fma": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="FMA")), re.compile(_CURIE_PATTERN.format(prefix="FMA"))),
+    "nifstd": (re.compile(r"^https?://uri\.neuinfo\.org/nif/nifstd/[A-Za-z0-9_]+$"),),
+    "go": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="GO")), re.compile(_CURIE_PATTERN.format(prefix="GO"))),
+    "obi": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="OBI")), re.compile(_CURIE_PATTERN.format(prefix="OBI"))),
+    "efo": (re.compile(r"^https?://www\.ebi\.ac\.uk/efo/EFO_[0-9]+$"), re.compile(r"^EFO:[0-9]+$")),
+    "mondo": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="MONDO")), re.compile(_CURIE_PATTERN.format(prefix="MONDO"))),
+    "doid": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="DOID")), re.compile(_CURIE_PATTERN.format(prefix="DOID"))),
+    "hp": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="HP")), re.compile(_CURIE_PATTERN.format(prefix="HP"))),
+    "mp": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="MP")), re.compile(_CURIE_PATTERN.format(prefix="MP"))),
+    "chebi": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="CHEBI")), re.compile(_CURIE_PATTERN.format(prefix="CHEBI"))),
+    "dron": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="DRON")), re.compile(_CURIE_PATTERN.format(prefix="DRON"))),
+    "bto": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="BTO")), re.compile(_CURIE_PATTERN.format(prefix="BTO"))),
+    "pr": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="PR")), re.compile(_CURIE_PATTERN.format(prefix="PR"))),
+    "ncbitaxon": (re.compile(_OBO_PREFIX_PATTERN.format(prefix="NCBITaxon")), re.compile(_CURIE_PATTERN.format(prefix="NCBITaxon"))),
+    "hgnc": (re.compile(r"^https?://identifiers\.org/hgnc/[0-9]+$"), re.compile(r"^HGNC:[0-9]+$")),
+    "ncbigene": (re.compile(r"^https?://www\.ncbi\.nlm\.nih\.gov/gene/[0-9]+$"), re.compile(r"^NCBIGene:[0-9]+$")),
+    "mgi": (re.compile(r"^MGI:[0-9]+$"), re.compile(r"^https?://www\.informatics\.jax\.org/marker/MGI:[0-9]+$")),
+    "uniprot": (re.compile(r"^https?://(?:www\.)?uniprot\.org/uniprot(?:kb)?/[A-Z0-9]{6,10}$"), re.compile(r"^UniProtKB:[A-Z0-9]{6,10}$")),
+    "snomedct": (re.compile(r"^https?://purl\.bioontology\.org/ontology/SNOMEDCT/[A-Za-z0-9_\-]+$"), re.compile(r"^SNOMEDCT:[A-Za-z0-9_\-]+$")),
+}
+_GENERIC_IRI = re.compile(r"^(https?://[^\s]+|urn:[A-Za-z0-9][A-Za-z0-9:._\-]+|[A-Za-z][A-Za-z0-9_]*:[A-Za-z0-9_\-]+)$")
+_OBO_GENERIC = re.compile(r"^https?://purl\.obolibrary\.org/obo/[A-Za-z]+_[0-9]+(?:[/#?].*)?$")
+_BIOPORTAL_PURL = re.compile(r"^https?://purl\.bioontology\.org/ontology/[A-Za-z0-9_\-]+/[A-Za-z0-9_\-]+$")
+_IDENTIFIERS_ORG = re.compile(r"^https?://identifiers\.org/[A-Za-z0-9._]+(?:/[A-Za-z0-9._:-]+)?$")
+_EBI_OLS = re.compile(r"^https?://www\.ebi\.ac\.uk/[A-Za-z0-9/_-]+/[A-Za-z0-9_]+_[0-9]+$")
+_SEMANTIC_WEB = re.compile(r"^https?://www\.semanticweb\.org/.+#[A-Za-z0-9_]+$")
+_GENERIC_OWL_IRI = re.compile(r"^https?://[A-Za-z0-9./_-]+/[A-Za-z0-9._-]+_[0-9]+$")
+
 
 class RetryableBioPortalError(RuntimeError):
     """Raised for retryable BioPortal status codes such as 429 and 5xx."""
@@ -70,6 +108,10 @@ class EnrichedEntity(BaseModel):
     ontology: str | None = None
     mapping_backend: str
     mapping_error: str | None = None
+    concept_mapping_provenance: str
+    alignment_method: str
+    ontology_validation: str | None = None
+    ontology_validation_error: str | None = None
     chunk: str | None = None
     start: int | None = None
     end: int | None = None
@@ -82,6 +124,15 @@ class EnrichedEntity(BaseModel):
     model_config = {"extra": "allow"}
 
 
+class OntologyValidationSummary(BaseModel):
+    strict_iri_validation: bool
+    valid_mapped: int
+    unmapped: int
+    invalid_demoted: int
+    invalid_by_reason: dict[str, int]
+    invalid_examples: list[dict[str, Any]]
+
+
 class NeuroEntitiesMappedOutput(BaseModel):
     created_at: str
     input_path: str
@@ -90,6 +141,7 @@ class NeuroEntitiesMappedOutput(BaseModel):
     max_results: int
     entity_count: int
     mapped_count: int
+    validation: OntologyValidationSummary
     entities: list[EnrichedEntity]
 
 
@@ -413,6 +465,111 @@ def mapping_succeeded(mapping: dict[str, Any]) -> bool:
     return bool(mapping.get("ontology_id") and mapping.get("ontology_label") and not mapping.get("error"))
 
 
+def is_well_formed_iri(value: Any) -> bool:
+    if not isinstance(value, str):
+        return False
+    iri = value.strip()
+    if not iri or iri.lower() in {"n/a", "none", "null", "unmapped"}:
+        return False
+    return bool(_GENERIC_IRI.match(iri))
+
+
+def matches_any_known_ontology(iri: str) -> bool:
+    value = iri.strip()
+    for patterns in _IRI_PATTERNS.values():
+        if any(pattern.match(value) for pattern in patterns):
+            return True
+    return False
+
+
+def looks_like_real_ontology_iri(iri: str) -> bool:
+    value = iri.strip()
+    return any(
+        pattern.match(value)
+        for pattern in (_OBO_GENERIC, _BIOPORTAL_PURL, _IDENTIFIERS_ORG, _EBI_OLS, _SEMANTIC_WEB, _GENERIC_OWL_IRI)
+    )
+
+
+def validate_mapping(entity: EnrichedEntity, *, strict_iri: bool) -> tuple[bool, str | None]:
+    """Validate one ontology mapping.
+
+    This script only accepts tool-backed mappings. Unknown but well-formed
+    ontology namespaces are allowed because BioPortal/local services may return
+    valid IRIs outside this registry.
+    """
+    if not entity.ontology_uri:
+        return True, None
+    provenance = (entity.concept_mapping_provenance or "").strip().lower()
+    if provenance == "llm_knowledge":
+        return False, "llm_knowledge_rejected"
+    if strict_iri and not is_well_formed_iri(entity.ontology_uri):
+        return False, "malformed_iri"
+    # Unknown but structurally valid namespaces are accepted. The mapper is a
+    # trusted tool-backed source, and BioPortal/local services can return valid
+    # ontology namespaces outside this registry.
+    return True, None
+
+
+def append_mapping_error(existing: str | None, reason: str) -> str:
+    if not existing:
+        return reason
+    if reason in existing:
+        return existing
+    return f"{existing} | {reason}"
+
+
+def validate_and_demote_mappings(entities: list[EnrichedEntity], *, strict_iri: bool) -> OntologyValidationSummary:
+    invalid_by_reason: Counter[str] = Counter()
+    invalid_examples: list[dict[str, Any]] = []
+    valid_mapped = 0
+    unmapped = 0
+    invalid_demoted = 0
+
+    for entity in entities:
+        if not entity.ontology_uri:
+            entity.ontology_validation = "not_mapped"
+            unmapped += 1
+            continue
+
+        ok, reason = validate_mapping(entity, strict_iri=strict_iri)
+        if ok:
+            entity.ontology_validation = "valid"
+            valid_mapped += 1
+            continue
+
+        invalid_demoted += 1
+        reason = reason or "invalid_mapping"
+        invalid_by_reason[reason] += 1
+        if len(invalid_examples) < 20:
+            invalid_examples.append(
+                {
+                    "extracted_text": entity.extracted_text,
+                    "ontology_uri": entity.ontology_uri,
+                    "ontology": entity.ontology,
+                    "reason": reason,
+                }
+            )
+
+        entity.ontology_validation = "invalid_demoted"
+        entity.ontology_validation_error = reason
+        entity.mapping_error = append_mapping_error(entity.mapping_error, reason)
+        entity.bioportal_prefLabel = None
+        entity.ontology_uri = None
+        entity.ontology = None
+        entity.concept_mapping_provenance = "unmapped"
+        entity.alignment_method = "validation_failed"
+        unmapped += 1
+
+    return OntologyValidationSummary(
+        strict_iri_validation=strict_iri,
+        valid_mapped=valid_mapped,
+        unmapped=unmapped,
+        invalid_demoted=invalid_demoted,
+        invalid_by_reason=dict(invalid_by_reason),
+        invalid_examples=invalid_examples,
+    )
+
+
 def annotate_backend(mappings: dict[str, dict[str, Any]], backend: str) -> dict[str, dict[str, Any]]:
     annotated: dict[str, dict[str, Any]] = {}
     for term, mapping in mappings.items():
@@ -454,14 +611,17 @@ def map_with_backend(term_objects: list[dict[str, str | None]], backend: str, ma
 
 def enriched_entity(entity: dict[str, Any], mapping: dict[str, Any], backend: str) -> EnrichedEntity:
     entity_backend = mapping.get("mapping_backend") or backend
+    mapped = mapping_succeeded(mapping)
     return EnrichedEntity(
         extracted_text=_sanitize_text(entity.get("entity")),
         llm_label=entity.get("label"),
-        bioportal_prefLabel=mapping.get("ontology_label"),
-        ontology_uri=mapping.get("ontology_id"),
-        ontology=mapping.get("ontology"),
+        bioportal_prefLabel=mapping.get("ontology_label") if mapped else None,
+        ontology_uri=mapping.get("ontology_id") if mapped else None,
+        ontology=mapping.get("ontology") if mapped else None,
         mapping_backend=entity_backend,
         mapping_error=mapping.get("error"),
+        concept_mapping_provenance="tool" if mapped else "unmapped",
+        alignment_method="direct_tool_call",
         chunk=entity.get("chunk"),
         start=entity.get("start"),
         end=entity.get("end"),
@@ -483,6 +643,10 @@ def write_csv(path: Path, entities: list[EnrichedEntity]) -> None:
         "ontology",
         "mapping_backend",
         "mapping_error",
+        "concept_mapping_provenance",
+        "alignment_method",
+        "ontology_validation",
+        "ontology_validation_error",
         "chunk",
         "start",
         "end",
@@ -511,6 +675,8 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_BIOPORTAL_ONTOLOGIES,
         help="Comma-separated BioPortal ontology acronyms. Defaults to UBERON,NIFSTD,FMA,GO,SNOMEDCT. Ignored by local backend.",
     )
+    parser.add_argument("--no-strict-iri", action="store_true", help="Disable strict ontology IRI structural validation.")
+    parser.add_argument("--fail-on-invalid", action="store_true", help="Exit non-zero if any mapped ontology IRI is invalid and demoted to unmapped.")
     return parser.parse_args()
 
 
@@ -533,6 +699,7 @@ def main() -> int:
 
     backend_used, mappings = map_with_backend(term_objects, args.backend, max_results, ontologies)
     enriched = [enriched_entity(ent, mappings.get(_sanitize_text(ent.get("entity")), {}), backend_used) for ent in entities]
+    validation = validate_and_demote_mappings(enriched, strict_iri=not args.no_strict_iri)
     mapped_count = sum(1 for ent in enriched if ent.ontology_uri)
 
     result = NeuroEntitiesMappedOutput(
@@ -543,6 +710,7 @@ def main() -> int:
         max_results=max_results,
         entity_count=len(enriched),
         mapped_count=mapped_count,
+        validation=validation,
         entities=enriched,
     )
 
@@ -555,8 +723,16 @@ def main() -> int:
         write_csv(csv_path, enriched)
 
     print(f"Wrote {mapped_count}/{len(enriched)} ontology-mapped entities to {output_path} using backend={backend_used}")
+    print(
+        "Ontology validation: "
+        f"valid_mapped={validation.valid_mapped} "
+        f"unmapped={validation.unmapped} "
+        f"invalid_demoted={validation.invalid_demoted}"
+    )
     if csv_path:
         print(f"Wrote CSV view to {csv_path}")
+    if args.fail_on_invalid and validation.invalid_demoted:
+        return 2
     return 0
 
 

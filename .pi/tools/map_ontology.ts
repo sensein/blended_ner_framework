@@ -7,7 +7,7 @@ const execFileAsync = promisify(execFile);
 export default {
   name: "map_ontology",
   description:
-    "Map master extracted NER entities to ontology identifiers using migrated CrewAI concept-mapping logic without CrewAI overhead. Prefers the local /map/batch service and can fall back to BioPortal.",
+    "Map master extracted NER entities to ontology identifiers using deterministic local/BioPortal concept mapping, provenance tracking, and structural ontology IRI validation.",
   parameters: Type.Object({
     input: Type.String({ description: "Path to master_extracted_entities.json." }),
     output: Type.Optional(Type.String({ description: "Output JSON path. Defaults to <input parent>/neuro_entities_mapped.json." })),
@@ -15,6 +15,8 @@ export default {
     backend: Type.Optional(Type.Union([Type.Literal("auto"), Type.Literal("local"), Type.Literal("bioportal")], { description: "Mapping backend. Defaults to auto." })),
     maxResults: Type.Optional(Type.Number({ description: "Maximum ontology results per term. Defaults to MAX_CONCEPT_MAPPING_RESULTS or 1." })),
     ontologies: Type.Optional(Type.String({ description: "Comma-separated BioPortal ontology acronyms. Ignored by local backend." })),
+    strictIri: Type.Optional(Type.Boolean({ description: "If false, disables strict ontology IRI structural validation. Defaults to true." })),
+    failOnInvalid: Type.Optional(Type.Boolean({ description: "If true, return an error when mapped ontology IRIs are invalid and demoted to unmapped." })),
   }),
   async execute(_toolCallId: string, params: any, signal?: AbortSignal) {
     const args = ["run", "scripts/map_ontology.py", "--input", params.input];
@@ -24,6 +26,8 @@ export default {
     if (params.backend) args.push("--backend", params.backend);
     if (params.maxResults !== undefined) args.push("--max-results", String(params.maxResults));
     if (params.ontologies) args.push("--ontologies", params.ontologies);
+    if (params.strictIri === false) args.push("--no-strict-iri");
+    if (params.failOnInvalid) args.push("--fail-on-invalid");
 
     try {
       const { stdout, stderr } = await execFileAsync("uv", args, {

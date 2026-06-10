@@ -317,7 +317,9 @@ output/gliner/20260602T192415/neuro_entities_mapped.json
 - BioPortal exact-match-first lookup, followed by fuzzy fallback when no exact result is found
 - configurable BioPortal ontology filtering, defaulting to `UBERON,NIFSTD,FMA,GO,SNOMEDCT`
 - tenacity exponential backoff/retries for BioPortal `429 Too Many Requests` and `5xx` errors
-- final enriched fields: `extracted_text`, `llm_label`, `bioportal_prefLabel`, and `ontology_uri`
+- tool-backed provenance fields: `concept_mapping_provenance` and `alignment_method`
+- structural ontology IRI validation; malformed or non-tool mappings are demoted to unmapped rather than shipped as trusted mappings
+- final enriched fields: `extracted_text`, `llm_label`, `bioportal_prefLabel`, `ontology_uri`, `ontology_validation`, and `validation` summary
 
 Useful environment variables:
 
@@ -344,6 +346,11 @@ uv run scripts/map_ontology.py \
 ```
 
 The `--csv` flag writes an easy-viewing CSV next to the JSON output. You can also pass an explicit CSV path, for example `--csv output/my_entities.csv`.
+
+Mapping validation options:
+
+- `--no-strict-iri` disables strict ontology IRI structural validation.
+- `--fail-on-invalid` exits non-zero if any mapped ontology IRI is invalid and demoted to unmapped.
 
 ### 6) Audit and normalize final NER output
 
