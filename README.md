@@ -12,7 +12,8 @@ This project is built around core Python scripts plus thin pi.dev agent wrappers
 - `scripts/llm_refinement.py` — injects GLiNER entities inline as `[Entity](LABEL)`, sends decorated chunks to an LLM for verification/deep-pass extraction, and writes `llm_pass1_entities.json`.
 - `scripts/llm_masked_pass.py` — masks pass-1 entities with `*`, runs a blind LLM recall pass for missed entities, and writes `master_extracted_entities.json`.
 - `scripts/map_ontology.py` — maps extracted entities to ontology identifiers using migrated local/BioPortal concept-mapping logic from the prior CrewAI implementation, without CrewAI overhead.
-- `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, `.pi/tools/llm_refinement.ts`, `.pi/tools/llm_masked_pass.ts`, `.pi/tools/map_ontology.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
+- `scripts/audit_ner_output.py` — audits and normalizes final NER outputs, preserving every mention while adding grouped entity views, run statistics, span validation, and ontology IRI checks.
+- `.pi/tools/parse_pdf.ts`, `.pi/tools/hybrid_ner_orchestrator.ts`, `.pi/tools/llm_refinement.ts`, `.pi/tools/llm_masked_pass.ts`, `.pi/tools/map_ontology.ts`, `.pi/tools/audit_ner_output.ts`, and `.pi/tools/save_chunk_entities.ts` — lightweight TypeScript wrappers that invoke the Python scripts via `uv run` for the agent workflow.
 - `.pi/skills/neuroscience-ner-orchestrator.md` and `.pi/skills/chunk_extractor.md` — pi skills that route pipeline stages and handle manual per-chunk extraction when requested.
 
 ## Requirements
@@ -90,6 +91,7 @@ You can also trigger individual stages if you need to inspect outputs:
 1. > "Parse and chunk the PDF at `data/papers/smith_2026.pdf`."
 2. > "Run the hybrid orchestrator to generate local labels for the chunks."
 3. > "Map the extracted entities to the BioPortal ontologies."
+4. > "Audit and normalize the mapped output, including grouped entities and run statistics."
 
 For manual per-chunk extraction, explicitly ask the orchestrator to bypass the automated Python pipeline and use the Chunk Extractor skill.
 
@@ -343,7 +345,35 @@ uv run scripts/map_ontology.py \
 
 The `--csv` flag writes an easy-viewing CSV next to the JSON output. You can also pass an explicit CSV path, for example `--csv output/my_entities.csv`.
 
-### 6) Save NER output for one chunk
+### 6) Audit and normalize final NER output
+
+After `neuro_entities_mapped.json` exists, audit and normalize the final output:
+
+```bash
+uv run scripts/audit_ner_output.py \
+  --input output/gliner/20260602T192415/neuro_entities_mapped.json
+```
+
+This writes by default:
+
+```text
+output/gliner/20260602T192415/neuro_entities_mapped_audited.json
+```
+
+The audited output preserves every raw mention and adds:
+
+- `entities_grouped` — grouped by canonical `(entity, label)` with mention counts.
+- `stats` — total mentions, unique surfaces, label counts, mapping counts, and validation summary.
+- `validation.span` — exact span validation where chunk paths or source text offsets are available.
+- `validation.ontology` — structural ontology IRI checks and unmapped/skipped counts.
+
+Useful options:
+
+- `--source-text <path>` validates `global_start`/`global_end` offsets against a canonical full-text file.
+- `--no-strict-iri` disables strict ontology IRI structural validation.
+- `--fail-on-invalid` exits non-zero if invalid spans or invalid ontology IRIs are found.
+
+### 7) Save NER output for one chunk
 
 `save_chunk_entities.py` expects a JSON **array** on `stdin`:
 
@@ -374,6 +404,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 ```text
 .
 ├── scripts/
+│   ├── audit_ner_output.py
 │   ├── hybrid_ner_orchestrator.py
 │   ├── ingest_chunk.py
 │   ├── llm_masked_pass.py
@@ -387,6 +418,7 @@ output/example/20260528T143215_a3f1/chunk_000.json
 │   │   ├── neuroscience-ner-orchestrator.md
 │   │   └── chunk_extractor.md
 │   └── tools/
+│       ├── audit_ner_output.ts
 │       ├── hybrid_ner_orchestrator.ts
 │       ├── llm_masked_pass.ts
 │       ├── llm_refinement.ts

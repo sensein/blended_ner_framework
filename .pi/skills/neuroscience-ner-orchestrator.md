@@ -37,15 +37,20 @@ Evaluate the user's request and workspace state to trigger the *next* logical st
    - **Tool:** `map_ontology`
    - **Args:** `input` (defaults to the master entity JSON). Prefer `backend: "auto"`. If the user asks for a spreadsheet, pass `csv: "AUTO"`.
 
-6. **Manual Agent Extraction (Handoff)**
+6. **Final Output Audit & Normalization**
+   - **Trigger:** User asks to audit, validate, normalize, summarize, group, QA, or finalize extracted/mapped NER output; or the automated full pipeline has completed ontology mapping.
+   - **Tool:** `audit_ner_output`
+   - **Args:** `input` (defaults to the mapped entity JSON when it exists, otherwise the master entity JSON). Optional: `sourceText` for global span validation, `strictIri`, `failOnInvalid`.
+
+7. **Manual Agent Extraction (Handoff)**
    - **Trigger:** The user explicitly bypasses the automated Python pipeline and requests a manual per-chunk LLM extraction loop.
    - **Action:** Stop orchestrating and invoke/transition to the `Chunk Extractor` skill.
 
 ## Routing Guardrails (Anti-Loop & Chaining)
 - **No Planning Paragraphs:** Do not narrate your thought process (e.g., "I see the chunks exist, so the next step is..."). Do not say "I will now call the tool."
 - **Immediate Execution:** Evaluate the state silently. Once you determine the correct next step, immediately invoke that specific tool.
-- **Sequential Chaining (Automated Runs):** When instructed to run the full pipeline, you may chain tool executions. Once a tool returns successfully, silently evaluate the new state and immediately invoke the *next* logical tool in the sequence (e.g., `hybrid_ner_orchestrator` -> `llm_refinement`). Do not pause to ask the user for permission between successful automated steps.
+- **Sequential Chaining (Automated Runs):** When instructed to run the full pipeline, you may chain tool executions. Once a tool returns successfully, silently evaluate the new state and immediately invoke the *next* logical tool in the sequence (e.g., `hybrid_ner_orchestrator` -> `llm_refinement` -> `llm_masked_pass` -> `map_ontology` -> `audit_ner_output`). Do not pause to ask the user for permission between successful automated steps.
 - **Stop Conditions:** Only stop execution and return control to the user if:
     1. A tool returns an error.
-    2. The final requested stage (e.g., `map_ontology`) completes.
+    2. The final requested stage (e.g., `audit_ner_output` or `map_ontology`) completes.
     3. You are handing off to the manual `chunk_extractor` skill.
