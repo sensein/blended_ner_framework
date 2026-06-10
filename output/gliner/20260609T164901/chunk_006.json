@@ -1,0 +1,38 @@
+[
+  {
+    "entity": "Basal Ganglia",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.8494376540184021,
+    "start": 12,
+    "end": 25,
+    "context": "Ann Neurol Basal Ganglia disorders associated with imbalances in the striatal striosome and matrix compartments Front Neuro",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "adult human brain",
+    "label": "BRAIN_REGION",
+    "score": 0.5513591766357422,
+    "start": 499,
+    "end": 516,
+    "context": "communities form the developing human heart Nature Comprehensive cellular-resolution atlas of the adult human brain J Comp Neurol Transcriptional vulnerabilities of striatal neurons in human and rodent models of H",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "Basal Ganglia",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.8328784704208374,
+    "start": 1153,
+    "end": 1166,
+    "context": "tional distinctions Continuous and Discrete Neuron Types of the Adult Murine Striatum Neuron The Basal Ganglia Over 500 Million Years Curr Biol The mouse cortico-basal gangliathalamic network Nature Next ge",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.8445990085601807,
+    "start": 2207,
+    "end": 2226,
+    "context": "in D1 MSN (1), DRD2 in D2 MSN (2), DRD1 and PDYN Mesoscale cellular community architecture of the human basal ganglia\"). (E) Zoomed-in view of D1 and D2 MSNs within the boxed region of the posterior section (AP 34a) i",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_006.txt"
+  }
+]

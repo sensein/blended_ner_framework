@@ -1,0 +1,236 @@
+[
+  {
+    "entity": "human basal ganglia",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.5786322951316833,
+    "start": 350,
+    "end": 369,
+    "context": "eter scale spatial taxonomy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia. • MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neur",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "MERFISH+",
+    "label": "STEREO_SEQ_PLATFORM",
+    "score": 0.7999622225761414,
+    "start": 374,
+    "end": 382,
+    "context": "omy identifies the precise locations of 60 neuronal and glial cell types of human basal ganglia. • MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical n",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "Stereo-seq",
+    "label": "STEREO_SEQ_PLATFORM",
+    "score": 0.7858814001083374,
+    "start": 387,
+    "end": 397,
+    "context": "s the precise locations of 60 neuronal and glial cell types of human basal ganglia. • MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei. • D1D2",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "spatial modules",
+    "label": "SPATIAL_MODULE",
+    "score": 0.560181200504303,
+    "start": 423,
+    "end": 438,
+    "context": "al and glial cell types of human basal ganglia. • MERFISH+ and Stereo-seq platforms map consistent spatial modules that align with classical neuroanatomical nuclei. • D1D2 hybrid MSNs and primate-expanded interneu",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "Subcellular RNA localization",
+    "label": "RNA_LOCALIZATION",
+    "score": 0.7690183520317078,
+    "start": 593,
+    "end": 621,
+    "context": "1D2 hybrid MSNs and primate-expanded interneurons show regional and domain specific organization • Subcellular RNA localization reports soma morphology and projection-inferred signatures. SUMMARY We generated a multi-region,",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.5453259348869324,
+    "start": 780,
+    "end": 799,
+    "context": ". SUMMARY We generated a multi-region, subcellular-resolution spatial transcriptomic atlas of the human basal ganglia by integrating MERFISH+ and Stereo-seq across four neurotypical donors. These datasets profiled ~7",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "MERFISH+",
+    "label": "STEREO_SEQ_PLATFORM",
+    "score": 0.7402530312538147,
+    "start": 815,
+    "end": 823,
+    "context": "gion, subcellular-resolution spatial transcriptomic atlas of the human basal ganglia by integrating MERFISH+ and Stereo-seq across four neurotypical donors. These datasets profiled ~7 million cells spanning t",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "Stereo-seq",
+    "label": "STEREO_SEQ_PLATFORM",
+    "score": 0.7751594185829163,
+    "start": 828,
+    "end": 838,
+    "context": "ular-resolution spatial transcriptomic atlas of the human basal ganglia by integrating MERFISH+ and Stereo-seq across four neurotypical donors. These datasets profiled ~7 million cells spanning the caudate, put",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "caudate",
+    "label": "BRAIN_REGION",
+    "score": 0.6936183571815491,
+    "start": 926,
+    "end": 933,
+    "context": "d Stereo-seq across four neurotypical donors. These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell type",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "putamen",
+    "label": "BRAIN_REGION",
+    "score": 0.8630773425102234,
+    "start": 935,
+    "end": 942,
+    "context": "seq across four neurotypical donors. These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types. We sh",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "nucleus accumbens",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.6985737681388855,
+    "start": 944,
+    "end": 961,
+    "context": "s four neurotypical donors. These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types. We show region-selective",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "globus pallidus",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.7485076189041138,
+    "start": 967,
+    "end": 982,
+    "context": "ors. These datasets profiled ~7 million cells spanning the caudate, putamen, nucleus accumbens, and globus pallidus, resolving 60 transcriptionally distinct cell types. We show region-selective, molecular and spati",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "Subcellular RNA localization",
+    "label": "RNA_LOCALIZATION",
+    "score": 0.7928865551948547,
+    "start": 1235,
+    "end": 1263,
+    "context": "and multiple non-neuronal populations with distinct molecular identities and spatial localizations. Subcellular RNA localization captures somatic size and projectioninferred signatures that reflect direct and indirect pathway to",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "direct and indirect pathway topology",
+    "label": "NEURAL_PATHWAY",
+    "score": 0.6737693548202515,
+    "start": 1333,
+    "end": 1369,
+    "context": ". Subcellular RNA localization captures somatic size and projectioninferred signatures that reflect direct and indirect pathway topology. Cellular community analyses reveal the enrichment of sub-clusters of astrocytes and oligodendrocyt",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.5127920508384705,
+    "start": 1793,
+    "end": 1812,
+    "context": "pression gradients. This atlas provides a foundational molecular and spatial framework for studying human basal ganglia architecture, offering a multi-centimeter scale resource that links cell types, spatial architectur",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.6108330488204956,
+    "start": 1996,
+    "end": 2015,
+    "context": "tial architecture, and subcellular transcript topography across multiple nuclei. INTRODUCTION The human basal ganglia is a critical brain structure involved in motor control, learning and emotion. It is comprised of d",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "striatum",
+    "label": "BRAIN_REGION",
+    "score": 0.8728795051574707,
+    "start": 2170,
+    "end": 2178,
+    "context": "l, learning and emotion. It is comprised of distinct anatomical nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), a",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "caudate",
+    "label": "BRAIN_REGION",
+    "score": 0.8275696635246277,
+    "start": 2180,
+    "end": 2187,
+    "context": "g and emotion. It is comprised of distinct anatomical nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nu",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "putamen",
+    "label": "BRAIN_REGION",
+    "score": 0.8200792670249939,
+    "start": 2200,
+    "end": 2207,
+    "context": "comprised of distinct anatomical nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "globus pallidus",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.7671971917152405,
+    "start": 2214,
+    "end": 2229,
+    "context": "distinct anatomical nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1. Basal ganglia cel",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "external and internal segments",
+    "label": "BRAIN_REGION",
+    "score": 0.5087742209434509,
+    "start": 2231,
+    "end": 2261,
+    "context": "al nuclei / subdivisions including the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1. Basal ganglia cell types and architecture are wel",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "GPe",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.6111564636230469,
+    "start": 2263,
+    "end": 2266,
+    "context": "ng the striatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1. Basal ganglia cell types and architecture are well cha",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "GPi",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.5236750841140747,
+    "start": 2271,
+    "end": 2274,
+    "context": "triatum (caudate nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1. Basal ganglia cell types and architecture are well characteriz",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "nucleus accumbens",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.7463931441307068,
+    "start": 2285,
+    "end": 2302,
+    "context": "te nucleus and putamen), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1. Basal ganglia cell types and architecture are well characterized in rodents and non-human",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "NAc",
+    "label": "BRAIN_REGION",
+    "score": 0.6603071093559265,
+    "start": 2304,
+    "end": 2307,
+    "context": "men), the globus pallidus (external and internal segments, GPe and GPi), and the nucleus accumbens (NAc) 1. Basal ganglia cell types and architecture are well characterized in rodents and non-human prima",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  },
+  {
+    "entity": "striatum",
+    "label": "BRAIN_REGION",
+    "score": 0.8438075184822083,
+    "start": 2594,
+    "end": 2602,
+    "context": "humans shows that GABAergic medium spiny neurons (MSNs) are the dominant neuronal cell type in the striatum (85-95%) [2][3][4][5]; MSNs are divided into two major populations: D1-type MSNs, which express the",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_000.txt"
+  }
+]

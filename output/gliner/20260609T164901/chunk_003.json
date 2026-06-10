@@ -1,0 +1,191 @@
+[
+  {
+    "entity": "projection signatures",
+    "label": "PROJECTION_SIGNATURE",
+    "score": 0.5677257776260376,
+    "start": 48,
+    "end": 69,
+    "context": "Scale bars as indicated. somatic morphology and projection signatures. (A) Images of MERFISH+ transcripts pseudo-colored to indicate subcellular localization: nuclear (w",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "MERFISH+",
+    "label": "MERFISH_PLATFORM",
+    "score": 0.729732096195221,
+    "start": 85,
+    "end": 93,
+    "context": "Scale bars as indicated. somatic morphology and projection signatures. (A) Images of MERFISH+ transcripts pseudo-colored to indicate subcellular localization: nuclear (white), cytoplasmic (yell",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "BRAIN_REGION",
+    "score": 0.6863227486610413,
+    "start": 582,
+    "end": 601,
+    "context": "es of volumes (µm³) inferred from transcript-density segmentation across neuronal cell types in the human basal ganglia, including those shown in (A). (C) Plot of differential gene expression between D1 and D2 matrix MS",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "MERFISH+",
+    "label": "MERFISH_PLATFORM",
+    "score": 0.6344459652900696,
+    "start": 716,
+    "end": 724,
+    "context": "se shown in (A). (C) Plot of differential gene expression between D1 and D2 matrix MSNs measured by MERFISH+. Genes are ranked based on differential expressions. Top differential expressed genes are annotated",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "Genes",
+    "label": "GENE",
+    "score": 0.7615647315979004,
+    "start": 726,
+    "end": 731,
+    "context": "n (A). (C) Plot of differential gene expression between D1 and D2 matrix MSNs measured by MERFISH+. Genes are ranked based on differential expressions. Top differential expressed genes are annotated. (D) S",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.8078295588493347,
+    "start": 805,
+    "end": 810,
+    "context": "easured by MERFISH+. Genes are ranked based on differential expressions. Top differential expressed genes are annotated. (D) Spatial maps of transcripts localized in putative cellular processes for genes e",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.6472964286804199,
+    "start": 903,
+    "end": 908,
+    "context": "d genes are annotated. (D) Spatial maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom).",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "RELN",
+    "label": "GENE",
+    "score": 0.734705924987793,
+    "start": 937,
+    "end": 941,
+    "context": "maps of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation map",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "EBF1",
+    "label": "GENE",
+    "score": 0.8489876985549927,
+    "start": 943,
+    "end": 947,
+    "context": "of transcripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "SLIT2",
+    "label": "GENE",
+    "score": 0.7915448546409607,
+    "start": 949,
+    "end": 954,
+    "context": "nscripts localized in putative cellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D1 matri",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "DRD2",
+    "label": "GENE",
+    "score": 0.5821211338043213,
+    "start": 981,
+    "end": 985,
+    "context": "ellular processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "PENK",
+    "label": "GENE",
+    "score": 0.800098717212677,
+    "start": 987,
+    "end": 991,
+    "context": "r processes for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "CHRM3",
+    "label": "GENE",
+    "score": 0.7833951115608215,
+    "start": 993,
+    "end": 998,
+    "context": "esses for genes enriched in D1 matrix MSNs (RELN, EBF1, SLIT2; top) and D2 matrix MSNs (DRD2, PENK, CHRM3; bottom). (E) Section-wide correlation maps of D1 matrix MSN (top) and D2 matrix MSN (bottom) gene",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "posterior section",
+    "label": "BRAIN_REGION",
+    "score": 0.5566093325614929,
+    "start": 1178,
+    "end": 1195,
+    "context": "x MSN (bottom) gene expression with the expression in putative cellular processes across the entire posterior section (AP34a). Dashed blue outline marks GPe and dashed yellow outline marks GPi. Projection-biased local",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "human basal ganglia",
+    "label": "BRAIN_REGION",
+    "score": 0.7312403321266174,
+    "start": 1432,
+    "end": 1451,
+    "context": "us indirect (D2→GPe) pathway topology. (F) Gene expression map of SEMA3E transcripts modules of the human basal ganglia (A) Spatial map of major cell types of the posterior section (as shown in Figure 2D) and inferred c",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "posterior section",
+    "label": "BASAL_GANGLIA_STRUCTURE",
+    "score": 0.5963109731674194,
+    "start": 1495,
+    "end": 1512,
+    "context": "of SEMA3E transcripts modules of the human basal ganglia (A) Spatial map of major cell types of the posterior section (as shown in Figure 2D) and inferred cellular community modules derived from the local neighborhood",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "Pu",
+    "label": "BRAIN_REGION",
+    "score": 0.6132640242576599,
+    "start": 1980,
+    "end": 1982,
+    "context": "rganization. Bottom: Corresponding anatomical reference images from the Allen Human Brain Atlas 59. Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus. Color keys are consistent acros",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "putamen",
+    "label": "BRAIN_REGION",
+    "score": 0.7279987931251526,
+    "start": 1984,
+    "end": 1991,
+    "context": "ization. Bottom: Corresponding anatomical reference images from the Allen Human Brain Atlas 59. Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus. Color keys are consistent across panels",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "NAc",
+    "label": "BRAIN_REGION",
+    "score": 0.5488029718399048,
+    "start": 2006,
+    "end": 2009,
+    "context": "sponding anatomical reference images from the Allen Human Brain Atlas 59. Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus. Color keys are consistent across panels in (B). (C) Heatma",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "nucleus accumbens",
+    "label": "BRAIN_REGION",
+    "score": 0.6268748044967651,
+    "start": 2011,
+    "end": 2028,
+    "context": "ing anatomical reference images from the Allen Human Brain Atlas 59. Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus. Color keys are consistent across panels in (B). (C) Heatmap showing cell-type",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  },
+  {
+    "entity": "globus pallidus",
+    "label": "BRAIN_REGION",
+    "score": 0.582120418548584,
+    "start": 2034,
+    "end": 2049,
+    "context": "e images from the Allen Human Brain Atlas 59. Pu, putamen; Ca, caudate; NAc, nucleus accumbens; GP, globus pallidus. Color keys are consistent across panels in (B). (C) Heatmap showing cell-type enrichment scores fo",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_003.txt"
+  }
+]

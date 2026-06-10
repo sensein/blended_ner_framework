@@ -1,0 +1,137 @@
+[
+  {
+    "entity": "encoding probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.5289796590805054,
+    "start": 8,
+    "end": 23,
+    "context": "Primary encoding probes generation was performed from oligonucleotide pools as described previously [42][43][44]. Oligonucl",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "oligonucleotide pools",
+    "label": "CELLULAR_COMMUNITY",
+    "score": 0.5691773891448975,
+    "start": 54,
+    "end": 75,
+    "context": "Primary encoding probes generation was performed from oligonucleotide pools as described previously [42][43][44]. Oligonucleotide pools and primers were purchased from Twist B",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "Oligonucleotide pools",
+    "label": "CELLULAR_COMMUNITY",
+    "score": 0.5435320138931274,
+    "start": 114,
+    "end": 135,
+    "context": "ng probes generation was performed from oligonucleotide pools as described previously [42][43][44]. Oligonucleotide pools and primers were purchased from Twist Biosciences and Integrated DNA Technologies (IDT), respective",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "encoding probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.5796034336090088,
+    "start": 940,
+    "end": 955,
+    "context": "ct went through alkaline hydrolysis (1:1 of 1M NaOH and 0.5M EDTA) to remove RNA followed by ssDNA (encoding probes) purification using Zymo Oligo Clean & Concentrator (Zymo Research, D4061). The concentration and p",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "encoding probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.6489839553833008,
+    "start": 1068,
+    "end": 1083,
+    "context": "n using Zymo Oligo Clean & Concentrator (Zymo Research, D4061). The concentration and purity of the encoding probes were determined through NanoDrop while the size of the encoding probes was verified through Agilent",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "encoding probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.6657968759536743,
+    "start": 1139,
+    "end": 1154,
+    "context": "centration and purity of the encoding probes were determined through NanoDrop while the size of the encoding probes was verified through Agilent TapeStation (RRID:SCR_019547). During the RT step, the forward primer",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "encoding probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.600867748260498,
+    "start": 1293,
+    "end": 1308,
+    "context": "on (RRID:SCR_019547). During the RT step, the forward primer introduced an acrydite anchor into the encoding probes which allowed the encoding probes to covalently bind with the polyacrylamide gel post encoding prob",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "encoding probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.6142191290855408,
+    "start": 1327,
+    "end": 1342,
+    "context": "T step, the forward primer introduced an acrydite anchor into the encoding probes which allowed the encoding probes to covalently bind with the polyacrylamide gel post encoding probes hybridization. Adaptor and rea",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "Adaptor probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.7422570586204529,
+    "start": 1467,
+    "end": 1481,
+    "context": "the polyacrylamide gel post encoding probes hybridization. Adaptor and readout probe preparation: Adaptor probes (total 28 adaptors) and readout probes (total 3 readout probes each tagged with one of the three fl",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "adaptors",
+    "label": "SPATIAL_MODULE",
+    "score": 0.6067658066749573,
+    "start": 1492,
+    "end": 1500,
+    "context": "st encoding probes hybridization. Adaptor and readout probe preparation: Adaptor probes (total 28 adaptors) and readout probes (total 3 readout probes each tagged with one of the three fluorophores: 5Alex7",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "readout probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.7162806987762451,
+    "start": 1506,
+    "end": 1520,
+    "context": "obes hybridization. Adaptor and readout probe preparation: Adaptor probes (total 28 adaptors) and readout probes (total 3 readout probes each tagged with one of the three fluorophores: 5Alex750N/3AlexF750N, 5Cy5",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "readout probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.657352089881897,
+    "start": 1530,
+    "end": 1544,
+    "context": "ptor and readout probe preparation: Adaptor probes (total 28 adaptors) and readout probes (total 3 readout probes each tagged with one of the three fluorophores: 5Alex750N/3AlexF750N, 5Cy5/3Cy5Sp, 5Cy3/3Cy3Sp) we",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "Adaptor probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.7280587553977966,
+    "start": 1668,
+    "end": 1682,
+    "context": "the three fluorophores: 5Alex750N/3AlexF750N, 5Cy5/3Cy5Sp, 5Cy3/3Cy3Sp) were purchased from IDT. Adaptor probes and readout probes were diluted with a pre-hybridization buffer (PreHB, 0.1% Tween-20, 35% formamid",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "readout probes",
+    "label": "MOLECULAR_MARKER",
+    "score": 0.6590461134910583,
+    "start": 1687,
+    "end": 1701,
+    "context": "ores: 5Alex750N/3AlexF750N, 5Cy5/3Cy5Sp, 5Cy3/3Cy3Sp) were purchased from IDT. Adaptor probes and readout probes were diluted with a pre-hybridization buffer (PreHB, 0.1% Tween-20, 35% formamide, 2xSSC) with dilu",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  },
+  {
+    "entity": "CellPath",
+    "label": "NEURAL_PATHWAY",
+    "score": 0.5511322617530823,
+    "start": 1928,
+    "end": 1936,
+    "context": "1:2000, respectively. 5. Silanization and PDL-coating of coverslips: 50mm x 64mm glass coverslips (CellPath, SAF-5064-02A) were incubated in 18.5% HCl in methanol for 30 min at room temperature (RT) followed",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_004.txt"
+  }
+]

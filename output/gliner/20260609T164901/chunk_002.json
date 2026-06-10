@@ -1,0 +1,56 @@
+[
+  {
+    "entity": "Subcellular transcript localization",
+    "label": "RNA_LOCALIZATION",
+    "score": 0.542593240737915,
+    "start": 1052,
+    "end": 1087,
+    "context": "le also highlighting primate and human specializations (e.g., matrix-restricted TAC3-PLPP4) 67,68. Subcellular transcript localization informs morphology and projection architecture MERFISH+ subcellular transcript localizations enabl",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  },
+  {
+    "entity": "projection architecture",
+    "label": "NEURAL_PATHWAY",
+    "score": 0.5207223296165466,
+    "start": 1111,
+    "end": 1134,
+    "context": "., matrix-restricted TAC3-PLPP4) 67,68. Subcellular transcript localization informs morphology and projection architecture MERFISH+ subcellular transcript localizations enable characterization of cell morphology and proje",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  },
+  {
+    "entity": "MERFISH+",
+    "label": "MERFISH_PLATFORM",
+    "score": 0.5313946008682251,
+    "start": 1136,
+    "end": 1144,
+    "context": "-PLPP4) 67,68. Subcellular transcript localization informs morphology and projection architecture MERFISH+ subcellular transcript localizations enable characterization of cell morphology and projection-infe",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  },
+  {
+    "entity": "projection-inferred connectivity",
+    "label": "NEURAL_PATHWAY",
+    "score": 0.7877157330513,
+    "start": 1229,
+    "end": 1261,
+    "context": "cture MERFISH+ subcellular transcript localizations enable characterization of cell morphology and projection-inferred connectivity. Our 3D analysis of RNA transcript localization provides soma-volume measurements that span ~5-fold",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  },
+  {
+    "entity": "MERFISH+",
+    "label": "MERFISH_PLATFORM",
+    "score": 0.5473067760467529,
+    "start": 1596,
+    "end": 1604,
+    "context": "luding immunofluorescence staining and Cajal-Golgi impregnation methods 69,70, the key advantage of MERFISH+ based quantification is its ability to distinguish and measure dozens of neuronal subclasses at tis",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  },
+  {
+    "entity": "basal ganglia",
+    "label": "BRAIN_REGION",
+    "score": 0.7347405552864075,
+    "start": 2016,
+    "end": 2029,
+    "context": "MSNs are among the smallest. These findings are supported by previous histological observations in basal ganglia [51][52][53]. While the nine MSN subtypes show largely similar volumes, SST+ interneuron subclasses",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_002.txt"
+  }
+]

@@ -1,0 +1,307 @@
+Then we used the parcellation_division label "STR" and "PAL" in the dataset to select all cells located in the mouse ******** and ********. Next, we filtered the data by removing low abundance cell types; cell types with less than 150 cell counts. We then mapped the *********** to their human orthologs using the mouse human homologous gene table from the Mouse Genome informatics (MGI) database. Next, we identified the ***** shared between the mouse and human ******* dataset and reduced the gene expression matrix in both mouse and human to the common *****. Following this, we computed the pseudobulk gene expression of each cell type at the supertype level for the mouse and at the group level for the human. Then we performed the Pearson correlation between the mouse and human expression values. Through this approach, we identified the mouse homologs of the human D1 Matrix and Striosome ****. Both Main Figure 7
+
+Figure 1.
+
+Figure 2.
+
+Figure 3.
+
+Figure 4.
+
+Figure 5.
+
+Figure 6.
+
+Figure 7.
+
+Figure S2.
+
+Figure S3.
+
+Figure S6.
+
+Figure S7.Figure S9.
+
+7. 1.
+
+1.
+
+D2
+
+ACKNOWLEDGEMENTS
+
+We thank members of the Xu laboratory for their valuable feedback and discussion throughout this project. We are grateful to Dr. Ruth Walker for her insightful comments.
+
+We also acknowledge Drs. Elizabeth and Edwin Monuki, along with our UCI colleagues, for their contributions to establishing the UCI BICAN Brain Bank and supporting the collection of neurotypical human brain samples. This work was in part funded by the NIH grant [*******************************************************] and UC Irvine Center for Neural Circuit technology development funds. This publication was supported and coordinated through the Brain Initiative Cell Atlas Network (BICAN, RRID:SCR_022794).
+
+AUTHOR CONTRIBUTIONS
+
+Supplementary Materials
+
+Supplementary Movie 1. *******+ spatial transcriptomics of a large human ************* section visualized across scales. The movie depicts successively greater magnified views starting from multi-centimeter tissue architecture to subcellular resolution scale, revealing transcriptionally distinct cell types and local cellular neighborhoods, and individual RNA transcripts visualized at submicrometer precision (color-coded by gene identity).
+
+Table S1. Human brain sample information. Detailed information on human donor identification number, age, sex, race/ethnicity, postmortem interval (PMI) from time of death to tissue freezing, RNA integrity number (RIN) indicating sample quality, cause of death, section AP, subregions profiled. Supplemental Data for the information related to the ******** encoding probes, adaptor probes, and readout probes and the gene panel codebook. Stereo-seq Analysis Workflow STOmics RRID:SCR_025001 STAR http://code.google.com/p/rna-star/ RRID:SCR_004463 Ensembl Ensembl RRID:SCR_002344 OpenCV http://opencv.org RRID:SCR_015526 NumPy http://www.numpy.org RRID:SCR_008633 SciPy http://www.scipy.org RRID:SCR_008058 statsmodel http://www.statsmodels.org/ RRID:SCR_016074 scikit-learn http://scikit-learn.org RRID:SCR_002577 Agilent TapeStation Laptop Agilent RRID:SCR_019547 Other 50mm x 64mm glass coverslips CellPath SAF-5064-02A Allen Institute for Brain Science http://www.brain-map.org RRID:SCR_006491 BRAIN Initiative Cell Atlas Network BRAIN Initiative Cell Atlas Network RRID:SCR_022794 Brain Image Library (BIL) Brain Image Library (BIL) RRID:SCR_017272 NeMOarchive Neuroscience Multi-omic Archive (NeMO Archive) RRID:SCR_016152 Echo Revolution microscope Discover Echo RRID: SCR_027699 MGI DNBSEQ-T7 Genetic Sequencer MGI RRID:SCR_024847 Complete Genomics Complete Genomics RRID:SCR_027007 PacGenomics PacGenomics RRID: SCR_027700 1227 RESOURCE AVAILABILITY
+
+Supplemental
+
+Figure Legends
+
+Material availability
+
+Oligonucleotide probe sequences used for imaging can be found in Supplemental Data.
+
+These probes or materials for making these probes can be purchased from commercial sources, as detailed in the Key Resources Table.
+
+Data and code availability
+
+Image and sequencing data are in the process of being deposited at the Brain Image Board (IRB). These adult human postmortem brain samples were from white males of 36 to 53 years old and showed no evidence of neurodegenerative pathology (Table S1).
+
+Preparation of multi-centimeter tissue sections for Stereo-seq and ********
+
+molecules; 405 nm for DAPI) at 0.4µm step size (25 frames per field of view/channel, total frames=100/field of view). After image acquisition of a round, fluorescence signals were removed through flowing stripping buffer (80% formamide in 0.8xSSC+0.1%
+
+Tween-20) and 2xSSC before proceeding to next round of hybridization and imaging.
+
+Bioinformatics
+
+Stereo-seq data processing
+
+We processed the Stereo-seq data using the standard analysis workflow software The pipeline takes three files as an input: (1) paired-end FASTQ files, (2) mask file and
+
+(3) mosaic image of nuclei-staining. The first read in the fastq files contains coordinate ID (CID) -spatial location identifier barcode sequence that is unique to each DNA nano ball on the stereo-seq chip, and the Molecular ID (MID) -artificially synthesized mRNAspecific sequence that helps differentiate the number of reads contributed by mRNA expression level due to amplification. The CIDs were first aligned and matched with the values in the mask file which contains the mapping of the CID barcodes to the actual spatial coordinates in the tissue. This allows the identification of the spatial location of the mRNAs within the tissue section. Reads that have MID sequence with more than one N bases or more than one bases with quality less than Q10 were excluded. The second read in the fastq file contains the actual sequence of the captured mRNA. These were aligned to a reference genome using the STAR aligner. The reference genome ‫ܥ‬: is the number of cells in sample i that does not belong to a cell type of interest but are within the brain region of interest.
+
+‫ܦ‬: is the number of cells in sample i that does not belong to a cell type of interest and are not within the brain region of interest.
+
+ܶ: is the total number of cells in the data.
+
+Next, we quantified the significance of the result using the permutation test, as described above.
+
+Cell type organization and gene expression gradients with respect to ********* borders
+
+We first identified the contours for striosome borders from the spatial map of the brain section using the function findcontours from the Opencv package. Then we used the KDTree module from SciPy 81 to find the distance of each cell from the contour of the nearest striosome. We set the distance of cells within the striosome compartment as positive and negative for those that are outside. Then we binned the distance into bins of size 50 microns and computed the mean abundance of celltype within each bin.
+
+When doing the calculation, we only considered cells that are 200 microns away from the striosome border and 500 microns into the center of the striosome. We also removed cell types that were very sparse -with less than 1 % abundance near the striosome.
+
+To quantify the gene expression gradient with respect to the border striosomes, we computed the mean log1p gene expression of cells that are within the binned distances.
+
+Then, we performed lowess regression using the statsmodel package to quantify the dependence of the mean gene expression on the distance of cells from the striosomes.
+
+Computing the volume of cells using somatic transcripts:
+
+To quantify the volume of a cell, we generated a tetrahedral mesh from the point cloud formed by the cell's somatic transcripts. For this, we performed 3D Delaunay triangulation using the function delaunay_3d from the pyvista package 84 with the parameter alpha set to 3 times the median distance between neighboring transcripts. We then triangulated the mesh and computed its volume using the triangulate function. Following this procedure, we quantified the volume of 100 cells sampled from each cell type. Finally, we took the median of the cell's volume to get a representative value for each cell type. We filtered out cells that had artifacts in the labeling of their somatic transcripts. Such artifacts arise when cells are surrounded by density transcript from nearby cells or their processes.
+
+Quantifying the projection of neurons using distribution of subcellular transcripts
+
+As the ******* imaging data is acquired on a field of view by field of view basis, the decoded transcript information is organized separately for each FOV. For this reason, we performed the quantification of a neuron projection to a target region by aggregating the information within each FOV. For every gene in each FOV, we first computed the count of transcripts that are outside a cell's segmentation mask.
+
+Then we took the log of the counts and normalized them across genes and all FOVs. Next, we computed the differential gene expression between ************** and STRd D2 matrix MSNs. The differential expression was quantified as a difference-in-difference: the deviation of STRd D1 Matrix MSN's pseudobulk expression from the across-cell-type mean, minus the deviation of STRd D2 matrix MSN's pseudobulk expression from that mean. Finally, we quantified the projection strength as the dot product between log count of extracellular transcripts and the differential gene expression scores.
+
+A Cell types -MERFISH+ 1 cm 1 cm STRd D1 Striosome STRd D1 Matrix D1 MSN STRd D2 Striosome ************** PDYN DRD1 DRD2 D2 MSN Cell types (snRNA-seq) Cell types (MERFISH+) STR D1D2 Hybrid STRv D1 NUDAP 1 STRd D2 Hybrid 2 mm 0.5 mm 150 m 10 m B C D E F G H I K 0.5 cm 1 cm GPi Core GPi Shell 1 cm J 1 cm 0.5 cm 1 cm GPe SOX6-CTXND1 CN LHX6-GBX1 1 cm 0 100 80 60 40 20 Percent (%) M Dopa CN GABA-Glut CN CGE GABA F M GABA Cx GABA Immune Vascular Astro-Epen OPC-Oligo CN MGE GABA CN LGE GABA F M Glut Major cell classes 100 80 60 40 20 Percent (%) STRd D2 Hybrid STRv D1 NUDAP STRv D1 STR D1D2 Hybrid STRv D2 STRd D1 Striosome STRd D1 Matrix STRd D2 Matrix STRd D2 Striosome MSN cell proportions 100 80 60 40 20 Percent (%) AP26 AP34 ALL GPe SOX6-CTXND1 GPe MEIS2-SOX6 CN LHX6-GBX1 GPin-BF Chol GPi Core GPi Shell GP cell proportions 60 Transcriptomic cell types All cell types Oligo OPALIN STRd D1 Striosome Oligo PLEKHG1 STRd D1 Matrix GPe MEIS2-SOX6 STRd D2 Striosome GPe SOX6-CTXND1 STRd D2 Matrix CN LHX6-GBX1 STRv D2 GPin-BF Chol STRd D2 Hybrid GPi Core STRv D1 NUDAP GPi Shell STR D1D2 Hybrid STRv D1 OPC...... 1 2 3 4 1 2 3 4 2.5 mm AP18 AP19 AP26 AP34 ALL AP18 AP19 AP26 AP34 ALL Pearsons correlation coefficient 0.0 0.2 0.4 0.6 Ca Pu NAc Ca Pu NAc Ca Pu Ca Pu GPe GPe GPi GPi STRd D1 Matrix STRd D2 Matrix STR D1D2 Hybrid STRd D1 Striosome Main Figure 2 Main Figure 6
+
+Figure S1.
+
+Figure S4.
+
+Figure S5.
+
+Figure S8.
+
+The basal ganglia
+
+Curr Biol
+
+Segregated basal ganglia output pathways correspond to genetically divergent neuronal subclasses
+
+Cell Rep
+
+Functional neuroanatomy of the basal ganglia. Cold Spring Harb Perspect Med 2
+
+Transcriptional and anatomical diversity of medium spiny neurons in the primate striatum
+
+Curr Biol
+
+A marmoset brain cell census reveals regional specialization of cellular identities
+
+Sci Adv
+
+Direct and indirect pathways of basal ganglia: a critical reappraisal
+
+Nat Neurosci
+
+Basal ganglia: Uniting circuit logic between matrix and striosome
+
+Curr Biol
+
+Striosomes control dopamine via dual pathways paralleling canonical basal ganglia circuits
+
+Curr Biol
+
+Transcriptomic diversity of cell types across the adult human brain
+
+Science
+
+A high-resolution transcriptomic and spatial atlas of cell types in the whole mouse brain
+
+Nature
+
+Interneuron diversity in the human dorsal striatum
+
+Nat Commun
+
+Cell-Type-Specific Control of Brainstem Locomotor Circuits by Basal Ganglia
+
+Cell
+
+The Molecular, Cellular, and Systems-Level Structure of the Basal Ganglia
+
+Computational Neuroscience Models of the Basal Ganglia
+
+Molecularly defined and spatially resolved cell atlas of the whole mouse brain
+
+Nature
+
+Single-nucleus transcriptome analysis reveals cell-type-specific molecular signatures across reward circuitry in the human brain
+
+Neuron
+
+Altered parvalbuminpositive neuron distribution in basal ganglia of individuals with Tourette syndrome
+
+Proc Natl Acad Sci U S A
+
+Cell and circuit complexity of the external globus pallidus
+
+Nat Neurosci
+
+Transcriptional Networks Controlled by NKX2-1 in the Development of Forebrain GABAergic Neurons
+
+Neuron
+
+Molecular Diversity and Specializations among the Cells of the Adult Mouse Brain
+
+Cell
+
+External globus pallidus input to the dorsal striatum regulates habitual seeking behavior in male mice
+
+Nat Commun
+
+On the Role of Arkypallidal and Prototypical Neurons for Phase Transitions in the External Pallidum
+
+J Neurosci
+
+Spatial Transcriptomics and In Situ Sequencing to Study Alzheimer's Disease
+
+Single-cell and spatial transcriptomics: deciphering brain complexity in health and disease
+
+Nat Rev Neurol
+
+Exploring tissue architecture using spatial transcriptomics
+
+Nature
+
+Spatial Transcriptomics: Molecular Maps of the Mammalian Brain
+
+Annu Rev Neurosci
+
+Sequencing-free whole-genome spatial transcriptomics at single-molecule resolution
+
+Single-cell spatial transcriptome atlas and whole-brain connectivity of the macaque claustrum
+
+Cell
+
+Cytology, architecture, development, and connections of the primate striatum: Hints for human pathology
+
+Neurobiol Dis
+
+RNA imaging. Spatially resolved, highly multiplexed RNA profiling in single cells
+
+Science
+
+RNA Imaging with Multiplexed Error-Robust Fluorescence In Situ Hybridization (MERFISH)
+
+Methods Enzymol
+
+Molecular, spatial, and functional single-cell profiling of the hypothalamic preoptic region
+
+Science
+
+High-performance multiplexed fluorescence in situ hybridization in culture and tissue with matrix imprinting and clearing
+
+Proc Natl Acad Sci U S A
+
+Spatially resolved single-cell genomics and transcriptomics by imaging
+
+Nat Methods
+
+Spatiotemporal transcriptomic atlas of mouse organogenesis using DNA nanoball-patterned arrays
+
+Cell
+
+Systematic comparison of sequencing-based spatial transcriptomic methods
+
+Nat Methods
+
+Single-cell spatial transcriptome reveals cell-type organization in the macaque cortex
+
+Cell
+
+Cross-species single-cell spatial transcriptomic atlases of the cerebellar cortex
+
+Science
+
+Single-cell spatial transcriptome atlas and whole-brain connectivity of the macaque claustrum
+
+Cell
+
+Conservation and divergence of cortical cell organization in human and mouse revealed by MERFISH
+
+Science
+
+Spatial profiling of the interplay between cell type-and vision-dependent transcriptomic programs in the visual cortex
+
+Proc Natl Acad Sci U S A
+
+Single-cell spatial transcriptomics reveals distinct patterns of dysregulation in non-neuronal and neuronal cells induced by the Trem2(R47H) Alzheimer's risk gene mutation
+
+Mol Psychiatry
+
+Re-activation of neurogenic niches in aging brain
+
+Genome-Scale Imaging of the 3D Organization and Transcriptional Activity of Chromatin
+
+Cell
+
+MERFISH+, a large-scale, multi-omics spatial technology resolves the molecular holograms of the 3D human developing heart bioRxiv
+
+A cross-species spatial transcriptomic atlas of the human and non-human primate basal ganglia
+
+bioRxiv
+
+D1 and D2 dopamine-receptor modulation of striatal glutamatergic signaling in striatal medium spiny neurons
+
+Trends Neurosci
+
+Receptors are Morphologically Distinct and Differently Affected by Dopamine Denervation in Mice
+
+Striatal Neurons Expressing D(1) and D
+
+The dopamine D1-D2 receptor heteromer localizes in dynorphin/enkephalin neurons: increased high affinity state following amphetamine and in schizophrenia
+
+J Biol Chem
+
+Downregulation of GABA Transporter 3 (GAT3) is Associated with Deficient Oxidative GABA Metabolism in Human Induced Pluripotent Stem Cell-Derived Astrocytes in Alzheimer's Disease
+
+Neurochem Res
+
+Molecular basis of human GABA transporter 3 inhibition
+
+Nat Commun
+
+Three-Dimensional Spatial Analyses of Cholinergic Neuronal Distributions Across The Mouse Septum, Nucleus Basalis, Globus Pallidus, Nucleus Accumbens, and Caudate-Putamen
+
+Neuroinformatics
+
+Mouse and human striatal projection neurons compared -somatodendritic arbor, spines and in silico analyses
+
+PLoS Comput Biol
+
+Globus pallidus degeneration and clinicopathological features of Huntington disease

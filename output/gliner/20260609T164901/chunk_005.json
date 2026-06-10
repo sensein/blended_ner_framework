@@ -1,0 +1,47 @@
+[
+  {
+    "entity": "mouse genes",
+    "label": "GENE",
+    "score": 0.8035327792167664,
+    "start": 267,
+    "end": 278,
+    "context": "by removing low abundance cell types; cell types with less than 150 cell counts. We then mapped the mouse genes to their human orthologs using the mouse human homologous gene table from the Mouse Genome informat",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.7134460210800171,
+    "start": 422,
+    "end": 427,
+    "context": "man homologous gene table from the Mouse Genome informatics (MGI) database. Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both m",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "MERFISH",
+    "label": "MERFISH_PLATFORM",
+    "score": 0.796339213848114,
+    "start": 463,
+    "end": 470,
+    "context": "Genome informatics (MGI) database. Next, we identified the genes shared between the mouse and human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes. Followi",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "genes",
+    "label": "GENE",
+    "score": 0.7826376557350159,
+    "start": 556,
+    "end": 561,
+    "context": "human MERFISH dataset and reduced the gene expression matrix in both mouse and human to the common genes. Following this, we computed the pseudobulk gene expression of each cell type at the supertype leve",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  },
+  {
+    "entity": "MERFISH",
+    "label": "MERFISH_PLATFORM",
+    "score": 0.7112791538238525,
+    "start": 1844,
+    "end": 1851,
+    "context": "rk (BICAN, RRID:SCR_022794). AUTHOR CONTRIBUTIONS Supplementary Materials Supplementary Movie 1. MERFISH+ spatial transcriptomics of a large human basal ganglia section visualized across scales. The movie",
+    "source_file": "/Users/pujatrivedi/Desktop/MIT/blended_ner_framework/data/papers/multiscale_spatial_transcriptomic/20260602T192339/chunks/chunk_005.txt"
+  }
+]
