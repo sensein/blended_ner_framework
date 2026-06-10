@@ -74,6 +74,21 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--recursive", action="store_true", help="Recursively process text files under --input directories.")
     parser.add_argument("--max-chars", type=int, default=0, help="Optional max chars per file; 0 means no truncation.")
     parser.add_argument(
+        "--window-words",
+        type=int,
+        default=env_int("GLINER_WINDOW_WORDS", 220),
+        help=(
+            "Split each file into overlapping word windows before GLiNER inference to avoid the model's "
+            "internal 384-token sentence truncation. Use 0 to disable. Defaults to GLINER_WINDOW_WORDS or 220."
+        ),
+    )
+    parser.add_argument(
+        "--window-overlap-words",
+        type=int,
+        default=env_int("GLINER_WINDOW_OVERLAP_WORDS", 50),
+        help="Word overlap between GLiNER windows. Defaults to GLINER_WINDOW_OVERLAP_WORDS or 50.",
+    )
+    parser.add_argument(
         "--device",
         default=os.getenv("GLINER_DEVICE", "auto"),
         help="PyTorch device for GLiNER inference: auto, cuda:0, mps, cpu, etc. Defaults to GLINER_DEVICE or auto.",
@@ -211,6 +226,67 @@ def safe_output_name(path: Path) -> str:
     return re.sub(r"[^A-Za-z0-9_.-]+", "_", stem) + ".json"
 
 
+def word_windows(text: str, *, window_words: int, overlap_words: int) -> list[tuple[int, int, str]]:
+    """Return overlapping source-aligned word windows for long-document GLiNER inference."""
+    if window_words <= 0:
+        return [(0, len(text), text)]
+
+    words = list(re.finditer(r"\S+", text))
+    if len(words) <= window_words:
+        return [(0, len(text), text)]
+
+    overlap_words = max(0, min(overlap_words, window_words - 1))
+    step = max(1, window_words - overlap_words)
+    windows: list[tuple[int, int, str]] = []
+
+    for start_word in range(0, len(words), step):
+        end_word = min(len(words), start_word + window_words)
+        start_char = words[start_word].start()
+        end_char = words[end_word - 1].end()
+        windows.append((start_char, end_char, text[start_char:end_char]))
+        if end_word >= len(words):
+            break
+
+    return windows
+
+
+def dedupe_entities(entities: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Remove duplicate entities caused by overlapping inference windows."""
+    best_by_key: dict[tuple[int, int, str], dict[str, Any]] = {}
+    for ent in entities:
+        key = (int(ent.get("start", -1)), int(ent.get("end", -1)), str(ent.get("label") or ent.get("entity_type") or ""))
+        score = float(ent.get("score") or 0.0)
+        previous = best_by_key.get(key)
+        if previous is None or score > float(previous.get("score") or 0.0):
+            best_by_key[key] = ent
+    return sorted(best_by_key.values(), key=lambda ent: (int(ent.get("start", -1)), int(ent.get("end", -1)), str(ent.get("label") or "")))
+
+
+def predict_entities_windowed(model: Any, text: str, labels: list[str], threshold: float, window_words: int, overlap_words: int) -> list[dict[str, Any]]:
+    """Run GLiNER over source-aligned windows and translate local offsets back to file offsets."""
+    windows = word_windows(text, window_words=window_words, overlap_words=overlap_words)
+    all_entities: list[dict[str, Any]] = []
+
+    for window_start, _window_end, window_text in windows:
+        for raw_entity in model.predict_entities(window_text, labels, threshold=threshold):
+            ent = dict(raw_entity)
+            try:
+                local_start = int(ent.get("start", ent.get("start_pos", -1)))
+                local_end = int(ent.get("end", ent.get("end_pos", -1)))
+            except (TypeError, ValueError):
+                all_entities.append(ent)
+                continue
+            ent["start"] = window_start + local_start
+            ent["end"] = window_start + local_end
+            ent["start_pos"] = ent["start"]
+            ent["end_pos"] = ent["end"]
+            if 0 <= ent["start"] < ent["end"] <= len(text):
+                ent["text"] = text[ent["start"] : ent["end"]]
+            all_entities.append(ent)
+
+    return dedupe_entities(all_entities)
+
+
 def context_for(text: str, start: int, end: int, window: int = 100) -> str:
     left = max(0, start - window)
     right = min(len(text), end + window)
@@ -241,6 +317,8 @@ def write_manifest(output_dir: Path, args: argparse.Namespace, labels: list[str]
         "input": str(Path(args.input).resolve()),
         "model": args.model,
         "threshold": args.threshold,
+        "window_words": args.window_words,
+        "window_overlap_words": args.window_overlap_words,
         "requested_device": args.device,
         "device": str(device),
         "fp16_enabled": fp16_enabled,
@@ -279,6 +357,7 @@ def main() -> int:
     print(f"Files: {len(files)}")
     print(f"Labels: {', '.join(labels)}")
     print(f"Threshold: {args.threshold}")
+    print(f"Window words: {args.window_words} (overlap={args.window_overlap_words})")
     print(f"Output directory: {output_dir}")
 
     total_entities = 0
@@ -287,7 +366,14 @@ def main() -> int:
         if not text:
             entities: list[dict[str, Any]] = []
         else:
-            raw_entities = model.predict_entities(text, labels, threshold=args.threshold)
+            raw_entities = predict_entities_windowed(
+                model,
+                text,
+                labels,
+                args.threshold,
+                args.window_words,
+                args.window_overlap_words,
+            )
             entities = [normalize_entity(ent, text, file_path) for ent in raw_entities]
 
         total_entities += len(entities)
