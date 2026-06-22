@@ -20,9 +20,9 @@ You will process files sequentially from `chunk_000.txt` to `chunk_{total_chunks
 ## Extraction Rules
 
 - **No Deduplication:** If an entity appears 5 times in the chunk body, you must emit 5 separate records. Repeat mentions matter for downstream frequency analysis.
-- **Exact Match:** The `entity` field must be an exact substring of the chunk body (case-sensitive). Never paraphrase, normalize, or fix typos.
-- **Dynamic Labels:** Generate a specific, accurate label describing *what kind of thing* the entity is in this specific paper context. Use single nouns or compact noun phrases in PascalCase.
-- **Context:** Extract the surrounding sentence for the `context` field, trimmed to roughly 200 characters.
+- **Exact Match:** The `entity` field must be an exact substring of the chunk body (case-sensitive). Never paraphrase, normalize, or fix typos. Paraphrasing breaks `body[start:end] == entity`, which causes span validation failures in `audit_ner_output.py` and makes the offsets unreliable for all downstream stages.
+- **Dynamic Labels:** Generate a specific, accurate label describing *what kind of thing* the entity is in this specific paper context. Use single nouns or compact noun phrases in PascalCase. Specific labels improve ontology mapping accuracy — `map_ontology.py` passes the label as a disambiguation hint to the concept mapping service. Vague labels like `Entity` or `Term` produce worse mappings.
+- **Context:** Extract the surrounding sentence for the `context` field, trimmed to roughly 200 characters. `map_ontology.py` passes this as a disambiguation hint alongside the entity surface form — richer context improves concept mapping precision, especially for ambiguous terms like "Ca1" (hippocampal subfield vs. calcium ion).
 - **Span offsets:** For each entity, record `start` and `end` as character offsets into the chunk body (the text after `---`). Verify mentally that `body[start:end]` reproduces the exact surface form. For the same surface form appearing multiple times, scan forward from the previous match to find each subsequent occurrence's offset — never assign the same `start`/`end` to two items.
 
 ## Required Output Format
@@ -48,10 +48,10 @@ Emit a raw JSON array containing your findings. Do not wrap it in a root object:
 
 You may write helper scripts or parsers to `$SCRATCH_DIR` (under `/tmp/`) which persists across chunks.
 
-**CRITICAL RESTRICTION:** You must NEVER read your own past extraction outputs (e.g., files saved to `output/`). Each chunk must be grounded entirely in its own body text, not your previous judgments.
+**CRITICAL RESTRICTION:** You must NEVER read your own past extraction outputs (e.g., files saved to `output/`). Each chunk must be grounded entirely in its own body text. Reading prior outputs anchors you to labels and entities already found, causing confirmation bias — you stop noticing genuinely different mentions in later chunks and drift toward reproducing what you extracted before rather than what is actually in the current text.
 
 ## Execution & Anti-Loop Guardrails
 
-- **Zero Narration:** Do NOT output prose like “I need to extract…”, “Let me save…”, “I will now process…”, or “Here are the entities.”
-- **Immediate Action:** Once you have identified the entities, generate the JSON array and call `save_chunk_entities` in the exact same turn.
-- **Do Not Pause:** Do not create a plan. Do not ask for confirmation before saving. Output the payload to the tool and execute it.
+- **Zero Narration:** Do NOT output prose like “I need to extract…”, “Let me save…”, “I will now process…”, or “Here are the entities.” Narrating before the tool call burns context window tokens on every chunk — on a 20-chunk document this compounds into significant overhead and risks hitting context limits before the loop completes.
+- **Immediate Action:** Once you have identified the entities, generate the JSON array and call `save_chunk_entities` in the exact same turn. Delaying the tool call to reason further adds no value — the extraction is complete at the point you have identified all mentions.
+- **Do Not Pause:** Do not create a plan. Do not ask for confirmation before saving. This rule applies to routine chunk processing — asking for confirmation on every chunk makes the manual extraction path unusably slow. The exception is a genuine error (tool failure, unreadable file) where stopping is correct.
