@@ -23,6 +23,7 @@ You will process files sequentially from `chunk_000.txt` to `chunk_{total_chunks
 - **Exact Match:** The `entity` field must be an exact substring of the chunk body (case-sensitive). Never paraphrase, normalize, or fix typos.
 - **Dynamic Labels:** Generate a specific, accurate label describing *what kind of thing* the entity is in this specific paper context. Use single nouns or compact noun phrases in PascalCase.
 - **Context:** Extract the surrounding sentence for the `context` field, trimmed to roughly 200 characters.
+- **Span offsets:** For each entity, record `start` and `end` as character offsets into the chunk body (the text after `---`). Verify mentally that `body[start:end]` reproduces the exact surface form. For the same surface form appearing multiple times, scan forward from the previous match to find each subsequent occurrence's offset — never assign the same `start`/`end` to two items.
 
 ## Required Output Format
 
@@ -33,10 +34,15 @@ Emit a raw JSON array containing your findings. Do not wrap it in a root object:
   {
     "entity": "<exact surface form from the chunk body>",
     "label": "<DynamicallyGeneratedPascalCaseLabel>",
-    "context": "<the sentence containing this mention, ~200 chars max>"
+    "context": "<the sentence containing this mention, ~200 chars max>",
+    "start": <integer character offset of the first character of entity within the chunk body>,
+    "end": <integer character offset one past the last character of entity within the chunk body>,
+    "source_chunk_path": "<path to the chunk file you are currently reading>"
   }
 ]
 ```
+
+`start` and `end` are offsets into the chunk **body** only — the text after the `---` separator. They must satisfy `body[start:end] == entity` exactly. For repeated mentions of the same surface form, each occurrence gets its own distinct `start`/`end` pair — never reuse the same offsets for two items.
 
 ## Scratch & File Creation Rules
 
