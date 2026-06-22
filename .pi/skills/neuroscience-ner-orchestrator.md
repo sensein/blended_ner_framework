@@ -12,33 +12,38 @@ You do not perform manual entity extraction. You route tasks to the dedicated Py
 ## Pipeline Flow & Tool Routing
 Evaluate the user's request and workspace state to trigger the *next* logical step in the pipeline.
 
-1. **Document Parsing & Chunking** 
-   - **Trigger:** User asks to parse, chunk, or ingest a PDF.
+1. **Document Parsing & Chunking**
+   - **Trigger:** Always the entry point when no chunks exist yet. Requires the user to provide a PDF path — the pipeline cannot start without it. If the user asks to run the full pipeline but no chunks directory exists, ask for the PDF path before proceeding.
    - **Tool:** `parse_pdf`
    - **Args:** `pdf`, `modelId`, `outDir`. (Use the chunk token size provided by the user, or 2500-4000 for reliability).
 
 2. **Hybrid Label Generation (GLiNER)**
-   - **Trigger:** User asks for GLiNER, local NER, hybrid label generation, or intent-driven labels.
+   - **Trigger (automated):** Always runs after step 1 completes in an automated full-pipeline run.
+   - **Trigger (standalone):** User explicitly asks for GLiNER, local NER, hybrid label generation, or intent-driven labels on existing chunks.
    - **Tool:** `hybrid_ner_orchestrator`
    - **Args:** `prompt` (the user's raw natural-language intent including paths). Optional: `dryRun` (if user only wants a preview).
 
 3. **Frontier LLM Refinement**
-   - **Trigger:** User asks to refine GLiNER results or run a deep-pass verification step.
+   - **Trigger (automated):** Always runs after step 2 completes in an automated full-pipeline run.
+   - **Trigger (standalone):** User explicitly asks to refine GLiNER results or run a deep-pass verification step on existing GLiNER output.
    - **Tool:** `llm_refinement`
    - **Args:** `chunksDir`, `glinerDir`. (Pass the user's requested LiteLLM model if specified).
 
 4. **Masked LLM Recall Pass & Master Merge**
-   - **Trigger:** User asks for blind second-pass extraction, masked recall, or master entity consolidation.
+   - **Trigger (automated):** Always runs after step 3 completes in an automated full-pipeline run — neuroscience NER always benefits from a blind second pass.
+   - **Trigger (standalone):** User explicitly asks to run the masked recall pass or master merge on an existing `llm_pass1_entities.json`.
    - **Tool:** `llm_masked_pass`
    - **Args:** `llmPass1` (defaults to `<glinerDir>/llm_pass1_entities.json`).
 
 5. **Ontology Mapping**
-   - **Trigger:** User asks to map entities, align concepts, or get BioPortal IRIs.
+   - **Trigger (automated):** Always runs after step 4 completes in an automated full-pipeline run.
+   - **Trigger (standalone):** User explicitly asks to map entities, align concepts, or get BioPortal IRIs for an existing entity file.
    - **Tool:** `map_ontology`
    - **Args:** `input` (defaults to the master entity JSON). Prefer `backend: "auto"`. If the user asks for a spreadsheet, pass `csv: "AUTO"`. Optional validation controls: `strictIri`, `failOnInvalid`.
 
 6. **Final Output Audit & Normalization**
-   - **Trigger:** User asks to audit, validate, normalize, summarize, group, QA, or finalize extracted/mapped NER output; or the automated full pipeline has completed ontology mapping.
+   - **Trigger (automated):** Always runs after step 5 completes in an automated full-pipeline run.
+   - **Trigger (standalone):** User explicitly asks to audit, validate, normalize, summarize, group, QA, or finalize extracted/mapped NER output.
    - **Tool:** `audit_ner_output`
    - **Args:** `input` (defaults to the mapped entity JSON when it exists, otherwise the master entity JSON). Optional: `sourceText` for global span validation, `strictIri`, `failOnInvalid`.
 
