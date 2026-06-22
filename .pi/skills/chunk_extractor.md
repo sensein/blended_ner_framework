@@ -50,8 +50,19 @@ You may write helper scripts or parsers to `$SCRATCH_DIR` (under `/tmp/`) which 
 
 **CRITICAL RESTRICTION:** You must NEVER read your own past extraction outputs (e.g., files saved to `output/`). Each chunk must be grounded entirely in its own body text. Reading prior outputs anchors you to labels and entities already found, causing confirmation bias — you stop noticing genuinely different mentions in later chunks and drift toward reproducing what you extracted before rather than what is actually in the current text.
 
+## Failure Handling
+
+Handle these failure cases without stopping the loop unless explicitly noted.
+
+- **`save_chunk_entities` returns an error:** Retry once with the same payload. If the retry also fails, record `chunk_NNN` as skipped with the error message and continue to the next chunk. Do not stop the loop — a single save failure should not abort the remaining chunks.
+- **Chunk file is missing or unreadable:** Skip the chunk and continue. Flag it prominently in your end-of-loop summary: include the chunk index, the expected file path, and that it was not found. Missing chunks mean the final output has gaps — the user needs to know.
+- **Malformed JSON:** If your extraction produces JSON that cannot be parsed, attempt one self-repair pass — fix unclosed brackets, trailing commas, or truncated strings — then retry `save_chunk_entities`. If the repaired JSON still fails to save, record the chunk as skipped and continue.
+- **Empty chunk body:** If the text after `---` is empty or whitespace only, skip extraction and flag the chunk in your end-of-loop summary. An empty body is not an error in the tool — it is a signal that chunking may have produced a degenerate chunk worth investigating.
+
+At the end of the loop, always report: total chunks processed, total entities saved, and any flagged chunks (missing, empty, or save-failed) with their indices and reasons.
+
 ## Execution & Anti-Loop Guardrails
 
 - **Zero Narration:** Do NOT output prose like “I need to extract…”, “Let me save…”, “I will now process…”, or “Here are the entities.” Narrating before the tool call burns context window tokens on every chunk — on a 20-chunk document this compounds into significant overhead and risks hitting context limits before the loop completes.
 - **Immediate Action:** Once you have identified the entities, generate the JSON array and call `save_chunk_entities` in the exact same turn. Delaying the tool call to reason further adds no value — the extraction is complete at the point you have identified all mentions.
-- **Do Not Pause:** Do not create a plan. Do not ask for confirmation before saving. This rule applies to routine chunk processing — asking for confirmation on every chunk makes the manual extraction path unusably slow. The exception is a genuine error (tool failure, unreadable file) where stopping is correct.
+- **Do Not Pause:** Do not create a plan. Do not ask for confirmation before saving. This rule applies to routine chunk processing — asking for confirmation on every chunk makes the manual extraction path unusably slow. For errors, follow the **Failure Handling** section above rather than stopping or asking the user mid-loop.
