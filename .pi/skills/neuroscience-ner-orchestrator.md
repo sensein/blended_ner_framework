@@ -52,10 +52,33 @@ Evaluate the user's request and workspace state to trigger the *next* logical st
    - **Action:** Stop orchestrating and invoke/transition to the `Chunk Extractor` skill.
 
 ## Routing Guardrails (Anti-Loop & Chaining)
-- **No Planning Paragraphs:** Do not narrate your thought process (e.g., "I see the chunks exist, so the next step is..."). Do not say "I will now call the tool."
-- **Immediate Execution:** Evaluate the state silently. Once you determine the correct next step, immediately invoke that specific tool.
-- **Sequential Chaining (Automated Runs):** When instructed to run the full pipeline, you may chain tool executions. Once a tool returns successfully, silently evaluate the new state and immediately invoke the *next* logical tool in the sequence (e.g., `hybrid_ner_orchestrator` -> `llm_refinement` -> `llm_masked_pass` -> `map_ontology` -> `audit_ner_output`). Do not pause to ask the user for permission between successful automated steps.
+- **No Planning Paragraphs:** Do not narrate your thought process (e.g., "I see the chunks exist, so the next step is..."). Do not say "I will now call the tool." Narrating adds latency on every step and compounds across a 5-tool automated chain.
+- **Immediate Execution:** Evaluate the state silently. Once you determine the correct next step, immediately invoke that specific tool. Silent evaluation is what makes automated chaining seamless — visible reasoning between steps makes the pipeline feel like a chatbot reporting its every thought.
+- **Sequential Chaining (Automated Runs):** When instructed to run the full pipeline, you may chain tool executions. Once a tool returns successfully, silently evaluate the new state and immediately invoke the *next* logical tool in the sequence (e.g., `hybrid_ner_orchestrator` -> `llm_refinement` -> `llm_masked_pass` -> `map_ontology` -> `audit_ner_output`). Do not pause to ask the user for permission between successful automated steps — the user authorized the full pipeline run upfront; asking again mid-chain is redundant.
 - **Stop Conditions:** Only stop execution and return control to the user if:
-    1. A tool returns an error.
+    1. A tool returns an error (see **Failure Handling** below).
     2. The final requested stage (e.g., `audit_ner_output` or `map_ontology`) completes.
     3. You are handing off to the manual `chunk_extractor` skill.
+
+## Failure Handling
+
+Each tool call in this pipeline is a heavyweight Python subprocess. On any tool failure, **stop immediately and report clearly** — do not retry, do not proceed to the next step.
+
+When a tool fails, report all of the following to the user:
+- Which step failed (number and name)
+- The error message returned by the tool
+- Which output files exist on disk from steps that completed successfully — these are the resume points
+- The exact command the user can run to restart from the failed step once the issue is resolved
+
+**Resume guidance by step:**
+
+| Failed step | Resume from | Input needed |
+|---|---|---|
+| Step 1 (parse_pdf) | Re-run step 1 | Original PDF |
+| Step 2 (hybrid_ner_orchestrator) | Re-run step 2 | Chunks directory from step 1 |
+| Step 3 (llm_refinement) | Re-run step 3 | Chunks directory + GLiNER output directory from step 2 |
+| Step 4 (llm_masked_pass) | Re-run step 4 | `llm_pass1_entities.json` from step 3 |
+| Step 5 (map_ontology) | Re-run step 5 | `master_extracted_entities.json` from step 4 |
+| Step 6 (audit_ner_output) | Re-run step 6 | `neuro_entities_mapped.json` from step 5 |
+
+Do not delete or overwrite any output from prior steps when reporting a failure — those files are the user's recovery path.
